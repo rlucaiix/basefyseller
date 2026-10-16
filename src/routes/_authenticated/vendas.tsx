@@ -70,7 +70,7 @@ function SalesPage() {
         <Empty title={sales.length ? "Nenhuma venda com esses filtros" : "Nenhuma venda registrada"} text={sales.length ? "Troque o mês ou limpe os filtros." : "Registre sua primeira venda para começar a acompanhar o lucro real."} />
       ) : (
         <>
-          <div className="glass hidden overflow-hidden md:block">
+          <div className="glass hidden overflow-hidden lg:block">
             <table className="w-full text-sm">
               <thead className="text-left text-xs uppercase tracking-wide text-muted-foreground">
                 <tr className="border-b border-border">{["Data", "Pedido", "Produto", "Valor", "Taxa", "Custo", "Lucro", "Status", ""].map((h) => <th key={h} className="px-4 py-3 font-medium">{h}</th>)}</tr>
@@ -93,7 +93,7 @@ function SalesPage() {
               <tfoot><tr className="font-semibold"><td className="px-4 py-3" colSpan={3}>Total</td><td className="px-4 py-3 tabular">{fmtBRL(sum.revenue)}</td><td className="px-4 py-3 tabular">{fmtBRL(sum.commissions)}</td><td className="px-4 py-3 tabular">{fmtBRL(sum.costs)}</td><td className="px-4 py-3 tabular">{fmtBRL(sum.profit)}</td><td colSpan={2} /></tr></tfoot>
             </table>
           </div>
-          <div className="grid gap-2 md:hidden">
+          <div className="grid gap-2 md:grid-cols-2 lg:hidden">
             {filtered.map((s) => (
               <div key={s.id} className={cn("glass p-4", s.status === "cancelada" && "opacity-60")}>
                 <div className="flex items-start justify-between gap-2">
