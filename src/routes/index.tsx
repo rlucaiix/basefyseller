@@ -1,6 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, Receipt, Target, ClipboardCheck } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { GoogleButton } from "@/components/app/GoogleButton";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,17 +27,19 @@ const FEATURES = [
 ];
 
 function Index() {
+  const [signed, setSigned] = useState(false);
+  useEffect(() => { supabase.auth.getSession().then(({ data }) => setSigned(!!data.session)); }, []);
   return (
-    <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-5 py-8">
+    <div className="mx-auto flex min-h-[100dvh] max-w-5xl flex-col px-5 py-6 md:py-8">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-2 font-extrabold">
           <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary shadow-glow">B</span>
           Basefy <span className="text-primary">Seller</span>
         </div>
-        <Button asChild variant="ghost"><Link to="/auth">Entrar</Link></Button>
+        {signed && <Button asChild variant="ghost"><Link to="/inicio">Abrir app</Link></Button>}
       </header>
 
-      <section className="flex flex-1 flex-col justify-center py-16">
+      <section className="flex flex-1 flex-col justify-center py-12 md:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Planner de precificação</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
           Saiba quanto sobra <span className="bg-gradient-primary bg-clip-text text-transparent">antes de vender.</span>
@@ -43,8 +48,9 @@ function Index() {
           Três contas decidem seu lucro: a taxa da Basefy, o lucro por venda e o preço mínimo. Aqui elas ficam prontas, salvas e sincronizadas em todos os seus aparelhos.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button asChild size="lg" variant="hero"><Link to="/auth">Começar grátis</Link></Button>
-          <Button asChild size="lg" variant="outline"><Link to="/inicio">Já tenho conta</Link></Button>
+          {signed
+            ? <Button asChild size="lg" variant="hero" className="w-full sm:w-auto"><Link to="/inicio">Abrir meu painel</Link></Button>
+            : <GoogleButton label="Começar com Google" />}
         </div>
       </section>
 

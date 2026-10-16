@@ -28,6 +28,8 @@ function SalesPage() {
   const { product } = Route.useSearch();
   const m = useMutations();
   const [open, setOpen] = useState(!!product);
+  const nav = Route.useNavigate();
+  useEffect(() => { if (product) nav({ search: {}, replace: true }); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const [editing, setEditing] = useState<Sale | null>(null);
   const [f, setF] = useState({ month: currentMonth(), product: "", modality: "", status: "" });
 
@@ -114,7 +116,7 @@ function SalesPage() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-h-[90vh] overflow-y-auto">
           <DialogHeader><DialogTitle>{editing ? "Corrigir venda" : "Registrar venda"}</DialogTitle></DialogHeader>
-          <SaleForm key={editing?.id ?? "new"} sale={editing} initialProduct={product} products={products}
+          <SaleForm key={editing?.id ?? "new"} sale={editing} initialProduct={product ?? editing?.product_id ?? undefined} products={products}
             onDone={(msg) => { setOpen(false); toast.success(msg); }} create={m.createSale} update={m.updateSale} />
         </DialogContent>
       </Dialog>
