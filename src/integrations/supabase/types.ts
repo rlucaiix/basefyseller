@@ -14,13 +14,217 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      monthly_goals: {
+        Row: {
+          champion: string | null
+          change_next: string | null
+          created_at: string
+          id: string
+          main_product_id: string | null
+          month: string
+          plan: string | null
+          profit_goal: number
+          updated_at: string
+          user_id: string
+          version: number
+          weeks: Json
+          worked: string | null
+        }
+        Insert: {
+          champion?: string | null
+          change_next?: string | null
+          created_at?: string
+          id?: string
+          main_product_id?: string | null
+          month: string
+          plan?: string | null
+          profit_goal?: number
+          updated_at?: string
+          user_id?: string
+          version?: number
+          weeks?: Json
+          worked?: string | null
+        }
+        Update: {
+          champion?: string | null
+          change_next?: string | null
+          created_at?: string
+          id?: string
+          main_product_id?: string | null
+          month?: string
+          plan?: string | null
+          profit_goal?: number
+          updated_at?: string
+          user_id?: string
+          version?: number
+          weeks?: Json
+          worked?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "monthly_goals_main_product_id_fkey"
+            columns: ["main_product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      products: {
+        Row: {
+          competitor_price: number | null
+          created_at: string
+          id: string
+          kind: string
+          name: string
+          notes: string | null
+          price: number | null
+          sale_cost: number
+          supplier: string | null
+          unit_cost: number
+          updated_at: string
+          user_id: string
+          version: number
+        }
+        Insert: {
+          competitor_price?: number | null
+          created_at?: string
+          id?: string
+          kind?: string
+          name?: string
+          notes?: string | null
+          price?: number | null
+          sale_cost?: number
+          supplier?: string | null
+          unit_cost?: number
+          updated_at?: string
+          user_id?: string
+          version?: number
+        }
+        Update: {
+          competitor_price?: number | null
+          created_at?: string
+          id?: string
+          kind?: string
+          name?: string
+          notes?: string | null
+          price?: number | null
+          sale_cost?: number
+          supplier?: string | null
+          unit_cost?: number
+          updated_at?: string
+          user_id?: string
+          version?: number
+        }
+        Relationships: []
+      }
+      sales: {
+        Row: {
+          client_id: string
+          commission: number
+          cost: number
+          created_at: string
+          id: string
+          modality: string
+          order_ref: string | null
+          price: number
+          product_id: string | null
+          product_name: string
+          profit: number
+          rate: number
+          sale_date: string
+          status: string
+          updated_at: string
+          user_id: string
+          version: number
+        }
+        Insert: {
+          client_id: string
+          commission: number
+          cost?: number
+          created_at?: string
+          id?: string
+          modality?: string
+          order_ref?: string | null
+          price: number
+          product_id?: string | null
+          product_name: string
+          profit: number
+          rate: number
+          sale_date?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          version?: number
+        }
+        Update: {
+          client_id?: string
+          commission?: number
+          cost?: number
+          created_at?: string
+          id?: string
+          modality?: string
+          order_ref?: string | null
+          price?: number
+          product_id?: string | null
+          product_name?: string
+          profit?: number
+          rate?: number
+          sale_date?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          version?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sales_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      settings: {
+        Row: {
+          buyer_fee: number
+          created_at: string
+          display_name: string | null
+          rate_featured: number
+          rate_standard: number
+          updated_at: string
+          user_id: string
+          version: number
+        }
+        Insert: {
+          buyer_fee?: number
+          created_at?: string
+          display_name?: string | null
+          rate_featured?: number
+          rate_standard?: number
+          updated_at?: string
+          user_id: string
+          version?: number
+        }
+        Update: {
+          buyer_fee?: number
+          created_at?: string
+          display_name?: string | null
+          rate_featured?: number
+          rate_standard?: number
+          updated_at?: string
+          user_id?: string
+          version?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      delete_my_account: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never
