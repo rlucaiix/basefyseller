@@ -33,7 +33,7 @@ function Index() {
     <div className="mx-auto flex min-h-[100dvh] max-w-5xl flex-col px-5 py-6 md:py-8">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-2 font-extrabold">
-          <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary shadow-glow">B</span>
+          <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">B</span>
           Basefy <span className="text-primary">Seller</span>
         </div>
         {signed && <Button asChild variant="ghost"><Link to="/inicio">Abrir app</Link></Button>}
@@ -42,7 +42,7 @@ function Index() {
       <section className="flex flex-1 flex-col justify-center py-12 md:py-20">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">Planner de precificação</p>
         <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
-          Saiba quanto sobra <span className="bg-gradient-primary bg-clip-text text-transparent">antes de vender.</span>
+          Saiba quanto sobra <span className="bg-gradient-primary text-primary-foreground bg-clip-text text-transparent">antes de vender.</span>
         </h1>
         <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
           Três contas decidem seu lucro: a taxa da Basefy, o lucro por venda e o preço mínimo. Aqui elas ficam prontas, salvas e sincronizadas em todos os seus aparelhos.

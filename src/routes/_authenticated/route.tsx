@@ -31,7 +31,7 @@ const NAV = [
 function Brand() {
   return (
     <Link to="/inicio" className="flex items-center gap-2 font-extrabold tracking-tight">
-      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-sm text-primary-foreground shadow-glow">B</span>
+      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-primary-foreground text-sm text-primary-foreground shadow-glow">B</span>
       <span className="md:hidden lg:inline">Basefy <span className="text-primary">Seller</span></span>
     </Link>
   );

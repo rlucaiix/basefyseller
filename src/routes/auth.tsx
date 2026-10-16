@@ -30,7 +30,7 @@ function AuthPage() {
     <div className="flex min-h-[100dvh] items-center justify-center px-5 py-10">
       <div className="glass w-full max-w-sm p-7 text-center sm:p-8">
         <Link to="/" className="inline-flex items-center gap-2 font-extrabold">
-          <span className="grid size-9 place-items-center rounded-xl bg-gradient-primary shadow-glow">B</span>
+          <span className="grid size-9 place-items-center rounded-xl bg-gradient-primary text-primary-foreground shadow-glow">B</span>
           Basefy <span className="text-primary">Seller</span>
         </Link>
         <h1 className="mt-8 text-2xl font-bold tracking-tight">Bem-vindo</h1>
