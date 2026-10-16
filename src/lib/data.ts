@@ -4,7 +4,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { enqueue, rememberVersion } from "./sync";
 import { DEFAULT_RATES, type Modality, type SaleStatus } from "./pricing";
 
-export type Settings = { user_id: string; display_name: string | null; rate_standard: number; rate_featured: number; buyer_fee: number; version: number };
+export type Settings = { user_id: string; display_name: string | null; bio: string | null; avatar_url: string | null; seller_link: string | null; read_chapters: string[]; rate_standard: number; rate_featured: number; buyer_fee: number; version: number };
 export type Product = { id: string; user_id: string; name: string; kind: "produto" | "dinamico" | "servico"; supplier: string | null; unit_cost: number; sale_cost: number; competitor_price: number | null; price: number | null; notes: string | null; version: number; created_at: string; updated_at: string };
 export type Sale = { id: string; user_id: string; client_id: string; product_id: string | null; product_name: string; order_ref: string | null; sale_date: string; price: number; modality: Modality; rate: number; cost: number; commission: number; profit: number; status: SaleStatus; version: number; created_at: string };
 export type Goal = { id: string; user_id: string; month: string; profit_goal: number; main_product_id: string | null; plan: string | null; weeks: { videos?: number | undefined }[]; champion: string | null; worked: string | null; change_next: string | null; version: number };
@@ -32,7 +32,7 @@ export function useSettings() {
       const { data, error } = await supabase.from("settings").select("*").eq("user_id", uid).maybeSingle();
       if (error) throw error;
       if (data) { rememberVersion(uid, data.version); return num(data as any, ["rate_standard", "rate_featured", "buyer_fee"]); }
-      const def = { user_id: uid, display_name: null, rate_standard: DEFAULT_RATES.padrao, rate_featured: DEFAULT_RATES.destaque, buyer_fee: 1, version: 1 };
+      const def = { user_id: uid, display_name: null, bio: null, avatar_url: null, seller_link: null, read_chapters: [] as string[], rate_standard: DEFAULT_RATES.padrao, rate_featured: DEFAULT_RATES.destaque, buyer_fee: 1, version: 1 };
       enqueue({ table: "settings", kind: "insert", row: { user_id: uid }, onConflict: "user_id" });
       return def;
     },

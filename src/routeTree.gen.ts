@@ -14,12 +14,14 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedCalculadoraRouteImport } from './routes/_authenticated/calculadora'
 import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
+import { Route as AuthenticatedConteudoRouteImport } from './routes/_authenticated/conteudo'
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedMetaRouteImport } from './routes/_authenticated/meta'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedTabelasRouteImport } from './routes/_authenticated/tabelas'
 import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
+import { Route as AuthenticatedConteudoSlugRouteImport } from './routes/_authenticated/conteudo.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -47,6 +49,11 @@ const AuthenticatedConfiguracoesRoute =
     path: '/configuracoes',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedConteudoRoute = AuthenticatedConteudoRouteImport.update({
+  id: '/conteudo',
+  path: '/conteudo',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
   id: '/fechamento',
   path: '/fechamento',
@@ -77,30 +84,40 @@ const AuthenticatedVendasRoute = AuthenticatedVendasRouteImport.update({
   path: '/vendas',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedConteudoSlugRoute =
+  AuthenticatedConteudoSlugRouteImport.update({
+    id: '/$slug',
+    path: '/$slug',
+    getParentRoute: () => AuthenticatedConteudoRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
   '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/meta': typeof AuthenticatedMetaRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/tabelas': typeof AuthenticatedTabelasRoute
   '/vendas': typeof AuthenticatedVendasRoute
+  '/conteudo/$slug': typeof AuthenticatedConteudoSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
   '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/meta': typeof AuthenticatedMetaRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/tabelas': typeof AuthenticatedTabelasRoute
   '/vendas': typeof AuthenticatedVendasRoute
+  '/conteudo/$slug': typeof AuthenticatedConteudoSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -109,12 +126,14 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/_authenticated/calculadora': typeof AuthenticatedCalculadoraRoute
   '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/_authenticated/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
   '/_authenticated/meta': typeof AuthenticatedMetaRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/tabelas': typeof AuthenticatedTabelasRoute
   '/_authenticated/vendas': typeof AuthenticatedVendasRoute
+  '/_authenticated/conteudo/$slug': typeof AuthenticatedConteudoSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -123,24 +142,28 @@ export interface FileRouteTypes {
     | '/auth'
     | '/calculadora'
     | '/configuracoes'
+    | '/conteudo'
     | '/fechamento'
     | '/inicio'
     | '/meta'
     | '/produtos'
     | '/tabelas'
     | '/vendas'
+    | '/conteudo/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
     | '/calculadora'
     | '/configuracoes'
+    | '/conteudo'
     | '/fechamento'
     | '/inicio'
     | '/meta'
     | '/produtos'
     | '/tabelas'
     | '/vendas'
+    | '/conteudo/$slug'
   id:
     | '__root__'
     | '/'
@@ -148,12 +171,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/_authenticated/calculadora'
     | '/_authenticated/configuracoes'
+    | '/_authenticated/conteudo'
     | '/_authenticated/fechamento'
     | '/_authenticated/inicio'
     | '/_authenticated/meta'
     | '/_authenticated/produtos'
     | '/_authenticated/tabelas'
     | '/_authenticated/vendas'
+    | '/_authenticated/conteudo/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -199,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/conteudo': {
+      id: '/_authenticated/conteudo'
+      path: '/conteudo'
+      fullPath: '/conteudo'
+      preLoaderRoute: typeof AuthenticatedConteudoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/fechamento': {
       id: '/_authenticated/fechamento'
       path: '/fechamento'
@@ -241,12 +273,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedVendasRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/conteudo/$slug': {
+      id: '/_authenticated/conteudo/$slug'
+      path: '/$slug'
+      fullPath: '/conteudo/$slug'
+      preLoaderRoute: typeof AuthenticatedConteudoSlugRouteImport
+      parentRoute: typeof AuthenticatedConteudoRoute
+    }
   }
 }
+
+interface AuthenticatedConteudoRouteChildren {
+  AuthenticatedConteudoSlugRoute: typeof AuthenticatedConteudoSlugRoute
+}
+
+const AuthenticatedConteudoRouteChildren: AuthenticatedConteudoRouteChildren = {
+  AuthenticatedConteudoSlugRoute: AuthenticatedConteudoSlugRoute,
+}
+
+const AuthenticatedConteudoRouteWithChildren =
+  AuthenticatedConteudoRoute._addFileChildren(
+    AuthenticatedConteudoRouteChildren,
+  )
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCalculadoraRoute: typeof AuthenticatedCalculadoraRoute
   AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
+  AuthenticatedConteudoRoute: typeof AuthenticatedConteudoRouteWithChildren
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
   AuthenticatedMetaRoute: typeof AuthenticatedMetaRoute
@@ -258,6 +311,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCalculadoraRoute: AuthenticatedCalculadoraRoute,
   AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
+  AuthenticatedConteudoRoute: AuthenticatedConteudoRouteWithChildren,
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
   AuthenticatedMetaRoute: AuthenticatedMetaRoute,
