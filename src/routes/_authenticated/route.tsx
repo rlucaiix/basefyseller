@@ -53,11 +53,11 @@ function AppLayout() {
         <div className="mt-auto space-y-3 px-1 lg:px-2">
           <div className="hidden lg:block"><SaveIndicator /></div>
           <div className="flex items-center gap-2">
-            {user.user_metadata?.avatar_url
-              ? <img src={user.user_metadata.avatar_url} alt="" className="size-8 shrink-0 rounded-full" referrerPolicy="no-referrer" />
+            {user.user_metadata?.['avatar_url']
+              ? <img src={user.user_metadata['avatar_url']} alt="" className="size-8 shrink-0 rounded-full" referrerPolicy="no-referrer" />
               : <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent text-xs">{(user.email ?? "?")[0]?.toUpperCase()}</span>}
             <div className="hidden min-w-0 flex-1 lg:block">
-              <div className="truncate text-sm">{user.user_metadata?.full_name ?? user.email}</div>
+              <div className="truncate text-sm">{user.user_metadata?.['full_name'] ?? user.email}</div>
               <button onClick={() => supabase.auth.signOut()} className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"><LogOut className="size-3" />Sair</button>
             </div>
           </div>
