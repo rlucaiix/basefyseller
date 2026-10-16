@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Plus, Trash2, Calculator, Receipt } from "lucide-react";
 import { z } from "zod";
 import { appHead } from "@/lib/head";
@@ -73,9 +73,13 @@ function ProductEditor({ product }: { product: Product }) {
   const m = useMutations();
   const [f, setF] = useState(product);
   const [featured, setFeatured] = useState(false);
-  useEffect(() => { setF((cur) => (cur.version < product.version ? product : cur)); }, [product]);
+  const editedAt = useRef(0);
+  // Recebe a versão da nuvem (ex.: outro aparelho) só quando não há digitação recente.
+  useEffect(() => {
+    if (Date.now() - editedAt.current > 2500) setF((cur) => (cur.version < product.version ? product : cur));
+  }, [product]);
 
-  const patch = (p: Partial<Product>) => setF((o) => ({ ...o, ...p }));
+  const patch = (p: Partial<Product>) => { editedAt.current = Date.now(); setF((o) => ({ ...o, ...p })); };
   useDebounced(() => {
     const { name, kind, supplier, unit_cost, sale_cost, competitor_price, price, notes } = f;
     m.updateProduct(product.id, { name: name.trim() || "Sem nome", kind, supplier, unit_cost, sale_cost, competitor_price, price, notes });

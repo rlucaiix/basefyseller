@@ -14,7 +14,13 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedCalculadoraRouteImport } from './routes/_authenticated/calculadora'
+import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
+import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
+import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
+import { Route as AuthenticatedMetaRouteImport } from './routes/_authenticated/meta'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
+import { Route as AuthenticatedTabelasRouteImport } from './routes/_authenticated/tabelas'
+import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -41,9 +47,40 @@ const AuthenticatedCalculadoraRoute =
     path: '/calculadora',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedConfiguracoesRoute =
+  AuthenticatedConfiguracoesRouteImport.update({
+    id: '/configuracoes',
+    path: '/configuracoes',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedFechamentoRoute = AuthenticatedFechamentoRouteImport.update({
+  id: '/fechamento',
+  path: '/fechamento',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedInicioRoute = AuthenticatedInicioRouteImport.update({
+  id: '/inicio',
+  path: '/inicio',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedMetaRoute = AuthenticatedMetaRouteImport.update({
+  id: '/meta',
+  path: '/meta',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTabelasRoute = AuthenticatedTabelasRouteImport.update({
+  id: '/tabelas',
+  path: '/tabelas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedVendasRoute = AuthenticatedVendasRouteImport.update({
+  id: '/vendas',
+  path: '/vendas',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 
@@ -52,14 +89,26 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/inicio': typeof AuthenticatedInicioRoute
+  '/meta': typeof AuthenticatedMetaRoute
   '/produtos': typeof AuthenticatedProdutosRoute
+  '/tabelas': typeof AuthenticatedTabelasRoute
+  '/vendas': typeof AuthenticatedVendasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/fechamento': typeof AuthenticatedFechamentoRoute
+  '/inicio': typeof AuthenticatedInicioRoute
+  '/meta': typeof AuthenticatedMetaRoute
   '/produtos': typeof AuthenticatedProdutosRoute
+  '/tabelas': typeof AuthenticatedTabelasRoute
+  '/vendas': typeof AuthenticatedVendasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -68,13 +117,41 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
+  '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
+  '/_authenticated/inicio': typeof AuthenticatedInicioRoute
+  '/_authenticated/meta': typeof AuthenticatedMetaRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
+  '/_authenticated/tabelas': typeof AuthenticatedTabelasRoute
+  '/_authenticated/vendas': typeof AuthenticatedVendasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/reset-password' | '/calculadora' | '/produtos'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/calculadora'
+    | '/configuracoes'
+    | '/fechamento'
+    | '/inicio'
+    | '/meta'
+    | '/produtos'
+    | '/tabelas'
+    | '/vendas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/reset-password' | '/calculadora' | '/produtos'
+  to:
+    | '/'
+    | '/auth'
+    | '/reset-password'
+    | '/calculadora'
+    | '/configuracoes'
+    | '/fechamento'
+    | '/inicio'
+    | '/meta'
+    | '/produtos'
+    | '/tabelas'
+    | '/vendas'
   id:
     | '__root__'
     | '/'
@@ -82,7 +159,13 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/_authenticated/calculadora'
+    | '/_authenticated/configuracoes'
+    | '/_authenticated/fechamento'
+    | '/_authenticated/inicio'
+    | '/_authenticated/meta'
     | '/_authenticated/produtos'
+    | '/_authenticated/tabelas'
+    | '/_authenticated/vendas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -129,6 +212,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCalculadoraRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/configuracoes': {
+      id: '/_authenticated/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof AuthenticatedConfiguracoesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/fechamento': {
+      id: '/_authenticated/fechamento'
+      path: '/fechamento'
+      fullPath: '/fechamento'
+      preLoaderRoute: typeof AuthenticatedFechamentoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/inicio': {
+      id: '/_authenticated/inicio'
+      path: '/inicio'
+      fullPath: '/inicio'
+      preLoaderRoute: typeof AuthenticatedInicioRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/meta': {
+      id: '/_authenticated/meta'
+      path: '/meta'
+      fullPath: '/meta'
+      preLoaderRoute: typeof AuthenticatedMetaRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/produtos': {
       id: '/_authenticated/produtos'
       path: '/produtos'
@@ -136,17 +247,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProdutosRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/tabelas': {
+      id: '/_authenticated/tabelas'
+      path: '/tabelas'
+      fullPath: '/tabelas'
+      preLoaderRoute: typeof AuthenticatedTabelasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/vendas': {
+      id: '/_authenticated/vendas'
+      path: '/vendas'
+      fullPath: '/vendas'
+      preLoaderRoute: typeof AuthenticatedVendasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCalculadoraRoute: typeof AuthenticatedCalculadoraRoute
+  AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
+  AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
+  AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
+  AuthenticatedMetaRoute: typeof AuthenticatedMetaRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
+  AuthenticatedTabelasRoute: typeof AuthenticatedTabelasRoute
+  AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCalculadoraRoute: AuthenticatedCalculadoraRoute,
+  AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
+  AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
+  AuthenticatedInicioRoute: AuthenticatedInicioRoute,
+  AuthenticatedMetaRoute: AuthenticatedMetaRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
+  AuthenticatedTabelasRoute: AuthenticatedTabelasRoute,
+  AuthenticatedVendasRoute: AuthenticatedVendasRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =

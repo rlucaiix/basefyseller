@@ -133,5 +133,4 @@
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
 @utility tabular { font-variant-numeric: tabular-nums; }
 
-@layer base {
-}
+
