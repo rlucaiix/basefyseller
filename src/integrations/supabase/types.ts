@@ -188,31 +188,43 @@ export type Database = {
       }
       settings: {
         Row: {
+          avatar_url: string | null
+          bio: string | null
           buyer_fee: number
           created_at: string
           display_name: string | null
           rate_featured: number
           rate_standard: number
+          read_chapters: Json
+          seller_link: string | null
           updated_at: string
           user_id: string
           version: number
         }
         Insert: {
+          avatar_url?: string | null
+          bio?: string | null
           buyer_fee?: number
           created_at?: string
           display_name?: string | null
           rate_featured?: number
           rate_standard?: number
+          read_chapters?: Json
+          seller_link?: string | null
           updated_at?: string
           user_id: string
           version?: number
         }
         Update: {
+          avatar_url?: string | null
+          bio?: string | null
           buyer_fee?: number
           created_at?: string
           display_name?: string | null
           rate_featured?: number
           rate_standard?: number
+          read_chapters?: Json
+          seller_link?: string | null
           updated_at?: string
           user_id?: string
           version?: number
