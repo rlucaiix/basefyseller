@@ -31,7 +31,7 @@ const NAV = [
 function Brand() {
   return (
     <Link to="/inicio" className="flex items-center gap-2 font-extrabold tracking-tight">
-      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-sm shadow-glow">B</span>
+      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-sm text-primary-foreground shadow-glow">B</span>
       <span className="md:hidden lg:inline">Basefy <span className="text-primary">Seller</span></span>
     </Link>
   );
@@ -47,7 +47,7 @@ function AppLayout() {
       <aside className="sticky top-0 hidden h-screen w-[72px] shrink-0 flex-col gap-1 border-r border-sidebar-border bg-sidebar p-3 lg:w-60 lg:p-4 md:flex">
         <div className="mb-6 px-1 lg:px-2"><Brand /></div>
         {NAV.map((n) => (
-          <Link key={n.to} to={n.to} title={n.label} className={cn("flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm lg:justify-start text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground", (path === n.to || path.startsWith(n.to + "/")) && "bg-sidebar-accent text-foreground")}>
+          <Link key={n.to} to={n.to} title={n.label} className={cn("flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm lg:justify-start text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground", (path === n.to || path.startsWith(n.to + "/")) && "bg-sidebar-accent font-semibold text-sidebar-accent-foreground")}>
             <n.icon className="size-5 lg:size-4" /><span className="hidden lg:inline">{n.label}</span>
           </Link>
         ))}
@@ -77,7 +77,7 @@ function AppLayout() {
 
       <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-border bg-card/95 shadow-[var(--shadow-card)] pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden">
         {mobileMain.map((n) => (
-          <Link key={n.to} to={n.to} className={cn("flex flex-col items-center gap-1 py-2.5 text-[11px] text-muted-foreground", (path === n.to || path.startsWith(n.to + "/")) && "text-primary")}>
+          <Link key={n.to} to={n.to} className={cn("flex flex-col items-center gap-1 py-2.5 text-[11px] text-muted-foreground", (path === n.to || path.startsWith(n.to + "/")) && "font-semibold text-primary")}>
             <n.icon className="size-5" />{n.label}
           </Link>
         ))}
