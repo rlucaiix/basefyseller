@@ -1,6 +1,6 @@
 import { createFileRoute, redirect, Outlet, Link, useRouterState } from "@tanstack/react-router";
 import { useState } from "react";
-import { LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal } from "lucide-react";
+import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveIndicator } from "@/components/app/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -21,6 +21,7 @@ const NAV = [
   { to: "/produtos", label: "Produtos", icon: Package },
   { to: "/calculadora", label: "Calculadora", icon: Calculator },
   { to: "/vendas", label: "Vendas", icon: Receipt },
+  { to: "/conteudo", label: "Conteúdo", icon: BookOpen },
   { to: "/meta", label: "Meta do mês", icon: Target },
   { to: "/fechamento", label: "Fechamento", icon: ClipboardCheck },
   { to: "/tabelas", label: "Tabelas rápidas", icon: Table2 },
@@ -46,7 +47,7 @@ function AppLayout() {
       <aside className="sticky top-0 hidden h-screen w-[72px] shrink-0 flex-col gap-1 border-r border-sidebar-border bg-sidebar/70 p-3 lg:w-60 lg:p-4 backdrop-blur-xl md:flex">
         <div className="mb-6 px-1 lg:px-2"><Brand /></div>
         {NAV.map((n) => (
-          <Link key={n.to} to={n.to} title={n.label} className={cn("flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm lg:justify-start text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground", path === n.to && "bg-sidebar-accent text-foreground")}>
+          <Link key={n.to} to={n.to} title={n.label} className={cn("flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm lg:justify-start text-muted-foreground transition-colors hover:bg-sidebar-accent hover:text-foreground", (path === n.to || path.startsWith(n.to + "/")) && "bg-sidebar-accent text-foreground")}>
             <n.icon className="size-5 lg:size-4" /><span className="hidden lg:inline">{n.label}</span>
           </Link>
         ))}
@@ -76,7 +77,7 @@ function AppLayout() {
 
       <nav className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-5 border-t border-border bg-background/85 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl md:hidden">
         {mobileMain.map((n) => (
-          <Link key={n.to} to={n.to} className={cn("flex flex-col items-center gap-1 py-2.5 text-[11px] text-muted-foreground", path === n.to && "text-primary")}>
+          <Link key={n.to} to={n.to} className={cn("flex flex-col items-center gap-1 py-2.5 text-[11px] text-muted-foreground", (path === n.to || path.startsWith(n.to + "/")) && "text-primary")}>
             <n.icon className="size-5" />{n.label}
           </Link>
         ))}

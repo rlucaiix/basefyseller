@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Package, Calculator, Receipt, Target, ClipboardCheck, Table2 } from "lucide-react";
+import { BookOpen, ArrowRight, Package, Calculator, Receipt, Target, ClipboardCheck, Table2 } from "lucide-react";
 import { appHead } from "@/lib/head";
 import { useGoals, useProducts, useSales, useSettings, currentMonth, monthLabel, salesInMonth } from "@/lib/data";
 import { summarize, fmtBRL, fmtPct } from "@/lib/pricing";
@@ -20,6 +20,7 @@ const SHORTCUTS = [
   { to: "/meta", label: "Meta", icon: Target },
   { to: "/fechamento", label: "Fechamento", icon: ClipboardCheck },
   { to: "/tabelas", label: "Tabelas", icon: Table2 },
+  { to: "/conteudo", label: "Conteúdo", icon: BookOpen },
 ] as const;
 
 function Home() {
@@ -84,7 +85,7 @@ function Home() {
         </Card>
       </div>
 
-      <div className="mt-6 grid grid-cols-3 gap-2 md:grid-cols-6">
+      <div className="mt-6 grid grid-cols-4 gap-2 md:grid-cols-7">
         {SHORTCUTS.map((s) => (
           <Link key={s.to} to={s.to} className="glass flex flex-col items-center gap-2 p-4 text-xs transition-colors hover:border-primary/50">
             <s.icon className="size-5 text-primary" />{s.label}

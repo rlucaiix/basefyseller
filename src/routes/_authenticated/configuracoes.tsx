@@ -8,6 +8,8 @@ import { useSettings, useMutations, useDebounced, useProducts, useSales, useGoal
 import { DEFAULT_RATES, fmtBRL } from "@/lib/pricing";
 import { PageHeader, Card, MoneyField } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { ShareSeller, normalizeLink } from "@/components/app/ShareSeller";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
@@ -25,6 +27,8 @@ function SettingsPage() {
   const m = useMutations();
   const nav = useNavigate();
   const [name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [link, setLink] = useState("");
   const [std, setStd] = useState<number | null>(null);
   const [feat, setFeat] = useState<number | null>(null);
   const [confirmText, setConfirmText] = useState("");
@@ -32,14 +36,19 @@ function SettingsPage() {
   useEffect(() => {
     if (!s) return;
     setName(s.display_name ?? "");
+    setBio(s.bio ?? "");
+    setLink(s.seller_link ?? "");
     setStd(+(s.rate_standard * 100).toFixed(2));
     setFeat(+(s.rate_featured * 100).toFixed(2));
   }, [s?.user_id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useDebounced(() => {
     if (std == null || feat == null || std >= 100 || feat >= 100) return;
-    void m.updateSettings({ display_name: name || null, rate_standard: std / 100, rate_featured: feat / 100 });
-  }, [name, std, feat]);
+    const sl = link.trim() ? normalizeLink(link) : null;
+    if (link.trim() && !sl) return;
+    void m.updateSettings({ display_name: name || null, bio: bio || null, seller_link: sl, rate_standard: std / 100, rate_featured: feat / 100 });
+  }, [name, bio, link, std, feat]);
+  const validLink = link.trim() ? normalizeLink(link) : null;
 
   function exportData() {
     const blob = new Blob([JSON.stringify({ exportado_em: new Date().toISOString(), configuracoes: s, produtos: products, vendas: sales, metas: goals }, null, 2)], { type: "application/json" });
@@ -66,6 +75,13 @@ function SettingsPage() {
         <Card className="space-y-4">
           <h3 className="font-semibold">Perfil</h3>
           <div className="space-y-1.5"><Label htmlFor="n" className="text-xs text-muted-foreground">Como quer ser chamado</Label><Input id="n" className="h-11" value={name} onChange={(e) => setName(e.target.value)} /></div>
+          <div className="space-y-1.5"><Label htmlFor="bio" className="text-xs text-muted-foreground">Sobre você</Label><Textarea id="bio" value={bio} onChange={(e) => setBio(e.target.value)} placeholder="O que você vende, seu diferencial…" /></div>
+          <div className="space-y-1.5">
+            <Label htmlFor="sl" className="text-xs text-muted-foreground">Seu link de vendedor na Basefy</Label>
+            <Input id="sl" inputMode="url" className="h-11" value={link} onChange={(e) => setLink(e.target.value)} placeholder="basefy.io/seu-perfil" />
+            {link.trim() && !validLink && <p className="text-xs text-destructive">Link inválido.</p>}
+          </div>
+          {validLink && <ShareSeller link={validLink} name={name} />}
           <p className="text-xs text-muted-foreground">Moeda: Real (R$). Nunca pedimos sua senha da Basefy, CPF ou dados bancários.</p>
         </Card>
         <Card className="space-y-4">
