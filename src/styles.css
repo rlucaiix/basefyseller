@@ -66,43 +66,44 @@
 
 :root {
   --radius: 0.875rem;
-  --background: oklch(0.145 0.02 292);
-  --foreground: oklch(0.97 0.012 300);
-  --card: oklch(0.2 0.03 292 / 0.6);
-  --card-foreground: oklch(0.97 0.012 300);
-  --popover: oklch(0.19 0.03 292);
-  --popover-foreground: oklch(0.97 0.012 300);
-  --primary: oklch(0.64 0.21 296);
+  --background: oklch(0.985 0.006 300);
+  --foreground: oklch(0.22 0.03 292);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.03 292);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.03 292);
+  --primary: oklch(0.55 0.22 296);
   --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.25 0.035 292);
-  --secondary-foreground: oklch(0.95 0.02 300);
-  --muted: oklch(0.24 0.03 292);
-  --muted-foreground: oklch(0.74 0.04 298);
-  --accent: oklch(0.3 0.06 296);
-  --accent-foreground: oklch(0.97 0.012 300);
-  --destructive: oklch(0.65 0.21 22);
+  --secondary: oklch(0.95 0.02 300);
+  --secondary-foreground: oklch(0.3 0.06 296);
+  --muted: oklch(0.955 0.012 300);
+  --muted-foreground: oklch(0.5 0.03 295);
+  --accent: oklch(0.94 0.04 300);
+  --accent-foreground: oklch(0.35 0.14 296);
+  --destructive: oklch(0.58 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
-  --success: oklch(0.74 0.16 155);
-  --warning: oklch(0.8 0.15 80);
-  --border: oklch(1 0 0 / 9%);
-  --input: oklch(1 0 0 / 12%);
-  --ring: oklch(0.64 0.21 296);
-  --chart-1: oklch(0.64 0.21 296);
-  --chart-2: oklch(0.74 0.16 155);
-  --chart-3: oklch(0.8 0.15 80);
-  --chart-4: oklch(0.7 0.12 230);
-  --chart-5: oklch(0.65 0.21 22);
-  --sidebar: oklch(0.17 0.025 292);
-  --sidebar-foreground: oklch(0.97 0.012 300);
-  --sidebar-primary: oklch(0.64 0.21 296);
+  --success: oklch(0.56 0.15 155);
+  --warning: oklch(0.66 0.15 70);
+  --border: oklch(0.9 0.015 300);
+  --input: oklch(0.88 0.02 300);
+  --ring: oklch(0.55 0.22 296);
+  --chart-1: oklch(0.55 0.22 296);
+  --chart-2: oklch(0.56 0.15 155);
+  --chart-3: oklch(0.66 0.15 70);
+  --chart-4: oklch(0.6 0.12 230);
+  --chart-5: oklch(0.58 0.22 25);
+  --sidebar: oklch(1 0 0);
+  --sidebar-foreground: oklch(0.22 0.03 292);
+  --sidebar-primary: oklch(0.55 0.22 296);
   --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.26 0.05 296);
-  --sidebar-accent-foreground: oklch(0.97 0.012 300);
-  --sidebar-border: oklch(1 0 0 / 8%);
-  --sidebar-ring: oklch(0.64 0.21 296);
-  --gradient-hero: radial-gradient(1200px 600px at 80% -10%, oklch(0.45 0.2 296 / 0.45), transparent 60%), radial-gradient(800px 500px at -10% 110%, oklch(0.4 0.18 280 / 0.3), transparent 60%);
-  --gradient-primary: linear-gradient(135deg, oklch(0.66 0.22 300), oklch(0.55 0.22 285));
-  --shadow-glow: 0 10px 40px -10px oklch(0.64 0.21 296 / 0.55);
+  --sidebar-accent: oklch(0.95 0.035 300);
+  --sidebar-accent-foreground: oklch(0.35 0.14 296);
+  --sidebar-border: oklch(0.92 0.012 300);
+  --sidebar-ring: oklch(0.55 0.22 296);
+  --gradient-hero: radial-gradient(1100px 520px at 85% -10%, oklch(0.9 0.07 300 / 0.7), transparent 60%), radial-gradient(800px 480px at -10% 110%, oklch(0.93 0.05 260 / 0.6), transparent 60%);
+  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.22 300), oklch(0.5 0.22 285));
+  --shadow-glow: 0 10px 30px -12px oklch(0.55 0.22 296 / 0.45);
+  --shadow-card: 0 1px 2px oklch(0.3 0.05 296 / 0.05), 0 6px 20px -10px oklch(0.3 0.08 296 / 0.12);
 }
 
 @layer base {
@@ -118,6 +119,10 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
   }
+  html { -webkit-tap-highlight-color: transparent; }
+  a, button, [role="button"], label, select, summary { touch-action: manipulation; }
+  button:active:not(:disabled), a:active { transform: scale(0.97); }
+  button, a { transition: transform 80ms ease, background-color 120ms ease, color 120ms ease; }
   input, select, textarea { font-size: 16px; }
   @media (min-width: 768px) { input, select, textarea { font-size: 14px; } }
 }
@@ -125,8 +130,7 @@
 @utility glass {
   background: var(--card);
   border: 1px solid var(--border);
-  backdrop-filter: blur(18px) saturate(140%);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-card);
   border-radius: var(--radius-xl);
 }
 @utility bg-gradient-primary { background-image: var(--gradient-primary); }

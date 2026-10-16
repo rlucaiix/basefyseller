@@ -33,7 +33,7 @@ function Index() {
     <div className="mx-auto flex min-h-[100dvh] max-w-5xl flex-col px-5 py-6 md:py-8">
       <header className="flex items-center justify-between">
         <div className="flex items-center gap-2 font-extrabold">
-          <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary shadow-glow">B</span>
+          <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-primary-foreground shadow-glow">B</span>
           Basefy <span className="text-primary">Seller</span>
         </div>
         {signed && <Button asChild variant="ghost"><Link to="/inicio">Abrir app</Link></Button>}
