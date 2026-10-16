@@ -25,7 +25,7 @@ function ClosingPage() {
   const champion = s.products[0];
   const hit = goal && goal.profit_goal > 0 ? s.profit >= goal.profit_goal : null;
 
-  const rows: [string, string, string?][] = [
+  const rows: [string, string, (string | undefined)?][] = [
     ["Faturamento", fmtBRL(s.revenue), "soma dos valores vendidos"],
     ["Taxas da Basefy", fmtBRL(s.commissions), `comum ${fmtBRL(s.commissionStd)} · destaque ${fmtBRL(s.commissionFeat)}`],
     ["Custos dos produtos", fmtBRL(s.costs)],

@@ -37,7 +37,7 @@ function Home() {
 
   const next = !products?.length
     ? { title: "Cadastre seu primeiro produto", text: "Comece pela ficha de precificação: custo, preço e lucro.", to: "/produtos", cta: "Cadastrar produto" }
-    : noPrice.length
+    : noPrice[0]
     ? { title: `Defina o preço de “${noPrice[0].name}”`, text: "Sem preço não dá para saber o lucro nem a meta.", to: "/produtos", cta: "Abrir ficha", search: { id: noPrice[0].id } }
     : !goal || goal.profit_goal <= 0
     ? { title: "Defina a meta de lucro do mês", text: "Descubra quantas vendas por dia você precisa.", to: "/meta", cta: "Definir meta" }
@@ -55,7 +55,7 @@ function Home() {
         <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Seu próximo passo</div>
         <h2 className="mt-2 text-xl font-bold md:text-2xl">{next.title}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{next.text}</p>
-        <Button asChild variant="hero" className="mt-4"><Link to={next.to} search={"search" in next ? next.search : undefined}>{next.cta}<ArrowRight /></Link></Button>
+        <Button asChild variant="hero" className="mt-4"><Link to={next.to} search={("search" in next ? next.search : {}) as never}>{next.cta}<ArrowRight /></Link></Button>
       </div>
 
       {monthSales.length > 0 ? (

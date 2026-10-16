@@ -24,7 +24,7 @@ export function Card({ className, children }: { className?: string; children: Re
   return <div className={cn("glass p-4 md:p-5", className)}>{children}</div>;
 }
 
-export function Stat({ label, value, hint, tone }: { label: string; value: ReactNode; hint?: ReactNode; tone?: "good" | "bad" }) {
+export function Stat({ label, value, hint, tone }: { label: string; value: ReactNode; hint?: ReactNode | undefined; tone?: "good" | "bad" | undefined }) {
   return (
     <div className="glass p-4">
       <div className="text-xs uppercase tracking-wide text-muted-foreground">{label}</div>

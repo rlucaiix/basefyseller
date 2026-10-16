@@ -7,7 +7,7 @@ import { DEFAULT_RATES, type Modality, type SaleStatus } from "./pricing";
 export type Settings = { user_id: string; display_name: string | null; rate_standard: number; rate_featured: number; buyer_fee: number; version: number };
 export type Product = { id: string; user_id: string; name: string; kind: "produto" | "dinamico" | "servico"; supplier: string | null; unit_cost: number; sale_cost: number; competitor_price: number | null; price: number | null; notes: string | null; version: number; created_at: string; updated_at: string };
 export type Sale = { id: string; user_id: string; client_id: string; product_id: string | null; product_name: string; order_ref: string | null; sale_date: string; price: number; modality: Modality; rate: number; cost: number; commission: number; profit: number; status: SaleStatus; version: number; created_at: string };
-export type Goal = { id: string; user_id: string; month: string; profit_goal: number; main_product_id: string | null; plan: string | null; weeks: { videos?: number }[]; champion: string | null; worked: string | null; change_next: string | null; version: number };
+export type Goal = { id: string; user_id: string; month: string; profit_goal: number; main_product_id: string | null; plan: string | null; weeks: { videos?: number | undefined }[]; champion: string | null; worked: string | null; change_next: string | null; version: number };
 
 const num = <T extends Record<string, any>>(r: T, keys: string[]): T => {
   const o: any = { ...r };
@@ -154,7 +154,7 @@ export const rateFor = (s: Settings | undefined, m: Modality) =>
 
 export const currentMonth = () => new Date().toISOString().slice(0, 7);
 export const monthLabel = (m: string) => {
-  const [y, mo] = m.split("-").map(Number);
+  const [y = 2000, mo = 1] = m.split("-").map(Number);
   return new Date(y, mo - 1, 1).toLocaleDateString("pt-BR", { month: "long", year: "numeric" });
 };
 export const salesInMonth = (sales: Sale[], m: string) => sales.filter((s) => s.sale_date.startsWith(m));

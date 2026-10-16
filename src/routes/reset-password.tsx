@@ -33,6 +33,7 @@ function ResetPage() {
     if (error) return toast.error("O link expirou ou é inválido. Peça um novo.");
     toast.success("Senha atualizada.");
     nav({ to: "/inicio" });
+    return undefined;
   }
   return (
     <div className="flex min-h-screen items-center justify-center px-4">

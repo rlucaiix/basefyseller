@@ -17,7 +17,7 @@ export type SyncStatus = "idle" | "saving" | "saved" | "pending" | "error" | "co
 
 const KEY = "basefy-sync-queue";
 let queue: Op[] = [];
-let state: { status: SyncStatus; pending: number; error?: string } = { status: "idle", pending: 0 };
+let state: { status: SyncStatus; pending: number; error?: string | undefined } = { status: "idle", pending: 0 };
 const listeners = new Set<() => void>();
 const versions = new Map<string, number>();
 let flushing = false;
@@ -98,7 +98,7 @@ export async function flush() {
   const touched = new Set<TableName>();
   try {
     while (queue.length) {
-      const op = queue[0];
+      const op = queue[0]!;
       try {
         await run(op);
         touched.add(op.table);

@@ -56,6 +56,7 @@ function SettingsPage() {
     await supabase.auth.signOut();
     toast.success("Conta e dados excluídos.");
     nav({ to: "/" });
+    return undefined;
   }
 
   return (

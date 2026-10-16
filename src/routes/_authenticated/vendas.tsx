@@ -144,7 +144,7 @@ function RowActions({ s, onEdit }: { s: Sale; onEdit: () => void }) {
 }
 
 function SaleForm({ sale, initialProduct, products, onDone, create, update }: {
-  sale: Sale | null; initialProduct?: string; products: ReturnType<typeof useProducts>["data"] & {}; onDone: (m: string) => void;
+  sale: Sale | null; initialProduct?: string | undefined; products: ReturnType<typeof useProducts>["data"] & {}; onDone: (m: string) => void;
   create: ReturnType<typeof useMutations>["createSale"]; update: ReturnType<typeof useMutations>["updateSale"];
 }) {
   const { data: settings } = useSettings();
@@ -174,6 +174,7 @@ function SaleForm({ sale, initialProduct, products, onDone, create, update }: {
     const row = { product_id: productId || null, product_name: name.trim(), order_ref: order || null, sale_date: date, modality, status, ...s };
     if (sale) { update(sale.id, row); onDone("Venda corrigida"); }
     else { void create(row); onDone("Venda registrada"); }
+    return undefined;
   }
 
   return (
