@@ -11,7 +11,7 @@ export function passwordIsValid(password: string) {
   return password.length >= MIN_PASSWORD_LENGTH;
 }
 
-export function authError(error: { code?: string; message?: string }) {
+export function authError(error: { code?: string | undefined; message?: string | undefined }) {
   const code = error.code;
   const message = error.message?.toLowerCase() ?? "";
   if (code === "invalid_credentials" || message.includes("invalid login credentials")) return "E-mail ou senha incorretos.";
