@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build",
-    "build:vercel": "node scripts/check-deploy-env.mjs && vite build --config vite.vercel.config.ts",
+    "build": "node scripts/check-assets.mjs && vite build",
+    "build:vercel": "node scripts/check-deploy-env.mjs && node scripts/check-assets.mjs && vite build --config vite.vercel.config.ts",
+    "check:assets": "node scripts/check-assets.mjs",
     "check:deploy": "node scripts/check-deploy-env.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
