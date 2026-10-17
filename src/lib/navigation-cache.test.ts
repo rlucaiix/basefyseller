@@ -1,9 +1,11 @@
 import { QueryClient } from "@tanstack/react-query";
 import { beforeEach, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({ getUser: vi.fn() }));
+const access = vi.hoisted(() => ({ hasAuthorizedAccess: vi.fn() }));
+vi.mock("./access-keys", () => access);
 vi.mock("@/integrations/supabase/client", () => ({ supabase: { auth: { getUser: mocks.getUser } } }));
 import { navigationUser } from "./navigation-cache";
-beforeEach(() => vi.clearAllMocks());
+beforeEach(() => { vi.clearAllMocks(); access.hasAuthorizedAccess.mockResolvedValue(true); });
 it("reuses only an Auth-server-validated identity across quick navigations", async () => {
   const qc = new QueryClient();
   mocks.getUser.mockResolvedValue({ data: { user: { id: "owner" } }, error: null });
@@ -19,6 +21,13 @@ it("reuses only an Auth-server-validated identity across quick navigations", asy
 it("returns signed out for a confirmed missing session", async () => {
   const qc = new QueryClient();
   mocks.getUser.mockResolvedValue({ data: { user: null }, error: { name: "AuthSessionMissingError" } });
+  expect(await navigationUser(qc)).toBeNull();
+  qc.clear();
+});
+it("never returns an identity without database authorization", async () => {
+  const qc = new QueryClient();
+  mocks.getUser.mockResolvedValue({ data: { user: { id: "unauthorized" } }, error: null });
+  access.hasAuthorizedAccess.mockResolvedValue(false);
   expect(await navigationUser(qc)).toBeNull();
   qc.clear();
 });
