@@ -88,6 +88,35 @@ export const CHAPTERS: Chapter[] = [
   ]
  },
  {
+  "slug": "dicas-de-produtos",
+  "kicker": "Capítulo 7",
+  "title": "Dicas de produtos",
+  "description": "Os produtos que vendem sozinhos — e os que pedem mais cuidado.",
+  "pdf": "/assets/Capitulo-07-Dicas-de-produtos.pdf",
+  "pages": [
+   "/assets/Capitulo-07-Dicas-de-produtos-01.webp",
+   "/assets/Capitulo-07-Dicas-de-produtos-02.webp",
+   "/assets/Capitulo-07-Dicas-de-produtos-03.webp",
+   "/assets/Capitulo-07-Dicas-de-produtos-04.webp",
+   "/assets/Capitulo-07-Dicas-de-produtos-05.webp"
+  ]
+ },
+ {
+  "slug": "fornecedores",
+  "kicker": "Capítulo 8",
+  "title": "Fornecedores",
+  "description": "Escolha com segurança, teste antes de vender — ou crie o seu próprio produto.",
+  "pdf": "/assets/Capitulo-08-Fornecedores.pdf",
+  "pages": [
+   "/assets/Capitulo-08-Fornecedores-01.webp",
+   "/assets/Capitulo-08-Fornecedores-02.webp",
+   "/assets/Capitulo-08-Fornecedores-03.webp",
+   "/assets/Capitulo-08-Fornecedores-04.webp",
+   "/assets/Capitulo-08-Fornecedores-05.webp",
+   "/assets/Capitulo-08-Fornecedores-06.webp"
+  ]
+ },
+ {
   "slug": "resumao",
   "kicker": "Resumão",
   "title": "Basefy Resumão",
