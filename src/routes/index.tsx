@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Calculator, Receipt, Target, ClipboardCheck, Package, Table2, BookOpen, Sparkles, ShieldCheck, Cloud, ArrowRight, Check } from "lucide-react";
+import { Calculator, Receipt, Target, ClipboardCheck, Package, Table2, BookOpen, ShieldCheck, Cloud, ArrowRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { GoogleButton } from "@/components/app/GoogleButton";
@@ -57,9 +57,6 @@ function Index() {
       </header>
 
       <section className="flex flex-1 flex-col items-center py-14 text-center md:py-24">
-        <p className="card-lilac inline-flex items-center gap-2 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-          <Sparkles className="size-3.5" /> Planner de precificação
-        </p>
         <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
           Saiba quanto sobra <span className="bg-gradient-primary bg-clip-text text-transparent">antes de vender.</span>
         </h1>
