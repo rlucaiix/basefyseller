@@ -10,6 +10,8 @@ O mesmo aplicativo usa o Lovable Cloud existente: não criar outro banco, import
 - `.env.example`: nomes das duas variáveis públicas necessárias, sem credenciais.
 - `scripts/check-deploy-env.mjs`: impede publicação sem conexão pública válida ou com chave privada no navegador.
 - `bun.lock`: manter no repositório para instalar as mesmas versões.
+- Imagens e PDFs do site estão em `public/assets/`, com caminhos `/assets/...`. Não precisam de upload ou serviço de mídia externo na Vercel. O favicon original permanece em `public/favicon.ico`.
+- `bun run check:assets` confere existência, nomes exatos e SHA-256 dos arquivos antes da compilação. Relatório completo em `AUDITORIA_ASSETS.md`.
 
 ## 1. Revisar o repositório antes de conectar
 
