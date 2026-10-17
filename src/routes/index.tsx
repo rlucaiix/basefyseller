@@ -57,7 +57,7 @@ function Index() {
       </header>
 
       <section className="flex flex-1 flex-col items-center py-14 text-center md:py-24">
-        <h1 className="mt-6 max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+        <h1 className="max-w-3xl text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
           Saiba quanto sobra <span className="bg-gradient-primary bg-clip-text text-transparent">antes de vender.</span>
         </h1>
         <p className="mt-5 max-w-xl text-base text-muted-foreground md:text-lg">
