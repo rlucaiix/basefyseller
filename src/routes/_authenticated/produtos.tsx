@@ -74,13 +74,16 @@ function ProductEditor({ product }: { product: Product }) {
   const [f, setF] = useState(product);
   const [featured, setFeatured] = useState(false);
   const editedAt = useRef(0);
+  const dirty = useRef(false);
   // Recebe a versão da nuvem (ex.: outro aparelho) só quando não há digitação recente.
   useEffect(() => {
     if (Date.now() - editedAt.current > 2500) setF((cur) => (cur.version < product.version ? product : cur));
   }, [product]);
 
-  const patch = (p: Partial<Product>) => { editedAt.current = Date.now(); setF((o) => ({ ...o, ...p })); };
+  const patch = (p: Partial<Product>) => { dirty.current = true; editedAt.current = Date.now(); setF((o) => ({ ...o, ...p })); };
   useDebounced(() => {
+    if (!dirty.current) return;
+    dirty.current = false;
     const { name, kind, supplier, unit_cost, sale_cost, competitor_price, price, notes } = f;
     m.updateProduct(product.id, { name: name.trim() || "Sem nome", kind, supplier, unit_cost, sale_cost, competitor_price, price, notes });
   }, [f.name, f.kind, f.supplier, f.unit_cost, f.sale_cost, f.competitor_price, f.price, f.notes]);
@@ -139,7 +142,7 @@ function ProductEditor({ product }: { product: Product }) {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel>Cancelar</AlertDialogCancel>
-              <AlertDialogAction onClick={() => m.deleteProduct(product.id)}>Excluir</AlertDialogAction>
+              <AlertDialogAction onClick={() => { dirty.current = false; m.deleteProduct(product.id); }}>Excluir</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
