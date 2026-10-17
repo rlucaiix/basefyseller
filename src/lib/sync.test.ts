@@ -58,6 +58,24 @@ describe("Per-user offline persistence", () => {
     expect(() => sync.enqueue({ table: "products", kind: "delete", id: "product-a" })).toThrow("Sua sessão expirou");
     expect(mocks.from).not.toHaveBeenCalled();
   });
+  it("protects a newer cloud version from an offline deletion", async () => {
+    const sync = await import("./sync");
+    sync.setSyncUser("account-a");
+    sync.rememberVersion("product-a", 7);
+    sync.enqueue({ table: "products", kind: "delete", id: "product-a" });
+    const eq = vi.fn();
+    const query = { eq, select: vi.fn().mockResolvedValue({ data: [], error: null }) };
+    eq.mockReturnValue(query);
+    mocks.from.mockReturnValue({ delete: vi.fn().mockReturnValue(query) });
+    const conflict = vi.fn();
+    const stop = sync.initSync({ onFlushed: vi.fn(), onConflict: conflict });
+    Object.defineProperty(navigator, "onLine", { configurable: true, value: true });
+    await sync.flush();
+    expect(eq).toHaveBeenCalledWith("version", 7);
+    expect(eq).toHaveBeenCalledWith("user_id", "account-a");
+    expect(conflict).toHaveBeenCalledWith("products", "product-a");
+    stop();
+  });
   it("reloads the originating user's pending changes after signing back in", async () => {
     const sync = await import("./sync");
     sync.setSyncUser("account-a");
