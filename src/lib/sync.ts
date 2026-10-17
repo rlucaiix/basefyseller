@@ -17,6 +17,7 @@ export type SyncStatus = "idle" | "saving" | "saved" | "pending" | "error" | "co
 
 const KEY = "basefy-sync-queue";
 let queue: Op[] = [];
+let ownerId: string | null = null;
 let state: { status: SyncStatus; pending: number; error?: string | undefined } = { status: "idle", pending: 0 };
 const listeners = new Set<() => void>();
 const versions = new Map<string, number>();
@@ -26,12 +27,32 @@ let onConflict: ((table: TableName, id: string) => void) | null = null;
 
 class ConflictError extends Error {}
 
-function load() {
-  if (typeof window === "undefined") return;
-  try { queue = JSON.parse(localStorage.getItem(KEY) || "[]"); } catch { queue = []; }
+export function setSyncUser(userId: string | null) {
+  if (ownerId === userId) return;
+  ownerId = userId;
+  versions.clear();
+  queue = [];
+  if (userId && typeof window !== "undefined") {
+    try {
+      const stored = JSON.parse(localStorage.getItem(`${KEY}:${userId}`) || "[]");
+      queue = Array.isArray(stored) ? stored : [];
+      // Adopt only legacy operations whose owner is explicit. Preserve unknown
+      // legacy operations in their original storage instead of replaying them.
+      const legacy = JSON.parse(localStorage.getItem(KEY) || "[]") as Op[];
+      if (Array.isArray(legacy)) {
+        const owned = legacy.filter(op => op.row?.user_id === userId);
+        queue.push(...owned);
+        save();
+        if (owned.length) localStorage.setItem(KEY, JSON.stringify(legacy.filter(op => op.row?.user_id !== userId)));
+      }
+    } catch { /* Preserve the original storage on parsing/storage failures. */ }
+  }
+  set({ status: queue.length ? "pending" : "idle", error: undefined });
+  void flush();
 }
-function save() {
-  try { localStorage.setItem(KEY, JSON.stringify(queue)); } catch { /* sem espaço */ }
+function save(items = queue, userId = ownerId) {
+  if (!userId) return;
+  try { localStorage.setItem(`${KEY}:${userId}`, JSON.stringify(items)); } catch { /* sem espaço */ }
 }
 function set(s: Partial<typeof state>) {
   state = { ...state, ...s, pending: queue.length };
@@ -41,10 +62,11 @@ function set(s: Partial<typeof state>) {
 export function initSync(opts: { onFlushed: typeof onFlushed; onConflict: typeof onConflict }) {
   onFlushed = opts.onFlushed;
   onConflict = opts.onConflict;
-  load();
   set({ status: queue.length ? "pending" : "idle" });
-  window.addEventListener("online", () => void flush());
+  const online = () => void flush();
+  window.addEventListener("online", online);
   void flush();
+  return () => window.removeEventListener("online", online);
 }
 
 export function rememberVersion(id: string, v: number) {
@@ -53,12 +75,13 @@ export function rememberVersion(id: string, v: number) {
 }
 
 export function enqueue(op: Omit<Op, "opId">) {
+  if (!ownerId) throw new Error("Sua sessão expirou. Entre novamente para salvar.");
   // Une atualizações seguidas do mesmo registro, mantendo a versão-base original.
   if (op.kind === "update" && op.id) {
-    const prev = queue.find((q, i) => i > 0 && q.kind === "update" && q.id === op.id && q.table === op.table);
+    const prev = queue.find((q, i) => (!flushing || i > 0) && q.kind === "update" && q.id === op.id && q.table === op.table);
     if (prev) { prev.row = { ...prev.row, ...op.row }; save(); void flush(); return; }
   }
-  queue.push({ ...op, opId: crypto.randomUUID() });
+  queue.push({ ...op, baseVersion: op.baseVersion ?? (op.id ? versions.get(op.id) : undefined), opId: crypto.randomUUID() });
   save();
   set({ status: navigator.onLine ? "saving" : "pending" });
   void flush();
@@ -67,7 +90,7 @@ export function enqueue(op: Omit<Op, "opId">) {
 const isNetwork = (e: unknown) =>
   !navigator.onLine || (e instanceof Error && /fetch|network|load failed/i.test(e.message));
 
-async function run(op: Op) {
+async function run(op: Op, userId: string, currentVersions: Map<string, number>) {
   const t = supabase.from(op.table) as any;
   if (op.kind === "insert" || op.kind === "upsert") {
     const { error } = await t.upsert(op.row, {
@@ -76,40 +99,49 @@ async function run(op: Op) {
     });
     if (error) throw new Error(error.message);
   } else if (op.kind === "update") {
-    let q = t.update(op.row).eq("id", op.id);
-    const base = versions.get(op.id!) ?? op.baseVersion;
+    if (!op.id) throw new Error("Registro inválido.");
+    let q = t.update(op.row).eq("id", op.id).eq("user_id", userId);
+    const base = currentVersions.get(op.id) ?? op.baseVersion;
     if (base != null) q = q.eq("version", base);
     const { data, error } = await q.select("id, version");
     if (error) throw new Error(error.message);
     if (!data?.length) throw new ConflictError();
-    versions.set(op.id!, data[0].version);
+    currentVersions.set(op.id, data[0].version);
   } else if (op.kind === "delete") {
-    const { error } = await t.delete().eq("id", op.id);
+    if (!op.id) throw new Error("Registro inválido.");
+    const { error } = await t.delete().eq("id", op.id).eq("user_id", userId);
     if (error) throw new Error(error.message);
   }
 }
 
 export async function flush() {
-  if (flushing || typeof window === "undefined") return;
+  if (flushing || !ownerId || typeof window === "undefined") return;
   if (!queue.length) return;
   if (!navigator.onLine) return set({ status: "pending" });
   flushing = true;
   set({ status: "saving" });
   const touched = new Set<TableName>();
+  const userId = ownerId;
+  const items = queue;
+  const currentVersions = new Map<string, number>();
   try {
-    while (queue.length) {
-      const op = queue[0]!;
+    while (items.length && ownerId === userId) {
+      const op = items[0];
+      if (!op) break;
       try {
-        await run(op);
+        await run(op, userId, currentVersions);
         touched.add(op.table);
-        queue.shift(); save();
+        items.shift(); save(items, userId);
+        if (ownerId !== userId) return;
+        if (op.id && currentVersions.has(op.id)) rememberVersion(op.id, currentVersions.get(op.id) ?? 0);
       } catch (e) {
+        if (ownerId !== userId) return;
         if (e instanceof ConflictError) {
-          queue.shift(); save();
+          items.shift(); save(items, userId);
           touched.add(op.table);
           if (op.id) versions.delete(op.id);
           set({ status: "conflict", error: "Este registro foi alterado em outro aparelho." });
-          onConflict?.(op.table, op.id!);
+          if (op.id) onConflict?.(op.table, op.id);
           continue;
         }
         if (isNetwork(e)) { set({ status: "pending" }); return; }
@@ -117,10 +149,11 @@ export async function flush() {
         return;
       }
     }
-    if (state.status !== "conflict") set({ status: "saved", error: undefined });
+    if (ownerId === userId && state.status !== "conflict") set({ status: "saved", error: undefined });
   } finally {
     flushing = false;
-    if (touched.size) onFlushed?.(touched);
+    if (ownerId === userId && touched.size) onFlushed?.(touched);
+    if (ownerId !== userId) void flush();
   }
 }
 

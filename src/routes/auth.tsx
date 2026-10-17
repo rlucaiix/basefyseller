@@ -17,6 +17,7 @@ export const Route = createFileRoute("/auth")({
       { property: "og:description", content: "Acesse seu planner de precificação Basefy com e-mail e senha." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex" },
     ],
   }),
   component: AuthPage,
