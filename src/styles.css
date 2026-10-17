@@ -133,6 +133,12 @@
   box-shadow: var(--shadow-card);
   border-radius: var(--radius-xl);
 }
+@utility card-lilac {
+  background: linear-gradient(145deg, oklch(0.97 0.03 300), oklch(0.93 0.05 295) 55%, oklch(0.95 0.035 280));
+  border: 1px solid oklch(0.88 0.04 298);
+  box-shadow: 0 1px 2px oklch(0.3 0.05 296 / 0.06), 0 12px 28px -12px oklch(0.55 0.22 296 / 0.28), inset 0 1px 0 oklch(1 0 0 / 0.8);
+  border-radius: var(--radius-xl);
+}
 @utility bg-gradient-primary { background-image: var(--gradient-primary); }
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
 @utility tabular { font-variant-numeric: tabular-nums; }
