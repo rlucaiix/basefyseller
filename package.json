@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
+    "build:vercel": "node scripts/check-deploy-env.mjs && vite build --config vite.vercel.config.ts",
+    "check:deploy": "node scripts/check-deploy-env.mjs",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
