@@ -1,8 +1,8 @@
 # Roadmap
-- [ ] Reauditar imagens locais para GitHub/Vercel e usar IMG_0874.png como logo da página, favicon e ícone de atalho, preservando aparência e demais páginas.
-- [ ] Implementar cadastro por chave de uso único e vínculo atômico permanente — aguarda definição das contas existentes autorizadas e do administrador.
-- [ ] Implementar autorização de login, login seguro por chave e gestão administrativa — aguarda decisões de autorização e confirmação da limitação de tentativas própria.
-- [ ] Testar concorrência, falhas parciais, preservação das contas, isolamento e implantação externa do controle por chave.
+- [x] Reauditar imagens locais para GitHub/Vercel e usar IMG_0874.png como logo da página, favicon e ícone de atalho: 63 arquivos locais rastreados, HTTP 200 e SHA-256 conferidos em servidor independente, 56 imagens decodificadas e páginas públicas/conectadas verificadas; 56 testes passaram.
+- [x] Implementar cadastro por chave de uso único e vínculo atômico permanente; sete contas legadas autorizadas e administrador configurado.
+- [x] Implementar autorização de login, login seguro por chave e gestão administrativa; segurança revisada e validação limitada por chave, sem bloqueio global compartilhado, com limpeza de tickets expirados.
+- [ ] Verificar transações e concorrência das chaves em ambiente isolado e cadastro com links reais — bloqueado: conexão de testes não possui acesso ao esquema de autenticação; confirmação de e-mail requer links recebidos. A conta conectada não é administradora; acesso restrito à gestão foi verificado.
 - [x] Corrigir falta de variáveis na Vercel com fallback público compartilhado entre verificação e Vite; comando preservado, 14 testes passaram e configuração Vite recebeu os dois valores sem variáveis cadastradas; implantação real na Vercel permanece externa.
 - [x] Auditar e materializar 51 imagens WebP e 7 PDFs atuais em public/assets, preservar favicon e corrigir referências; 59 arquivos validados com SHA-256 e HTTP 200 em servidor independente; 39 testes passaram. Fotos externas individuais permanecem como dados da conta, sem exportação de dados privados.
 - [x] Reforçar lilás, gradientes e superfícies foscas; ampliar acessos rápidos e substituir pausa por Conteúdo no banner; verificado com conta conectada em 394, 820 e 1280 px, sem erros ou estouro.

@@ -17,7 +17,7 @@
 - Servidor estático independente, sem infraestrutura Lovable: todos os 63 arquivos retornaram HTTP 200 com SHA-256 idêntico ao inventário.
 - Chromium decodificou todas as 56 imagens WebP/PNG nesse servidor.
 - Navegador com conta conectada: lista de conteúdo e leitor carregaram arquivos locais com as URLs antigas bloqueadas; download aponta ao PDF local; nenhum erro de execução.
-- 39 testes passaram. `bun run check:assets` verifica os arquivos automaticamente antes das compilações normal e Vercel.
+- 56 testes passaram. `bun run check:assets` verifica os arquivos automaticamente antes das compilações normal e Vercel.
 - `git ls-files public/assets` confirma 63 arquivos incluídos; nenhuma regra de exclusão afeta a logo ou o manifesto.
 - Simulação realizada para a camada de arquivos estáticos e navegação na prévia. Não equivale a uma implantação real ou compilação executada na Vercel, que continua dependendo da conexão do repositório e das variáveis de ambiente.
 
