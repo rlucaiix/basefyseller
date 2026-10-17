@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as AuthenticatedCalculadoraRouteImport } from './routes/_authenticated/calculadora'
+import { Route as AuthenticatedChavesRouteImport } from './routes/_authenticated/chaves'
 import { Route as AuthenticatedConfiguracoesRouteImport } from './routes/_authenticated/configuracoes'
 import { Route as AuthenticatedConteudoRouteImport } from './routes/_authenticated/conteudo'
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
@@ -50,6 +51,11 @@ const AuthenticatedCalculadoraRoute =
     path: '/calculadora',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedChavesRoute = AuthenticatedChavesRouteImport.update({
+  id: '/chaves',
+  path: '/chaves',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedConfiguracoesRoute =
   AuthenticatedConfiguracoesRouteImport.update({
     id: '/configuracoes',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/chaves': typeof AuthenticatedChavesRoute
   '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/fechamento': typeof AuthenticatedFechamentoRoute
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/chaves': typeof AuthenticatedChavesRoute
   '/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/fechamento': typeof AuthenticatedFechamentoRoute
@@ -142,6 +150,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/reset-password': typeof ResetPasswordRoute
   '/_authenticated/calculadora': typeof AuthenticatedCalculadoraRoute
+  '/_authenticated/chaves': typeof AuthenticatedChavesRoute
   '/_authenticated/configuracoes': typeof AuthenticatedConfiguracoesRoute
   '/_authenticated/conteudo': typeof AuthenticatedConteudoRouteWithChildren
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
@@ -160,6 +169,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/calculadora'
+    | '/chaves'
     | '/configuracoes'
     | '/conteudo'
     | '/fechamento'
@@ -176,6 +186,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/calculadora'
+    | '/chaves'
     | '/configuracoes'
     | '/conteudo'
     | '/fechamento'
@@ -193,6 +204,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/reset-password'
     | '/_authenticated/calculadora'
+    | '/_authenticated/chaves'
     | '/_authenticated/configuracoes'
     | '/_authenticated/conteudo'
     | '/_authenticated/fechamento'
@@ -247,6 +259,13 @@ declare module '@tanstack/react-router' {
       path: '/calculadora'
       fullPath: '/calculadora'
       preLoaderRoute: typeof AuthenticatedCalculadoraRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/chaves': {
+      id: '/_authenticated/chaves'
+      path: '/chaves'
+      fullPath: '/chaves'
+      preLoaderRoute: typeof AuthenticatedChavesRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/configuracoes': {
@@ -337,6 +356,7 @@ const AuthenticatedConteudoRouteWithChildren =
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCalculadoraRoute: typeof AuthenticatedCalculadoraRoute
+  AuthenticatedChavesRoute: typeof AuthenticatedChavesRoute
   AuthenticatedConfiguracoesRoute: typeof AuthenticatedConfiguracoesRoute
   AuthenticatedConteudoRoute: typeof AuthenticatedConteudoRouteWithChildren
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
@@ -350,6 +370,7 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCalculadoraRoute: AuthenticatedCalculadoraRoute,
+  AuthenticatedChavesRoute: AuthenticatedChavesRoute,
   AuthenticatedConfiguracoesRoute: AuthenticatedConfiguracoesRoute,
   AuthenticatedConteudoRoute: AuthenticatedConteudoRouteWithChildren,
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
