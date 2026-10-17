@@ -4,6 +4,7 @@ import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, C
 import { supabase } from "@/integrations/supabase/client";
 import { SaveIndicator } from "@/components/app/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { useGoals, useProducts, useSales, useSettings } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated")({
