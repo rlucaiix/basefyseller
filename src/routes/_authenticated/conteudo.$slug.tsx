@@ -27,12 +27,13 @@ export const Route = createFileRoute("/_authenticated/conteudo/$slug")({
 
 function Reader() {
   const { index } = Route.useLoaderData();
-  const c = CHAPTERS[index]!;
+  const c = CHAPTERS[index];
   const prev = CHAPTERS[index - 1];
   const next = CHAPTERS[index + 1];
   const { data: s } = useSettings();
   const m = useMutations();
   const [wide, setWide] = useState(false);
+  if (!c) return null;
   const read = (s?.read_chapters ?? []).includes(c.slug);
 
   function toggleRead(v = !read) {
@@ -50,9 +51,9 @@ function Reader() {
         <Button asChild variant="ghost" size="icon" aria-label="Baixar PDF"><a href={c.pdf} download><Download /></a></Button>
       </div>
 
-      <div className={cn("mx-auto space-y-3 transition-all", wide ? "max-w-3xl" : "max-w-2xl")}>
+      <div className={cn("mx-auto space-y-3", wide ? "max-w-3xl" : "max-w-2xl")}>
         {c.pages.map((src, i) => (
-          <img key={src} src={src} alt={`${c.title} — página ${i + 1} de ${c.pages.length}`} loading={i < 2 ? "eager" : "lazy"}
+          <img key={src} src={src} alt={`${c.title} — página ${i + 1} de ${c.pages.length}`} width={911} height={1288} loading={i === 0 ? "eager" : "lazy"} decoding="async" fetchPriority={i === 0 ? "high" : "auto"}
             className="w-full rounded-xl border border-border bg-secondary shadow-lg" />
         ))}
       </div>

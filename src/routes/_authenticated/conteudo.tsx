@@ -39,7 +39,7 @@ function ContentList() {
               <Link key={c.slug} to="/conteudo/$slug" params={{ slug: c.slug }}
                 className="glass group overflow-hidden transition-colors hover:border-primary/50">
                 <div className="relative aspect-[16/10] overflow-hidden bg-secondary">
-                  <img src={c.pages[0]} alt="" loading="lazy" className="w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
+                  <img src={c.pages[0]} alt="" width={911} height={1288} loading="lazy" decoding="async" className="w-full object-cover object-top transition-transform duration-500 group-hover:scale-105" />
                   {read.has(c.slug) && <span className="absolute right-2 top-2 flex items-center gap-1 rounded-full bg-background/80 px-2 py-1 text-xs text-success backdrop-blur"><CheckCircle2 className="size-3.5" />Lido</span>}
                 </div>
                 <div className="p-4">
