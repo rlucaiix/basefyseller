@@ -45,8 +45,14 @@ export async function signUpWithEmail(email: string, password: string, origin: s
   const validation = await validateAccessKey(parsed.data.key);
   if (!validation.ticket) throw new Error(KEY_MESSAGES.temporary);
   const result = await supabase.auth.signUp({ email: parsed.data.email, password, options: { emailRedirectTo: authRedirects(origin).confirmation, data: { access_ticket: validation.ticket } } });
-  // Auth hides trigger errors. Re-read the actual backend state after a failed signup.
-  if (result.error) await validateAccessKey(parsed.data.key);
+  // Only hidden database-trigger errors need a key-state check. Preserve provider
+  // errors (password, email limits, network) and failed diagnostic requests.
+  if (result.error && (result.error.code === "unexpected_failure" || /database error saving new user/i.test(result.error.message))) {
+    try { await validateAccessKey(parsed.data.key); }
+    catch (error) {
+      if (error instanceof Error && [KEY_MESSAGES.used, KEY_MESSAGES.revoked, KEY_MESSAGES.invalid].some(message => message === error.message)) throw error;
+    }
+  }
   return result;
 }
 

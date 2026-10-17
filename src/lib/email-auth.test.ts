@@ -51,6 +51,18 @@ describe("Email authentication", () => {
     await requestPasswordReset("user@example.com", "https://basefyseller.vercel.app");
     expect(auth.resetPasswordForEmail).toHaveBeenCalledWith("user@example.com", { redirectTo: "https://basefyseller.vercel.app/reset-password" });
   });
+  it("preserves email rate-limit errors without a second key check", async () => {
+    const failure = { data: { user: null }, error: { code: "over_email_send_rate_limit", message: "Email rate limit exceeded" } };
+    auth.signUp.mockResolvedValue(failure);
+    expect(await signUpWithEmail("user@example.com", "12345678", "https://basefyseller.vercel.app", "BF-key", "12345678")).toBe(failure);
+    expect(access.validateAccessKey).toHaveBeenCalledTimes(1);
+  });
+  it("preserves the signup error when its diagnostic key check fails temporarily", async () => {
+    const failure = { data: { user: null }, error: { code: "unexpected_failure", message: "Database error saving new user" } };
+    auth.signUp.mockResolvedValue(failure);
+    access.validateAccessKey.mockResolvedValueOnce({ ticket: "validated-ticket" }).mockRejectedValueOnce(new Error("Não foi possível validar sua chave agora. Tente novamente."));
+    expect(await signUpWithEmail("user@example.com", "12345678", "https://basefyseller.vercel.app", "BF-key", "12345678")).toBe(failure);
+  });
   it("sets a recovery password without current_password", async () => {
     await updateRecoveredPassword("12345678");
     expect(auth.updateUser).toHaveBeenCalledWith({ password: "12345678" });

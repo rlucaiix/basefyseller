@@ -26,4 +26,6 @@
 - Offline queues and version maps are scoped to the signed-in user, and identity transitions clear the query cache; this prevents stale data or queued writes from crossing accounts.
 - Access-key signup uses short-lived hashed validation tickets and an auth.users BEFORE INSERT trigger to consume a key and grant authorization atomically; failures roll back the account and redemption together. Never grant authorization from editable metadata.
 - Key hashes and immutable consumed bindings are retained without auth-user foreign keys; restrictive authorization policies supplement existing owner RLS. Admin privileges come only from protected user_roles, checked inside every admin RPC.
+- Auth account deletion cleans authorization and role rows through an app-owned lifecycle trigger, never the immutable consumed keys — prevents orphaned access permissions without allowing key reuse.
+- Signup diagnoses hidden database failures only; preserve original provider errors when the diagnostic request fails — avoids masking email limits or connection problems as key errors.
 - Key login requires the submitted current email and a provider-issued email confirmation with shouldCreateUser:false; keys never issue sessions or reset passwords. Persistent database rate buckets protect public key validation, independent of frontend controls.

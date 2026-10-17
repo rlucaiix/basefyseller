@@ -29,6 +29,13 @@
       "when": 1792262504040,
       "tag": "0003_harden_access_key_validation",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792269381702,
+      "tag": "0004_cleanup_deleted_account_access",
+      "breakpoints": true
     }
   ]
 }

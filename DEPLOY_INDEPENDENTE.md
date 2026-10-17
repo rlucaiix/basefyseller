@@ -10,7 +10,7 @@ O mesmo aplicativo usa o Lovable Cloud existente: não criar outro banco, import
 - `.env.example`: nomes das duas variáveis públicas necessárias, sem credenciais.
 - `scripts/check-deploy-env.mjs`: usa a conexão e chave públicas do projeto atual como fallback quando as variáveis faltam; bloqueia valores inválidos ou chaves privadas. A configuração Vite aplica o mesmo fallback para incorporá-lo ao aplicativo.
 - `bun.lock`: manter no repositório para instalar as mesmas versões.
-- Imagens e PDFs do site estão em `public/assets/`, com caminhos `/assets/...`. Não precisam de upload ou serviço de mídia externo na Vercel. O favicon original permanece em `public/favicon.ico`.
+- Imagens e PDFs do site estão em `public/assets/`, com caminhos `/assets/...`. Não precisam de upload ou serviço de mídia externo na Vercel. O favicon usa `/assets/basefy-seller-icon-64.png`; o ícone Apple usa `/assets/basefy-seller-apple-touch-icon.png`; o manifesto define o nome Basefy Seller e os ícones de 192 e 512 pixels.
 - `bun run check:assets` confere existência, nomes exatos e SHA-256 dos arquivos antes da compilação. Relatório completo em `AUDITORIA_ASSETS.md`.
 
 ## 1. Revisar o repositório antes de conectar
@@ -86,4 +86,4 @@ bun run build:vercel
 - Esqueci minha senha → recebimento → link real → nova senha → login nos dois domínios. Não tratamos teste de link expirado como prova desse fluxo completo.
 - Ajuste de `.gitignore` e revisão dos arquivos rastreados antes de enviar o repositório.
 
-Não houve publicação automática, envio de e-mails de teste, criação de outro banco ou alteração de tabelas/RLS. Esta revisão cobre o aplicativo existente; não implementa funcionalidades futuras de análise de produtos, criador de anúncios, atendimento, jornada, realtime ou páginas jurídicas.
+Não houve publicação automática, envio de e-mails de teste ou criação de outro banco. A migração `0004_cleanup_deleted_account_access.sql` remove autorizações e papéis quando a conta é excluída, preservando chaves consumidas e histórico; não altera as políticas de acesso. O cadastro preserva erros reais do serviço de e-mail, mesmo se a checagem adicional da chave falhar. Esta revisão cobre o aplicativo existente; não implementa funcionalidades futuras de análise de produtos, criador de anúncios, atendimento, jornada, realtime ou páginas jurídicas.
