@@ -10,6 +10,8 @@ const modules = [
   { src: "/assets/Modulo-04-Preco-e-lucro.webp", title: "Preço e lucro" },
   { src: "/assets/Modulo-05-Vender-sem-anuncio-pago.webp", title: "Vender sem anúncio pago" },
   { src: "/assets/Modulo-06-Depois-da-venda.webp", title: "Depois da venda" },
+  { src: "/assets/Modulo-07-Dicas-de-produtos.webp", title: "Dicas de produtos" },
+  { src: "/assets/Modulo-08-Fornecedores.webp", title: "Fornecedores" },
 ];
 
 export function ModuleBanner({ signed = false }: { signed?: boolean }) {
