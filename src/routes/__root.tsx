@@ -119,8 +119,9 @@ function RootComponent() {
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       const userId = session?.user.id ?? null;
       if (previousUserId !== userId) {
+        // INITIAL_SESSION must not cancel the guard's first in-flight validation.
+        if (previousUserId !== undefined) queryClient.clear();
         previousUserId = userId;
-        queryClient.clear();
         setSyncUser(userId);
       }
       if (event === "PASSWORD_RECOVERY") {
