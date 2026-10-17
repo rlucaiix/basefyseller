@@ -19,5 +19,5 @@
 - Static visual assets and guide PDFs are tracked byte-for-byte in `public/assets` and referenced by local paths; the asset integrity preflight prevents missing files in independent deployments. Historical CDN pointers are provenance only, never runtime dependencies.
 - Shared surface and navigation effects use semantic CSS utilities; keep blur static and animate only the banner transform to preserve click responsiveness.
 - Independent deployments use `vite.vercel.config.ts` and Nitro's Vercel preset via `build:vercel`; keep the Lovable preview configuration separate to avoid editor-specific output overrides.
-- Deployment preflight accepts only public HTTPS backend connections and publishable keys; missing or private browser credentials must stop deployment before bundling.
+- Deployment preflight and the standalone Vite config share public project fallbacks for missing browser credentials; explicit environment values take precedence and invalid URLs or private keys must stop deployment before bundling. Resolve in Vite too because preflight child-process changes cannot reach the build.
 - Offline queues and version maps are scoped to the signed-in user, and identity transitions clear the query cache; this prevents stale data or queued writes from crossing accounts.
