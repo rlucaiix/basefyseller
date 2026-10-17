@@ -8,7 +8,7 @@ O mesmo aplicativo usa o Lovable Cloud existente: não criar outro banco, import
 - `vite.vercel.config.ts`: publicação independente com TanStack Start e Nitro, preset `vercel`.
 - `vercel.json`: instalação reprodutível com Bun, comando `build:vercel` e saída `.vercel/output`.
 - `.env.example`: nomes das duas variáveis públicas necessárias, sem credenciais.
-- `scripts/check-deploy-env.mjs`: impede publicação sem conexão pública válida ou com chave privada no navegador.
+- `scripts/check-deploy-env.mjs`: usa a conexão e chave públicas do projeto atual como fallback quando as variáveis faltam; bloqueia valores inválidos ou chaves privadas. A configuração Vite aplica o mesmo fallback para incorporá-lo ao aplicativo.
 - `bun.lock`: manter no repositório para instalar as mesmas versões.
 - Imagens e PDFs do site estão em `public/assets/`, com caminhos `/assets/...`. Não precisam de upload ou serviço de mídia externo na Vercel. O favicon original permanece em `public/favicon.ico`.
 - `bun run check:assets` confere existência, nomes exatos e SHA-256 dos arquivos antes da compilação. Relatório completo em `AUDITORIA_ASSETS.md`.
@@ -32,7 +32,7 @@ Não enviar `.env`, credenciais, `node_modules`, `.vercel`, `.output` ou arquivo
 1. Importar o repositório GitHub na Vercel; selecionar a raiz deste projeto.
 2. Usar Node.js **22.x** (22.12 ou posterior), compatível com Vite 8, e Bun para instalação conforme `vercel.json`.
 3. Manter Framework Preset **Other**, sem substituir pela configuração de um aplicativo Vite estático.
-4. Em Settings → Environment Variables, cadastrar para Production e, se desejado, Preview:
+4. O projeto atual pode compilar sem cadastro manual dessas variáveis: há fallback público no código. Para sobrescrever o fallback, em Settings → Environment Variables, cadastrar para Production e, se desejado, Preview:
    - `VITE_SUPABASE_URL`: URL pública de conexão do Lovable Cloud existente, nunca a URL da prévia ou um endereço local.
    - `VITE_SUPABASE_PUBLISHABLE_KEY`: chave **pública** do mesmo projeto.
 5. Manter Install Command `bun install --frozen-lockfile`, Build Command `bun run build:vercel`, Output Directory `.vercel/output`.
@@ -58,13 +58,13 @@ Contas criadas anteriormente pelo Google permanecem no mesmo banco: usar “Esqu
 
 ```sh
 bun install --frozen-lockfile
-# Configure as duas variáveis públicas no ambiente antes de compilar.
+# As duas variáveis públicas são opcionais para o projeto conectado atual.
 bun run check:deploy
 bun run test
 bun run build:vercel
 ```
 
-`check:deploy` verifica o formato e a presença das variáveis sem imprimi-las; não substitui a confirmação de conectividade, da chave correta ou das URLs de e-mail. No ambiente local, exportar as variáveis antes do comando; o verificador não carrega `.env` automaticamente.
+`check:deploy` verifica os valores fornecidos ou o fallback público sem imprimi-los; não substitui a confirmação de conectividade, da chave correta ou das URLs de e-mail. O verificador isolado não carrega `.env`; a configuração Vite carrega os arquivos de ambiente do modo selecionado, prioriza as variáveis do ambiente e usa o fallback apenas para valores ausentes ou vazios. Nenhuma chave privada é usada. O comando `build:vercel` permanece igual.
 
 ## 5. Resultados da revisão de 17/10/2026
 

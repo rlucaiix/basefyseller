@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Corrigir falta de variáveis na Vercel com fallback público compartilhado entre verificação e Vite; preservar comando de compilação e testar segurança e repasse dos valores.
 - [x] Auditar e materializar 51 imagens WebP e 7 PDFs atuais em public/assets, preservar favicon e corrigir referências; 59 arquivos validados com SHA-256 e HTTP 200 em servidor independente; 39 testes passaram. Fotos externas individuais permanecem como dados da conta, sem exportação de dados privados.
 - [x] Reforçar lilás, gradientes e superfícies foscas; ampliar acessos rápidos e substituir pausa por Conteúdo no banner; verificado com conta conectada em 394, 820 e 1280 px, sem erros ou estouro.
 - [x] Preparar configurações Vercel, exemplo de variáveis e guia DEPLOY_INDEPENDENTE.md; revisar sessão, menus, produto/venda e conteúdo com leitura após recarregar, sem publicar automaticamente.
