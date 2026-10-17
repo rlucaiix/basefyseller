@@ -37,6 +37,7 @@ function Reader() {
   const read = (s?.read_chapters ?? []).includes(c.slug);
 
   function toggleRead(v = !read) {
+    if (!c) return;
     const cur = new Set(s?.read_chapters ?? []);
     if (v) cur.add(c.slug); else cur.delete(c.slug);
     void m.updateSettings({ read_chapters: [...cur] });
