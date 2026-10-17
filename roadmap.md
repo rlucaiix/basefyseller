@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Resolver pendências remanescentes: limpeza das autorizações ao excluir conta, preservação dos erros reais de cadastro, revisão do repositório e testes finais; domínio Vercel e links recebidos permanecem dependências externas.
+- [x] Limpeza das autorizações e papéis ao excluir conta aplicada por gatilho, sem apagar chaves consumidas; preservação dos erros reais de cadastro corrigida com testes de regressão; guia corrigido para os ícones PNG existentes.
 - [ ] Auditoria final de entrega: acesso/chaves, fluxos conectados, assets/repositório/Vercel e nome/ícone do atalho móvel; corrigir falhas comprovadas e documentar bloqueios externos.
 - [x] Verificação local final: 59 testes passaram; 78 assets conferidos; dez páginas conectadas sem erro de execução ou estouro; administrador gerou e revogou chaves; venda temporária confirmou lucro de R$ 9,16 após recarregar; registros temporários removidos; nome e ícones do atalho conferidos. Corrigida gravação indevida do formulário após excluir produto; compilação automática OK.
 - [x] Melhorar resposta dos cliques sem alterar aparência ou segurança: isolar atualizações de dados do menu, antecipar páginas em momentos ociosos, priorizar imagens visíveis e eliminar transição da ampliação; seis trocas de menu e leitor verificados com sessão real, sem erros ou estouro; 56 testes passaram.
