@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Acelerar navegação e adicionar banner contínuo com as sete capas enviadas, em celular, tablet e computador.
 - [x] Trocar Google por e-mail/senha e adicionar recuperação: 19 testes passaram; senha incorreta, link expirado e sessão existente verificados no navegador.
 - [ ] Configurar Site URL e Redirect URLs no Lovable Cloud para os dois domínios — bloqueado: as ferramentas disponíveis não expõem essas configurações; confirmar cadastro e recuperação com e-mails reais depois disso.
 - [ ] Corrigir 404 do Google e preparar publicação independente no Vercel, com testes e documentação.
