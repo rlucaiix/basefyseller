@@ -1,374 +1,5 @@
 [
   {
-    "path": "/assets/Capitulo-00-Por-que-a-Basefy.pdf",
-    "sha256": "ecd7ffa1663dcf985167ec34aff55d8b3e03713426abe18d940bcd57fb2e1ae2",
-    "bytes": 346107,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/6242784a-32fa-4b15-b11f-1f364a9860be/Capitulo-00-Por-que-a-Basefy.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-00-Por-que-a-Basefy-01.webp",
-    "sha256": "fe8a105d3daea38a1e6252b85248f0ee43f1a78bbc7b2a4f75270d8c1a187cab",
-    "bytes": 24110,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/8553873a-4e8c-47b7-a517-dec53dff776f/Capitulo-00-Por-que-a-Basefy-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-00-Por-que-a-Basefy-02.webp",
-    "sha256": "09304702051b0d818dd7e2aca1d5854f0ceba48c02b6263d5baa9b4ed28db042",
-    "bytes": 72822,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/19e6da2e-a5f8-4349-84b7-9eb0961146a4/Capitulo-00-Por-que-a-Basefy-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-00-Por-que-a-Basefy-03.webp",
-    "sha256": "75f8fef7e587dd55e58db9ea6d7329b3a323c3030f008d8261ad68112c0d4639",
-    "bytes": 63982,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/88ff5973-c826-4185-8ef9-650c3a25e64f/Capitulo-00-Por-que-a-Basefy-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil.pdf",
-    "sha256": "cf78d45e689ab35654e94d12485c53ac9a1bf71fc33ecbc4f54f3c9d5978e656",
-    "bytes": 3117817,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/ca774005-137a-4da5-bfe8-9d57b74d6f6e/Capitulo-01-Sua-conta-e-seu-perfil.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-01.webp",
-    "sha256": "3d0315ae9c0a9ef812a41fadc16d4d3a8681b9d0ddc6ec4e9123a5444ff6114b",
-    "bytes": 29154,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/7d4266a6-2cfd-40fe-9bdf-8eba23531abb/Capitulo-01-Sua-conta-e-seu-perfil-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-02.webp",
-    "sha256": "c4c0facb694bdf5b72ee7aead8a8fc1a5c104bd22ef76a27379bb1d146269cf0",
-    "bytes": 41278,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/bfd40ce1-8ef5-4990-8e04-76af383acf2f/Capitulo-01-Sua-conta-e-seu-perfil-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-03.webp",
-    "sha256": "5caf8a50f3ecde04bfe3c9ea8fb9a0423fa4252f87bb270b789451b35dc98861",
-    "bytes": 45096,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/e5800fdc-b8bb-495f-850c-f621a7c566ea/Capitulo-01-Sua-conta-e-seu-perfil-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-04.webp",
-    "sha256": "50a0059f402f243daeba005b1347f0c4381331000ab1ab9773e84d220385c3dc",
-    "bytes": 88812,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/7bac5bad-c37c-4cde-a10d-a7c95551a99c/Capitulo-01-Sua-conta-e-seu-perfil-04.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-05.webp",
-    "sha256": "ba1a25ac59745d189bdb2db8ebbb3464bc833b24af81dc43f5f03964a3f71710",
-    "bytes": 49150,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/9cb616e2-2743-48ae-bfbc-c6470c953c92/Capitulo-01-Sua-conta-e-seu-perfil-05.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-06.webp",
-    "sha256": "c958c20d4df56114debec58db0685c1b373d1be2b811c0c073c8b470e721edea",
-    "bytes": 64160,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/f2195e30-ab8b-4582-ab54-e462417655e5/Capitulo-01-Sua-conta-e-seu-perfil-06.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-07.webp",
-    "sha256": "59e00537b598c593991b5008f60d27b69528fff3902da0f94d062680765d45b1",
-    "bytes": 70544,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/3440ad43-5ddc-4104-a554-a593d2c826f0/Capitulo-01-Sua-conta-e-seu-perfil-07.webp"
-  },
-  {
-    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-08.webp",
-    "sha256": "69ac35c033a2c89ff1cbb1a17158a2976dd0a3fd09e592c07f21f57ac64e4e2f",
-    "bytes": 53296,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/0211dab8-588a-404c-b3d8-d5cc88081a7a/Capitulo-01-Sua-conta-e-seu-perfil-08.webp"
-  },
-  {
-    "path": "/assets/Capitulo-02-O-produto-certo.pdf",
-    "sha256": "d798c8b9093c2d14445bc86ddf878e6f176b1930f5fa85a538353e288384b485",
-    "bytes": 307294,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/c6929168-f216-4833-b460-5f0f225f8831/Capitulo-02-O-produto-certo.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-02-O-produto-certo-01.webp",
-    "sha256": "2a7d765e5542331ce462927b1e8db8212cdf2a7d0544866e67843c9671ff56dc",
-    "bytes": 22266,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/513d1d4f-4813-44a6-9b36-62ac4b3607b1/Capitulo-02-O-produto-certo-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-02-O-produto-certo-02.webp",
-    "sha256": "9215c292fc1ffe639114c26be5757e5cfb4cd3a8a2a0167ff37fbc9ad1f65fe8",
-    "bytes": 67988,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/a4d19264-6f1b-4e40-8b5d-e9f108a04c2a/Capitulo-02-O-produto-certo-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-02-O-produto-certo-03.webp",
-    "sha256": "46c69b0bedfbc600589ecbf928a62c37ba6b6d3bd150e12359b8e336a252f089",
-    "bytes": 55046,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/9fec5325-00c0-4408-b61f-3fc064e36719/Capitulo-02-O-produto-certo-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende.pdf",
-    "sha256": "a76121e38d7ba22dc8c18843f10395d0cd953996cff3a1655196b0be06d278d4",
-    "bytes": 1377301,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/26a076a3-4b6d-4afb-9918-f3e2865dfe87/Capitulo-03-O-anuncio-que-vende.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-01.webp",
-    "sha256": "385adb86f1e6fc751f260739246362a6cc6299aef12fa4a49bab84b40d2990b1",
-    "bytes": 33802,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/30f89a08-259f-4d8c-bb08-adba3a6c9184/Capitulo-03-O-anuncio-que-vende-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-02.webp",
-    "sha256": "1ee8137a65900a98c709991e9c41db9c62aeba1724540ca2b82d6af4b203c69f",
-    "bytes": 55692,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/84b4b4be-14d7-458d-8a2f-6a3d148aecde/Capitulo-03-O-anuncio-que-vende-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-03.webp",
-    "sha256": "153716b3527e6cd802d05efd94f0b6b32f9d2426d980622f3b55d21fc47a7e77",
-    "bytes": 41652,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/6ca66efc-9462-415b-b848-babad82f04e6/Capitulo-03-O-anuncio-que-vende-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-04.webp",
-    "sha256": "4d6efea9e88379ead9bc38b9dca4352667fde3be2b389a7f0c0aa9f23e778811",
-    "bytes": 68988,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/69a91496-1fb8-4177-8d7e-b65acf1a701a/Capitulo-03-O-anuncio-que-vende-04.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-05.webp",
-    "sha256": "4a054af69804ec35c239583a353987f600085d68ea99a375b1de600063fc8d8c",
-    "bytes": 73336,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/60728968-00a7-4788-9b9f-3e4077684347/Capitulo-03-O-anuncio-que-vende-05.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-06.webp",
-    "sha256": "5ed0f75f14cecaf2ed3f8455bbbdddcb9a46a0c96cfe871de42ff2fc3ee6b27c",
-    "bytes": 58978,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/89f4e3d9-cff4-49ff-b4e9-acdc83f360de/Capitulo-03-O-anuncio-que-vende-06.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-07.webp",
-    "sha256": "789f2650075a9c1dd2d672671ba03fc84c51e6a38f8a0f8b262fe7533374e8d0",
-    "bytes": 48816,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/f20be6c1-3e3d-4e3f-9203-517d2f679e44/Capitulo-03-O-anuncio-que-vende-07.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-08.webp",
-    "sha256": "e2c16802ecf36e7c1aabd97babf6408059a48a7033f51fa8788606415af22556",
-    "bytes": 56916,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/97f2d784-e74d-4cc0-b45d-c0ffbc287ba2/Capitulo-03-O-anuncio-que-vende-08.webp"
-  },
-  {
-    "path": "/assets/Capitulo-03-O-anuncio-que-vende-09.webp",
-    "sha256": "519cc1030310275c7fcc520d4f77899d17e5e535de5dd7770c7c3bfe2feec00f",
-    "bytes": 44264,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/b572b1ee-df9a-468f-afcd-0772a4288f39/Capitulo-03-O-anuncio-que-vende-09.webp"
-  },
-  {
-    "path": "/assets/Capitulo-04-Preco-e-lucro.pdf",
-    "sha256": "cafeeabe124ca51e43550303f26fce2d8c71f19df8384fe2847792226c6d7761",
-    "bytes": 410258,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/e19b8d43-33ff-47d3-af01-13cfa3baf5aa/Capitulo-04-Preco-e-lucro.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-04-Preco-e-lucro-01.webp",
-    "sha256": "60b7bf89093061278b1cc8df5192dd3d0a291cb919a6ac3b7e4e667edb781428",
-    "bytes": 22938,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/75dcac37-7422-4545-8ab3-070814e5647e/Capitulo-04-Preco-e-lucro-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-04-Preco-e-lucro-02.webp",
-    "sha256": "9c0d943f279286e620541b23f5de3b4b169838e0a586c3b749107827e4f39eeb",
-    "bytes": 43472,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/99856a0f-0c1b-4178-857a-dcb077c8e3c1/Capitulo-04-Preco-e-lucro-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-04-Preco-e-lucro-03.webp",
-    "sha256": "7d6ace6a4aa6d7ee7c3a8085129e95a7b7cf940717f9b3977cbdb765ff1b84b8",
-    "bytes": 51344,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/acee75e6-f842-4b53-91d8-2646b9fadbca/Capitulo-04-Preco-e-lucro-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-04-Preco-e-lucro-04.webp",
-    "sha256": "44766ad33d7a0a9b86f6c905f0d1a8bb92928fafc040395afc9ef01bb59d7ee3",
-    "bytes": 75396,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/bf90c992-04f0-461f-b5f3-93ef98d5be9f/Capitulo-04-Preco-e-lucro-04.webp"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago.pdf",
-    "sha256": "6cf286c374c27ad87d39686af84862926ef1361095ffc9fb5efcec40178831ec",
-    "bytes": 404833,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/c8e6c10b-f1d0-4add-a647-b7c877e5dfc1/Capitulo-05-Vender-sem-anuncio-pago.pdf"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-01.webp",
-    "sha256": "0055f08778e95b91c731b1111ceef708591ad29a4efb4dfb76bbe4bf2ac26aa7",
-    "bytes": 30630,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/1f9a416c-ead8-414b-a1b6-03eff458fc26/Capitulo-05-Vender-sem-anuncio-pago-01.webp"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-02.webp",
-    "sha256": "9f022df1493a92739566f0372a3a7cccf66df776bbf167db1bbef2c9d8581e0d",
-    "bytes": 67618,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/2c6c5bed-d08e-47ad-a865-7c832b4289e3/Capitulo-05-Vender-sem-anuncio-pago-02.webp"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-03.webp",
-    "sha256": "cc0b9ab417085fb5954098bc1a1e698460522d785ce7f88c76c67636dfe1b2e8",
-    "bytes": 71822,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/5a0e4031-c50b-4dfe-ab9e-fa8890109aab/Capitulo-05-Vender-sem-anuncio-pago-03.webp"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-04.webp",
-    "sha256": "57d23fb253212bc4a3f09cb0968a444340de19896040bb3f285d63d0fdc1f889",
-    "bytes": 62526,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/fa0b3cb8-59a0-4891-8a8f-38b0cf2a586d/Capitulo-05-Vender-sem-anuncio-pago-04.webp"
-  },
-  {
-    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-05.webp",
-    "sha256": "da596587d02d3f4f71f3bca0ee7ccbc830595eb952d344db5553eed56ba43731",
-    "bytes": 65128,
-    "dimensions": [
-      911,
-      1288
-    ],
-    "source": "/__l5e/assets-v1/072537c3-6166-4c2f-9a7d-6fe17299c89f/Capitulo-05-Vender-sem-anuncio-pago-05.webp"
-  },
-  {
-    "path": "/assets/Basefy-Resumao.pdf",
-    "sha256": "9048263daf5657fc3afe0bb05e775dfc972b212a7c23b184eddbaa5d942c047d",
-    "bytes": 4054717,
-    "dimensions": null,
-    "source": "/__l5e/assets-v1/36bd6fc1-ca21-4920-9717-4ad3aad404d5/Basefy-Resumao.pdf"
-  },
-  {
     "path": "/assets/Basefy-Resumao-01.webp",
     "sha256": "53a677c4b12a33177e72b17df30c81c1749a86d14211ac80eaf0f6ba8a0b0bdf",
     "bytes": 59642,
@@ -487,6 +118,499 @@
       1288
     ],
     "source": "/__l5e/assets-v1/f3eabe0b-cad9-487e-a5c5-ec10f13c3e91/Basefy-Resumao-12.webp"
+  },
+  {
+    "path": "/assets/Basefy-Resumao.pdf",
+    "sha256": "9048263daf5657fc3afe0bb05e775dfc972b212a7c23b184eddbaa5d942c047d",
+    "bytes": 4054717,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/36bd6fc1-ca21-4920-9717-4ad3aad404d5/Basefy-Resumao.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-00-Por-que-a-Basefy-01.webp",
+    "sha256": "fe8a105d3daea38a1e6252b85248f0ee43f1a78bbc7b2a4f75270d8c1a187cab",
+    "bytes": 24110,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/8553873a-4e8c-47b7-a517-dec53dff776f/Capitulo-00-Por-que-a-Basefy-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-00-Por-que-a-Basefy-02.webp",
+    "sha256": "09304702051b0d818dd7e2aca1d5854f0ceba48c02b6263d5baa9b4ed28db042",
+    "bytes": 72822,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/19e6da2e-a5f8-4349-84b7-9eb0961146a4/Capitulo-00-Por-que-a-Basefy-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-00-Por-que-a-Basefy-03.webp",
+    "sha256": "75f8fef7e587dd55e58db9ea6d7329b3a323c3030f008d8261ad68112c0d4639",
+    "bytes": 63982,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/88ff5973-c826-4185-8ef9-650c3a25e64f/Capitulo-00-Por-que-a-Basefy-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-00-Por-que-a-Basefy.pdf",
+    "sha256": "ecd7ffa1663dcf985167ec34aff55d8b3e03713426abe18d940bcd57fb2e1ae2",
+    "bytes": 346107,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/6242784a-32fa-4b15-b11f-1f364a9860be/Capitulo-00-Por-que-a-Basefy.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-01.webp",
+    "sha256": "3d0315ae9c0a9ef812a41fadc16d4d3a8681b9d0ddc6ec4e9123a5444ff6114b",
+    "bytes": 29154,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/7d4266a6-2cfd-40fe-9bdf-8eba23531abb/Capitulo-01-Sua-conta-e-seu-perfil-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-02.webp",
+    "sha256": "c4c0facb694bdf5b72ee7aead8a8fc1a5c104bd22ef76a27379bb1d146269cf0",
+    "bytes": 41278,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/bfd40ce1-8ef5-4990-8e04-76af383acf2f/Capitulo-01-Sua-conta-e-seu-perfil-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-03.webp",
+    "sha256": "5caf8a50f3ecde04bfe3c9ea8fb9a0423fa4252f87bb270b789451b35dc98861",
+    "bytes": 45096,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/e5800fdc-b8bb-495f-850c-f621a7c566ea/Capitulo-01-Sua-conta-e-seu-perfil-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-04.webp",
+    "sha256": "50a0059f402f243daeba005b1347f0c4381331000ab1ab9773e84d220385c3dc",
+    "bytes": 88812,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/7bac5bad-c37c-4cde-a10d-a7c95551a99c/Capitulo-01-Sua-conta-e-seu-perfil-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-05.webp",
+    "sha256": "ba1a25ac59745d189bdb2db8ebbb3464bc833b24af81dc43f5f03964a3f71710",
+    "bytes": 49150,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/9cb616e2-2743-48ae-bfbc-c6470c953c92/Capitulo-01-Sua-conta-e-seu-perfil-05.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-06.webp",
+    "sha256": "c958c20d4df56114debec58db0685c1b373d1be2b811c0c073c8b470e721edea",
+    "bytes": 64160,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/f2195e30-ab8b-4582-ab54-e462417655e5/Capitulo-01-Sua-conta-e-seu-perfil-06.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-07.webp",
+    "sha256": "59e00537b598c593991b5008f60d27b69528fff3902da0f94d062680765d45b1",
+    "bytes": 70544,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/3440ad43-5ddc-4104-a554-a593d2c826f0/Capitulo-01-Sua-conta-e-seu-perfil-07.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil-08.webp",
+    "sha256": "69ac35c033a2c89ff1cbb1a17158a2976dd0a3fd09e592c07f21f57ac64e4e2f",
+    "bytes": 53296,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/0211dab8-588a-404c-b3d8-d5cc88081a7a/Capitulo-01-Sua-conta-e-seu-perfil-08.webp"
+  },
+  {
+    "path": "/assets/Capitulo-01-Sua-conta-e-seu-perfil.pdf",
+    "sha256": "cf78d45e689ab35654e94d12485c53ac9a1bf71fc33ecbc4f54f3c9d5978e656",
+    "bytes": 3117817,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/ca774005-137a-4da5-bfe8-9d57b74d6f6e/Capitulo-01-Sua-conta-e-seu-perfil.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-02-O-produto-certo-01.webp",
+    "sha256": "2a7d765e5542331ce462927b1e8db8212cdf2a7d0544866e67843c9671ff56dc",
+    "bytes": 22266,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/513d1d4f-4813-44a6-9b36-62ac4b3607b1/Capitulo-02-O-produto-certo-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-02-O-produto-certo-02.webp",
+    "sha256": "9215c292fc1ffe639114c26be5757e5cfb4cd3a8a2a0167ff37fbc9ad1f65fe8",
+    "bytes": 67988,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/a4d19264-6f1b-4e40-8b5d-e9f108a04c2a/Capitulo-02-O-produto-certo-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-02-O-produto-certo-03.webp",
+    "sha256": "46c69b0bedfbc600589ecbf928a62c37ba6b6d3bd150e12359b8e336a252f089",
+    "bytes": 55046,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/9fec5325-00c0-4408-b61f-3fc064e36719/Capitulo-02-O-produto-certo-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-02-O-produto-certo.pdf",
+    "sha256": "d798c8b9093c2d14445bc86ddf878e6f176b1930f5fa85a538353e288384b485",
+    "bytes": 307294,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/c6929168-f216-4833-b460-5f0f225f8831/Capitulo-02-O-produto-certo.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-01.webp",
+    "sha256": "385adb86f1e6fc751f260739246362a6cc6299aef12fa4a49bab84b40d2990b1",
+    "bytes": 33802,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/30f89a08-259f-4d8c-bb08-adba3a6c9184/Capitulo-03-O-anuncio-que-vende-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-02.webp",
+    "sha256": "1ee8137a65900a98c709991e9c41db9c62aeba1724540ca2b82d6af4b203c69f",
+    "bytes": 55692,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/84b4b4be-14d7-458d-8a2f-6a3d148aecde/Capitulo-03-O-anuncio-que-vende-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-03.webp",
+    "sha256": "153716b3527e6cd802d05efd94f0b6b32f9d2426d980622f3b55d21fc47a7e77",
+    "bytes": 41652,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/6ca66efc-9462-415b-b848-babad82f04e6/Capitulo-03-O-anuncio-que-vende-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-04.webp",
+    "sha256": "4d6efea9e88379ead9bc38b9dca4352667fde3be2b389a7f0c0aa9f23e778811",
+    "bytes": 68988,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/69a91496-1fb8-4177-8d7e-b65acf1a701a/Capitulo-03-O-anuncio-que-vende-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-05.webp",
+    "sha256": "4a054af69804ec35c239583a353987f600085d68ea99a375b1de600063fc8d8c",
+    "bytes": 73336,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/60728968-00a7-4788-9b9f-3e4077684347/Capitulo-03-O-anuncio-que-vende-05.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-06.webp",
+    "sha256": "5ed0f75f14cecaf2ed3f8455bbbdddcb9a46a0c96cfe871de42ff2fc3ee6b27c",
+    "bytes": 58978,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/89f4e3d9-cff4-49ff-b4e9-acdc83f360de/Capitulo-03-O-anuncio-que-vende-06.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-07.webp",
+    "sha256": "789f2650075a9c1dd2d672671ba03fc84c51e6a38f8a0f8b262fe7533374e8d0",
+    "bytes": 48816,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/f20be6c1-3e3d-4e3f-9203-517d2f679e44/Capitulo-03-O-anuncio-que-vende-07.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-08.webp",
+    "sha256": "e2c16802ecf36e7c1aabd97babf6408059a48a7033f51fa8788606415af22556",
+    "bytes": 56916,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/97f2d784-e74d-4cc0-b45d-c0ffbc287ba2/Capitulo-03-O-anuncio-que-vende-08.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende-09.webp",
+    "sha256": "519cc1030310275c7fcc520d4f77899d17e5e535de5dd7770c7c3bfe2feec00f",
+    "bytes": 44264,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/b572b1ee-df9a-468f-afcd-0772a4288f39/Capitulo-03-O-anuncio-que-vende-09.webp"
+  },
+  {
+    "path": "/assets/Capitulo-03-O-anuncio-que-vende.pdf",
+    "sha256": "a76121e38d7ba22dc8c18843f10395d0cd953996cff3a1655196b0be06d278d4",
+    "bytes": 1377301,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/26a076a3-4b6d-4afb-9918-f3e2865dfe87/Capitulo-03-O-anuncio-que-vende.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-04-Preco-e-lucro-01.webp",
+    "sha256": "60b7bf89093061278b1cc8df5192dd3d0a291cb919a6ac3b7e4e667edb781428",
+    "bytes": 22938,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/75dcac37-7422-4545-8ab3-070814e5647e/Capitulo-04-Preco-e-lucro-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-04-Preco-e-lucro-02.webp",
+    "sha256": "9c0d943f279286e620541b23f5de3b4b169838e0a586c3b749107827e4f39eeb",
+    "bytes": 43472,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/99856a0f-0c1b-4178-857a-dcb077c8e3c1/Capitulo-04-Preco-e-lucro-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-04-Preco-e-lucro-03.webp",
+    "sha256": "7d6ace6a4aa6d7ee7c3a8085129e95a7b7cf940717f9b3977cbdb765ff1b84b8",
+    "bytes": 51344,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/acee75e6-f842-4b53-91d8-2646b9fadbca/Capitulo-04-Preco-e-lucro-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-04-Preco-e-lucro-04.webp",
+    "sha256": "44766ad33d7a0a9b86f6c905f0d1a8bb92928fafc040395afc9ef01bb59d7ee3",
+    "bytes": 75396,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/bf90c992-04f0-461f-b5f3-93ef98d5be9f/Capitulo-04-Preco-e-lucro-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-04-Preco-e-lucro.pdf",
+    "sha256": "cafeeabe124ca51e43550303f26fce2d8c71f19df8384fe2847792226c6d7761",
+    "bytes": 410258,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/e19b8d43-33ff-47d3-af01-13cfa3baf5aa/Capitulo-04-Preco-e-lucro.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-01.webp",
+    "sha256": "0055f08778e95b91c731b1111ceef708591ad29a4efb4dfb76bbe4bf2ac26aa7",
+    "bytes": 30630,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/1f9a416c-ead8-414b-a1b6-03eff458fc26/Capitulo-05-Vender-sem-anuncio-pago-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-02.webp",
+    "sha256": "9f022df1493a92739566f0372a3a7cccf66df776bbf167db1bbef2c9d8581e0d",
+    "bytes": 67618,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/2c6c5bed-d08e-47ad-a865-7c832b4289e3/Capitulo-05-Vender-sem-anuncio-pago-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-03.webp",
+    "sha256": "cc0b9ab417085fb5954098bc1a1e698460522d785ce7f88c76c67636dfe1b2e8",
+    "bytes": 71822,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/5a0e4031-c50b-4dfe-ab9e-fa8890109aab/Capitulo-05-Vender-sem-anuncio-pago-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-04.webp",
+    "sha256": "57d23fb253212bc4a3f09cb0968a444340de19896040bb3f285d63d0fdc1f889",
+    "bytes": 62526,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/fa0b3cb8-59a0-4891-8a8f-38b0cf2a586d/Capitulo-05-Vender-sem-anuncio-pago-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago-05.webp",
+    "sha256": "da596587d02d3f4f71f3bca0ee7ccbc830595eb952d344db5553eed56ba43731",
+    "bytes": 65128,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/__l5e/assets-v1/072537c3-6166-4c2f-9a7d-6fe17299c89f/Capitulo-05-Vender-sem-anuncio-pago-05.webp"
+  },
+  {
+    "path": "/assets/Capitulo-05-Vender-sem-anuncio-pago.pdf",
+    "sha256": "6cf286c374c27ad87d39686af84862926ef1361095ffc9fb5efcec40178831ec",
+    "bytes": 404833,
+    "dimensions": null,
+    "source": "/__l5e/assets-v1/c8e6c10b-f1d0-4add-a647-b7c877e5dfc1/Capitulo-05-Vender-sem-anuncio-pago.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos-01.webp",
+    "sha256": "fad6e8e7fbf635d13b0b14eefe1c75a02df7b6cce9b01b0ae1b0958f7d78b810",
+    "bytes": 59098,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos-02.webp",
+    "sha256": "bc97837176c3b02a8e91ea332584159a3f6f70e6367d94e0a0ee46d9e82ae3fa",
+    "bytes": 76968,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos-03.webp",
+    "sha256": "cbd67e032492d91a39cc6d20148fec1920cd47adb905de1a5cc0308a73cce811",
+    "bytes": 54250,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos-04.webp",
+    "sha256": "f6a3c792bef076a6ff7218bd357890d819b62ab873f73f0a7a25c43db7fde850",
+    "bytes": 49924,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos-05.webp",
+    "sha256": "1d2d398f03a5d5a895d295b90783a3e4135bf8b4e762d74c02a153559615b2d5",
+    "bytes": 53650,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos-05.webp"
+  },
+  {
+    "path": "/assets/Capitulo-07-Dicas-de-produtos.pdf",
+    "sha256": "9183bda74f032de0f5087b06d3bc428fe827a5b01a40d12a997aa6bbffc12ee9",
+    "bytes": 3050659,
+    "dimensions": null,
+    "source": "/mnt/user-uploads/Capitulo-07-Dicas-de-produtos.pdf"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-01.webp",
+    "sha256": "eb880c73a277d747e77c2cafbc544c2ba7e9df4b767bca6f0dcd5db845a4b53d",
+    "bytes": 43380,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-01.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-02.webp",
+    "sha256": "c19dfb4f08a3e1c9300d37db226c5affe581f70f952c17ad06d5e34eab6744f0",
+    "bytes": 66326,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-02.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-03.webp",
+    "sha256": "14508995dce2c6eb6c24802f7dead49f7f0876ed1fe874e993fc3a0c54f05e00",
+    "bytes": 56570,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-03.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-04.webp",
+    "sha256": "21dd50c2728a9effe14ce285748e59cb7725ca43b883e636f2c98cb549195492",
+    "bytes": 69726,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-04.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-05.webp",
+    "sha256": "f4e02b426eb958cb6f3328252d81ea170fba08b716e922b78bf4e88269df5273",
+    "bytes": 73102,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-05.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores-06.webp",
+    "sha256": "29a7e1104f9b14d4db9e3761a084d4ab54b8d9c3e4a63c3c0bdaddb03dae52a5",
+    "bytes": 66318,
+    "dimensions": [
+      911,
+      1288
+    ],
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores-06.webp"
+  },
+  {
+    "path": "/assets/Capitulo-08-Fornecedores.pdf",
+    "sha256": "9985b0a71a33c7f8540f85501d4c6372866df4cbb95017f4832f95971412fbdc",
+    "bytes": 1402092,
+    "dimensions": null,
+    "source": "/mnt/user-uploads/Capitulo-08-Fornecedores.pdf"
   },
   {
     "path": "/assets/Modulo-00-Por-que-a-Basefy.webp",
