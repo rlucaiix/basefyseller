@@ -80,6 +80,10 @@ bun run build:vercel
 
 ## 6. O que ainda precisa ser validado fora desta sessão
 
+### Verificação do endereço real em 17/10/2026, 20:45 UTC
+
+`https://basefyseller.vercel.app` responde e as páginas `/`, `/auth` e `/reset-password` abrem. O acesso anônimo a `/calculadora` volta corretamente para `/auth`. Porém, a implantação atual não contém 20 dos 78 arquivos do inventário, incluindo logo, ícones, capítulos 7/8 e capas 7/8; `/manifest.webmanifest` retorna 404. Também foram observados erros React 520/422 no navegador. Esses arquivos estão presentes no código atual e passam a verificação local: sincronizar a versão atual e fazer uma nova implantação antes de repetir a auditoria. Não foi possível confirmar a versão/commit remoto ou executar a atualização porque nenhuma conexão Vercel/GitHub está disponível nesta sessão.
+
 - Primeira compilação e execução **na Vercel**, depois de conectar o repositório e cadastrar as variáveis. A compilação Vercel não foi executada nesta sessão; a configuração foi preparada usando o preset do Nitro instalado.
 - Login bem-sucedido com e-mail/senha digitados: a conta conectada foi testada com sua sessão existente, sem acessar ou alterar sua senha.
 - Cadastro → recebimento → confirmação real por e-mail nos dois domínios.

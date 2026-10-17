@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Atualizar a implantação Vercel para o código atual: auditoria pública em 17/10 encontrou 20 dos 78 assets em 404 e manifesto em 404, além de erros React de execução; os mesmos arquivos existem e passam a verificação local. Nenhuma conexão Vercel/GitHub disponível nesta sessão para atualizar a implantação.
 - [x] Limpeza das autorizações e papéis ao excluir conta aplicada por gatilho, sem apagar chaves consumidas; definição instalada conferida. Preservação dos erros reais de cadastro corrigida: 61 testes passaram; 78 assets e configuração pública validados; guia corrigido para os ícones PNG existentes; compilação automática OK.
 - [ ] Executar exclusão de conta temporária para validar o gatilho e concorrência no cadastro — conexão de teste não tem acesso ao esquema Auth nem execução direta do gatilho; não excluir contas reais para contornar esse limite.
 - [ ] Auditoria final de entrega: acesso/chaves, fluxos conectados, assets/repositório/Vercel e nome/ícone do atalho móvel; corrigir falhas comprovadas e documentar bloqueios externos.
@@ -19,7 +20,7 @@
 - [ ] Configurar Site URL e Redirect URLs no Lovable Cloud para os dois domínios — bloqueado: as ferramentas disponíveis não expõem essas configurações; confirmar cadastro e recuperação com e-mails reais depois disso.
 - [x] Preparar publicação independente no Vercel com login por e-mail, testes e DEPLOY_INDEPENDENTE.md (Google foi removido).
 - [ ] Ajustar .gitignore no repositório — arquivo protegido no editor; padrões necessários documentados no guia.
-- [ ] Conectar repositório e variáveis na Vercel; executar primeira compilação e teste publicado — exige acesso/configuração externa, sem publicação automática.
+- [ ] Atualizar repositório e implantação na Vercel e repetir teste publicado — endereço existente responde, mas não contém logo/manifesto e arquivos recentes; exige acesso/configuração externa.
 - [ ] Validar login por senha, confirmação e recuperação com e-mails reais — depende dos links recebidos pelo usuário e URLs hospedadas.
 - [x] Área de Conteúdo: capítulos do guia dentro do app (leitor de páginas)
 - [x] Perfil editável (nome, bio) e link de vendedor com compartilhamento rápido (em Configurações)
