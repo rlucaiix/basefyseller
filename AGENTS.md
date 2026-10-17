@@ -17,3 +17,6 @@
 - Email authentication operations and redirect paths live in `src/lib/email-auth.ts`; public auth pages reuse them to keep multi-domain confirmation and recovery consistent without editing generated clients.
 - Navigation caches only Auth-server-validated identities and per-user onboarding checks briefly in React Query; identity changes clear/invalidate that cache, and database RLS remains authoritative.
 - Module covers use CDN asset pointers and a shared responsive banner so uploaded media stays outside the source repository.
+- Independent deployments use `vite.vercel.config.ts` and Nitro's Vercel preset via `build:vercel`; keep the Lovable preview configuration separate to avoid editor-specific output overrides.
+- Deployment preflight accepts only public HTTPS backend connections and publishable keys; missing or private browser credentials must stop deployment before bundling.
+- Offline queues and version maps are scoped to the signed-in user, and identity transitions clear the query cache; this prevents stale data or queued writes from crossing accounts.

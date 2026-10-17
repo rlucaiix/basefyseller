@@ -9,7 +9,10 @@ export function navigationUser(queryClient: QueryClient) {
     retry: false,
     queryFn: async () => {
       const { data, error } = await supabase.auth.getUser();
-      if (error) throw error;
+      if (error) {
+        if (["session_not_found", "session_expired", "refresh_token_not_found", "refresh_token_already_used"].includes(error.code ?? "") || error.name === "AuthSessionMissingError") return null;
+        throw error;
+      }
       return data.user;
     },
   });

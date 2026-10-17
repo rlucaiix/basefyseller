@@ -1,6 +1,10 @@
 # Basefyseller
 
-Use o pdf que vou te enviar primeiro para criar, segundo e terceiro como guia, e observações .
+Planner de precificação, produtos, vendas, metas e conteúdo guiado, com login por e-mail e senha e dados por conta no Lovable Cloud.
+
+## Publicação independente
+
+Consulte [DEPLOY_INDEPENDENTE.md](./DEPLOY_INDEPENDENTE.md) para conectar o repositório à Vercel preservando o banco e os usuários. A configuração está em `vercel.json` e `vite.vercel.config.ts`; os nomes das variáveis públicas estão em `.env.example`. Antes de enviar o repositório, conclua a revisão de `.gitignore` descrita no guia.
 
 This project was built with [Lovable](https://lovable.dev).
 

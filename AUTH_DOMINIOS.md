@@ -7,7 +7,8 @@
 - Links de recuperação: `window.location.origin + '/reset-password'`.
 - `/reset-password`: valida link/sessão de recuperação, define a senha sem `current_password`, e segue para `/inicio`.
 - Contas Google existentes: usar “Esqueci minha senha” com o mesmo e-mail para definir a senha da conta existente, sem criar outra conta.
-- Nenhuma tabela, regra de RLS ou página privada foi alterada. Os arquivos gerados em `src/integrations` não foram editados manualmente.
+- Nenhuma tabela ou regra de RLS foi alterada. Os arquivos gerados em `src/integrations` não foram editados manualmente.
+- A revisão de publicação, arquivos e pendências atuais está em `DEPLOY_INDEPENDENTE.md`.
 
 ## Configuração externa pendente
 As ferramentas disponíveis nesta sessão não permitem consultar ou alterar **Site URL** ou **Redirect URLs**. Esses valores não foram alterados nem verificados.

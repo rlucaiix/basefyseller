@@ -16,9 +16,10 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { initSync } from "@/lib/sync";
+import { initSync, setSyncUser } from "@/lib/sync";
 import { RECOVERY_STORAGE_KEY } from "@/lib/email-auth";
 import { ModuleBanner } from "@/components/app/ModuleBanner";
+import { shouldClearIdentityCache } from "@/lib/auth-identity";
 
 function NotFoundComponent() {
   return (
@@ -103,7 +104,7 @@ function RootComponent() {
   const publicPage = ["/", "/auth", "/reset-password"].includes(pathname);
 
   useEffect(() => {
-    initSync({
+    const stopSync = initSync({
       onFlushed: (tables) => tables.forEach((t) => {
         queryClient.invalidateQueries({ queryKey: [t === "monthly_goals" ? "goals" : t] });
         if (t === "settings") queryClient.invalidateQueries({ queryKey: ["navigation-profile"] });
@@ -115,7 +116,15 @@ function RootComponent() {
         queryClient.invalidateQueries({ queryKey: [table === "monthly_goals" ? "goals" : table] });
       },
     });
-    const { data } = supabase.auth.onAuthStateChange((event) => {
+    let previousUserId: string | null | undefined;
+    const { data } = supabase.auth.onAuthStateChange((event, session) => {
+      const userId = session?.user.id ?? null;
+      if (previousUserId !== userId) {
+        // INITIAL_SESSION must not cancel the guard's first in-flight validation.
+        if (shouldClearIdentityCache(previousUserId, userId)) queryClient.clear();
+        previousUserId = userId;
+        setSyncUser(userId);
+      }
       if (event === "PASSWORD_RECOVERY") {
         sessionStorage.setItem(RECOVERY_STORAGE_KEY, String(Date.now()));
         return;
@@ -129,7 +138,7 @@ function RootComponent() {
     // Atualiza ao voltar para a aba (alterações feitas em outro aparelho).
     const onFocus = () => queryClient.invalidateQueries();
     window.addEventListener("focus", onFocus);
-    return () => { data.subscription.unsubscribe(); window.removeEventListener("focus", onFocus); };
+    return () => { stopSync(); data.subscription.unsubscribe(); window.removeEventListener("focus", onFocus); };
   }, [queryClient, router]);
 
   return (

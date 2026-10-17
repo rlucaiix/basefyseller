@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
-import { enqueue, rememberVersion } from "./sync";
+import { enqueue, rememberVersion, setSyncUser } from "./sync";
 import { DEFAULT_RATES, type Modality, type SaleStatus } from "./pricing";
 
 export type Settings = { user_id: string; display_name: string | null; bio: string | null; avatar_url: string | null; seller_link: string | null; read_chapters: string[]; rate_standard: number; rate_featured: number; buyer_fee: number; version: number; nickname: string | null; age: number | null; goal: string | null; level: string | null; onboarded: boolean };
@@ -19,6 +19,7 @@ export async function getUserId() {
   const { data } = await supabase.auth.getSession();
   const id = data.session?.user.id;
   if (!id) throw new Error("Sessão expirada");
+  setSyncUser(id);
   return id;
 }
 
