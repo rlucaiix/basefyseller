@@ -17,6 +17,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { initSync } from "@/lib/sync";
 import { RECOVERY_STORAGE_KEY } from "@/lib/email-auth";
+import { ModuleBanner } from "@/components/app/ModuleBanner";
 
 function NotFoundComponent() {
   return (
@@ -97,6 +98,7 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const publicPage = !router.state.location.pathname.startsWith("/api/") && ["/", "/auth", "/reset-password"].includes(router.state.location.pathname);
 
   useEffect(() => {
     initSync({
@@ -115,9 +117,9 @@ function RootComponent() {
       }
       if (event === "SIGNED_OUT") sessionStorage.removeItem(RECOVERY_STORAGE_KEY);
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
-      router.invalidate();
       if (event === "SIGNED_OUT") queryClient.clear();
       else queryClient.invalidateQueries();
+      router.invalidate();
     });
     // Atualiza ao voltar para a aba (alterações feitas em outro aparelho).
     const onFocus = () => queryClient.invalidateQueries();
@@ -127,6 +129,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {publicPage && <ModuleBanner />}
       <Outlet />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>

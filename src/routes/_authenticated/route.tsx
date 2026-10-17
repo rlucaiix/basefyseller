@@ -1,24 +1,26 @@
 import { createFileRoute, redirect, Outlet, Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveIndicator } from "@/components/app/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useGoals, useProducts, useSales, useSettings } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { navigationUser, navigationProfile } from "@/lib/navigation-cache";
+import { ModuleBanner } from "@/components/app/ModuleBanner";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
-  beforeLoad: async ({ location }) => {
-    const { data } = await supabase.auth.getUser();
-    if (!data.user) throw redirect({ to: "/auth" });
-    // Cada conta (e-mail Google) tem uma ficha permanente; quem nunca fez o
+  beforeLoad: async ({ location, context }) => {
+    const user = await navigationUser(context.queryClient).catch(() => null);
+    if (!user) throw redirect({ to: "/auth" });
+    // Cada conta tem uma ficha permanente; quem nunca fez o
     // quiz de boas-vindas é levado a ele antes de qualquer página.
-    const { data: st } = await supabase.from("settings").select("onboarded").eq("user_id", data.user.id).maybeSingle();
+    const st = await navigationProfile(context.queryClient, user.id);
     const done = st?.onboarded === true;
     if (!done && location.pathname !== "/onboarding") throw redirect({ to: "/onboarding" });
     if (done && location.pathname === "/onboarding") throw redirect({ to: "/inicio" });
-    return { user: data.user };
+    return { user };
   },
   component: AppLayout,
 });
@@ -46,8 +48,20 @@ function Brand() {
 
 function AppLayout() {
   const { user } = Route.useRouteContext();
+  const { queryClient } = Route.useRouteContext();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [more, setMore] = useState(false);
+  const pendingPath = useRouterState({ select: s => s.status === "pending" ? s.latestLocation.pathname : s.location.pathname });
+  useEffect(() => {
+    let cancelled = false;
+    const timer = window.setTimeout(() => {
+      for (const n of NAV) {
+        if (cancelled) break;
+        void import("@/router");
+      }
+    }, 0);
+    return () => { cancelled = true; window.clearTimeout(timer); };
+  }, []);
   const mobileMain = NAV.slice(0, 4);
   // Pré-carrega os dados principais logo no login: cada página abre instantânea.
   useProducts();
@@ -82,7 +96,8 @@ function AppLayout() {
           <Brand />
           <SaveIndicator />
         </header>
-        <main key={path} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 animate-in fade-in duration-150 md:px-8 md:pb-10 md:pt-10">
+        <ModuleBanner signed />
+        <main aria-busy={pendingPath !== path} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-10 md:pt-8">
           <Outlet />
         </main>
       </div>

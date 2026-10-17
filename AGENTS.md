@@ -15,3 +15,5 @@
 - Sales store a snapshot (price, rate, cost, commission, profit) at creation; product/rate changes never rewrite history.
 - Private pages live under `src/routes/_authenticated/` (client-only gate); data is read with the browser client under per-user RLS.
 - Email authentication operations and redirect paths live in `src/lib/email-auth.ts`; public auth pages reuse them to keep multi-domain confirmation and recovery consistent without editing generated clients.
+- Navigation caches only Auth-server-validated identities and per-user onboarding checks briefly in React Query; identity changes clear/invalidate that cache, and database RLS remains authoritative.
+- Module covers use CDN asset pointers and a shared responsive banner so uploaded media stays outside the source repository.
