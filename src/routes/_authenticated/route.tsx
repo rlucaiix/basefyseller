@@ -51,7 +51,7 @@ function AppLayout() {
   const router = useRouter();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [more, setMore] = useState(false);
-  const pendingPath = useRouterState({ select: s => s.status === "pending" ? s.latestLocation.pathname : s.location.pathname });
+  const isPending = useRouterState({ select: s => s.status === "pending" });
   useEffect(() => {
     let cancelled = false;
     const timer = window.setTimeout(() => {
@@ -94,7 +94,7 @@ function AppLayout() {
           <SaveIndicator />
         </header>
         <ModuleBanner signed />
-        <main aria-busy={pendingPath !== path} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-10 md:pt-8">
+        <main aria-busy={isPending} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-10 md:pt-8">
           <Outlet />
         </main>
       </div>
