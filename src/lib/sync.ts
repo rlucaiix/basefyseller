@@ -109,8 +109,12 @@ async function run(op: Op, userId: string, currentVersions: Map<string, number>)
     currentVersions.set(op.id, data[0].version);
   } else if (op.kind === "delete") {
     if (!op.id) throw new Error("Registro inválido.");
-    const { error } = await t.delete().eq("id", op.id).eq("user_id", userId);
+    let q = t.delete().eq("id", op.id).eq("user_id", userId);
+    const base = currentVersions.get(op.id) ?? op.baseVersion;
+    if (base != null) q = q.eq("version", base);
+    const { data, error } = await q.select("id");
     if (error) throw new Error(error.message);
+    if (!data?.length) throw new ConflictError();
   }
 }
 

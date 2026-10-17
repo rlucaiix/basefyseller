@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+export { useDebounced } from "./use-debounced";
 import { useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { enqueue, rememberVersion, setSyncUser } from "./sync";
@@ -135,19 +135,6 @@ export function useMutations() {
       enqueue({ table: "settings", kind: "upsert", row: { user_id: uid, ...patch }, onConflict: "user_id" });
     },
   };
-}
-
-/** Salva automaticamente com atraso após a digitação. */
-export function useDebounced(fn: () => void, deps: unknown[], delay = 700) {
-  const first = useRef(true);
-  const fnRef = useRef(fn);
-  fnRef.current = fn;
-  useEffect(() => {
-    if (first.current) { first.current = false; return; }
-    const t = setTimeout(() => fnRef.current(), delay);
-    return () => clearTimeout(t);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
 }
 
 export const rateFor = (s: Settings | undefined, m: Modality) =>
