@@ -21,7 +21,7 @@ export function ModuleBanner({ signed = false }: { signed?: boolean }) {
     <div className="module-banner overflow-hidden py-3"><div className="module-banner-track flex w-max">
       {[0, 1].map(copy => <div key={copy} className="module-banner-group flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1 ? true : undefined}>
         {modules.map(({ src, title }, index) => <Link key={title} to={signed ? "/conteudo" : "/auth"} tabIndex={copy === 1 ? -1 : 0} className="block shrink-0 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" title={title}>
-          <img src={src} alt={copy === 0 ? title : ""} width={1080} height={1620} loading="eager" decoding="async" fetchPriority={copy === 0 && index === 0 ? "high" : "low"} className="h-44 w-auto object-contain sm:h-52" />
+          <img src={src} alt={copy === 0 ? title : ""} width={1080} height={1620} loading="eager" decoding="async" fetchPriority={copy === 0 && index === 0 ? "high" : "low"} className={signed ? "h-24 w-auto object-contain sm:h-32 lg:h-36" : "h-44 w-auto object-contain sm:h-52"} />
         </Link>)}
       </div>)}
     </div></div>
