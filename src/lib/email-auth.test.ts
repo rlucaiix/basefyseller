@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 const auth = vi.hoisted(() => ({ signInWithPassword: vi.fn(), signUp: vi.fn(), resetPasswordForEmail: vi.fn(), updateUser: vi.fn() }));
 vi.mock("@/integrations/supabase/client", () => ({ supabase: { auth } }));
-import { authError, authRedirects, passwordIsValid, requestPasswordReset, signInWithEmail, signUpWithEmail, updateRecoveredPassword } from "./email-auth";
+import { authRedirects, passwordIsValid, requestPasswordReset, signInWithEmail, signUpWithEmail, updateRecoveredPassword } from "./email-auth";
 
 describe("Email authentication", () => {
   beforeEach(() => vi.clearAllMocks());

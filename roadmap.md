@@ -1,5 +1,6 @@
 # Roadmap
-- [ ] Trocar Google por e-mail/senha, recuperar senha, testar e configurar URLs dos dois domínios.
+- [x] Trocar Google por e-mail/senha e adicionar recuperação: 19 testes passaram; senha incorreta, link expirado e sessão existente verificados no navegador.
+- [ ] Configurar Site URL e Redirect URLs no Lovable Cloud para os dois domínios — bloqueado: as ferramentas disponíveis não expõem essas configurações; confirmar cadastro e recuperação com e-mails reais depois disso.
 - [ ] Corrigir 404 do Google e preparar publicação independente no Vercel, com testes e documentação.
 - [x] Área de Conteúdo: capítulos do guia dentro do app (leitor de páginas)
 - [x] Perfil editável (nome, bio) e link de vendedor com compartilhamento rápido (em Configurações)
@@ -8,7 +9,7 @@
 
 ## Feito (17/out)
 - Quiz de boas-vindas (nome, apelido, idade, objetivo, nível) com tela final "E aí! Pronto para começar?"; obrigatório na 1ª entrada, salvo na conta (settings.onboarded) e testado no celular.
-- Login Google: cada e-mail tem ficha permanente (settings por user_id); entrada direta após o popup, sem recarregar.
+- Login por e-mail/senha substitui Google sem alterar usuários, dados ou regras de acesso; confirmação de e-mail ativa e Google desativado no Lovable Cloud.
 
 ## Pendente
 - Botão "Sair" no topo do celular.
