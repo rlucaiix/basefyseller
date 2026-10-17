@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -17,6 +18,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { initSync } from "@/lib/sync";
 import { RECOVERY_STORAGE_KEY } from "@/lib/email-auth";
+import { ModuleBanner } from "@/components/app/ModuleBanner";
 
 function NotFoundComponent() {
   return (
@@ -97,10 +99,15 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  const pathname = useRouterState({ select: s => s.location.pathname });
+  const publicPage = ["/", "/auth", "/reset-password"].includes(pathname);
 
   useEffect(() => {
     initSync({
-      onFlushed: (tables) => tables.forEach((t) => queryClient.invalidateQueries({ queryKey: [t === "monthly_goals" ? "goals" : t] })),
+      onFlushed: (tables) => tables.forEach((t) => {
+        queryClient.invalidateQueries({ queryKey: [t === "monthly_goals" ? "goals" : t] });
+        if (t === "settings") queryClient.invalidateQueries({ queryKey: ["navigation-profile"] });
+      }),
       onConflict: (table) => {
         toast.warning("Este registro foi alterado em outro aparelho", {
           description: "Carregamos a versão mais recente da nuvem. Revise e edite de novo se precisar.",
@@ -115,9 +122,9 @@ function RootComponent() {
       }
       if (event === "SIGNED_OUT") sessionStorage.removeItem(RECOVERY_STORAGE_KEY);
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
-      router.invalidate();
       if (event === "SIGNED_OUT") queryClient.clear();
       else queryClient.invalidateQueries();
+      router.invalidate();
     });
     // Atualiza ao voltar para a aba (alterações feitas em outro aparelho).
     const onFocus = () => queryClient.invalidateQueries();
@@ -127,6 +134,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      {publicPage && <ModuleBanner />}
       <Outlet />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>

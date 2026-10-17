@@ -143,4 +143,16 @@
 @utility shadow-glow { box-shadow: var(--shadow-glow); }
 @utility tabular { font-variant-numeric: tabular-nums; }
 
+@keyframes module-banner-scroll {
+  to { transform: translateX(-50%); }
+}
+.module-banner-track { animation: module-banner-scroll 48s linear infinite; }
+.module-banner[data-paused="true"] .module-banner-track,
+.module-banner:focus-within .module-banner-track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .module-banner { overflow-x: auto; }
+  .module-banner-track { animation: none; }
+  .module-banner-group[aria-hidden="true"] { display: none; }
+}
+
 
