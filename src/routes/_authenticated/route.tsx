@@ -8,6 +8,7 @@ import { useGoals, useProducts, useSales, useSettings } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { navigationUser, navigationProfile } from "@/lib/navigation-cache";
 import { ModuleBanner } from "@/components/app/ModuleBanner";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
@@ -82,7 +83,7 @@ function AppLayout() {
               : <span className="grid size-8 shrink-0 place-items-center rounded-full bg-accent text-xs">{(user.email ?? "?")[0]?.toUpperCase()}</span>}
             <div className="hidden min-w-0 flex-1 lg:block">
               <div className="truncate text-sm">{user.user_metadata?.['full_name'] ?? user.email}</div>
-              <button onClick={() => supabase.auth.signOut()} className="flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"><LogOut className="size-3" />Sair</button>
+              <Button variant="link" size="sm" onClick={() => supabase.auth.signOut()} className="h-auto gap-1 p-0 text-xs text-muted-foreground"><LogOut className="size-3" />Sair</Button>
             </div>
           </div>
         </div>
@@ -91,7 +92,7 @@ function AppLayout() {
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b border-border bg-background/95 px-4 md:hidden">
           <Brand />
-          <SaveIndicator />
+          <div className="flex items-center gap-2"><SaveIndicator /><Button variant="ghost" size="icon" title="Sair da conta" aria-label="Sair da conta" onClick={() => supabase.auth.signOut()}><LogOut /></Button></div>
         </header>
         <ModuleBanner signed />
         <main aria-busy={isPending} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-10 md:pt-8">

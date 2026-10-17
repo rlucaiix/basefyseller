@@ -19,6 +19,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { initSync, setSyncUser } from "@/lib/sync";
 import { RECOVERY_STORAGE_KEY } from "@/lib/email-auth";
 import { ModuleBanner } from "@/components/app/ModuleBanner";
+import { shouldClearIdentityCache } from "@/lib/auth-identity";
 
 function NotFoundComponent() {
   return (
@@ -120,7 +121,7 @@ function RootComponent() {
       const userId = session?.user.id ?? null;
       if (previousUserId !== userId) {
         // INITIAL_SESSION must not cancel the guard's first in-flight validation.
-        if (previousUserId !== undefined) queryClient.clear();
+        if (shouldClearIdentityCache(previousUserId, userId)) queryClient.clear();
         previousUserId = userId;
         setSyncUser(userId);
       }
