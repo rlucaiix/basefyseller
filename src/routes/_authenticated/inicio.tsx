@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, ArrowRight, Package, Calculator, Receipt, Target, ClipboardCheck, Table2 } from "lucide-react";
+import { BookOpen, ArrowRight, Package, Calculator, Receipt, Target, ClipboardCheck, Table2, Settings } from "lucide-react";
 import { appHead } from "@/lib/head";
 import { useGoals, useProducts, useSales, useSettings, currentMonth, monthLabel, salesInMonth } from "@/lib/data";
 import { summarize, fmtBRL, fmtPct } from "@/lib/pricing";
@@ -14,13 +14,14 @@ export const Route = createFileRoute("/_authenticated/inicio")({
 });
 
 const SHORTCUTS = [
-  { to: "/produtos", label: "Produtos", icon: Package },
-  { to: "/calculadora", label: "Calculadora", icon: Calculator },
-  { to: "/vendas", label: "Vendas", icon: Receipt },
-  { to: "/meta", label: "Meta", icon: Target },
-  { to: "/fechamento", label: "Fechamento", icon: ClipboardCheck },
-  { to: "/tabelas", label: "Tabelas", icon: Table2 },
-  { to: "/conteudo", label: "Conteúdo", icon: BookOpen },
+  { to: "/produtos", label: "Produtos", detail: "Seu catálogo", icon: Package },
+  { to: "/calculadora", label: "Calculadora", detail: "Preço e lucro", icon: Calculator },
+  { to: "/vendas", label: "Vendas", detail: "Seus registros", icon: Receipt },
+  { to: "/meta", label: "Meta do mês", detail: "Seu objetivo", icon: Target },
+  { to: "/fechamento", label: "Fechamento", detail: "Resultado do mês", icon: ClipboardCheck },
+  { to: "/tabelas", label: "Tabelas", detail: "Taxas e preços", icon: Table2 },
+  { to: "/conteudo", label: "Conteúdo", detail: "Guias Basefy", icon: BookOpen },
+  { to: "/configuracoes", label: "Sua conta", detail: "Perfil e preferências", icon: Settings },
 ] as const;
 
 function Home() {
@@ -51,13 +52,22 @@ function Home() {
   return (
     <>
       <PageHeader title={`Olá${settings?.display_name ? `, ${settings.display_name}` : ""}`} subtitle={`Resumo de ${monthLabel(month)}`} />
-      <div className="glass relative mb-4 overflow-hidden p-5 md:p-6">
-        <div className="absolute inset-0 -z-10 bg-gradient-primary opacity-20" />
-        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Seu próximo passo</div>
+      <section className="mb-6 border-y border-border bg-secondary/50 px-2 py-6 md:px-4">
+        <div className="text-xs font-semibold uppercase text-primary">Seu próximo passo</div>
         <h2 className="mt-2 text-xl font-bold md:text-2xl">{next.title}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{next.text}</p>
         <Button asChild variant="hero" className="mt-4"><Link to={next.to} search={("search" in next ? next.search : {}) as never}>{next.cta}<ArrowRight /></Link></Button>
-      </div>
+      </section>
+
+      <section aria-label="Acessos rápidos" className="mb-6">
+        <h2 className="mb-3 text-lg font-semibold">Tudo à mão</h2>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {SHORTCUTS.map((s) => <Link key={s.to} to={s.to} className="card-lilac flex min-w-0 items-center gap-3 p-3 transition-transform hover:-translate-y-0.5 md:p-4">
+            <span className="grid size-10 shrink-0 place-items-center rounded-lg bg-card/80 text-primary"><s.icon className="size-5" /></span>
+            <span className="min-w-0"><span className="block text-sm font-semibold">{s.label}</span><span className="mt-0.5 block text-xs text-muted-foreground">{s.detail}</span></span>
+          </Link>)}
+        </div>
+      </section>
 
       {monthSales.length > 0 ? (
         <div className="mb-4 grid grid-cols-2 gap-2 lg:grid-cols-4">
@@ -85,13 +95,6 @@ function Home() {
         </Card>
       </div>
 
-      <div className="mt-6 grid grid-cols-4 gap-2 md:grid-cols-7">
-        {SHORTCUTS.map((s) => (
-          <Link key={s.to} to={s.to} className="glass flex flex-col items-center gap-2 p-4 text-xs transition-colors hover:border-primary/50">
-            <s.icon className="size-5 text-primary" />{s.label}
-          </Link>
-        ))}
-      </div>
     </>
   );
 }

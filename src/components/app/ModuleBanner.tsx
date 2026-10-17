@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Pause, Play } from "lucide-react";
+import { ArrowUpRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import module0 from "@/assets/module-banners/Modulo-00-Por-que-a-Basefy.webp.asset.json";
 import module1 from "@/assets/module-banners/Modulo-01-Sua-conta-e-seu-perfil.webp.asset.json";
@@ -21,15 +20,17 @@ const modules = [
 ];
 
 export function ModuleBanner({ signed = false }: { signed?: boolean }) {
-  const [paused, setPaused] = useState(false);
-  return <section aria-label="Módulos Basefy" className="module-banner relative overflow-hidden border-b border-border bg-secondary py-3" data-paused={paused}>
-    <div className="module-banner-track flex w-max">
+  return <section aria-label="Módulos Basefy" className="border-b border-border bg-secondary/60">
+    <div className="frosted-chrome flex items-center justify-between gap-3 px-4 py-3 md:px-8">
+      <div className="flex min-w-0 items-center gap-2 text-sm font-semibold"><BookOpen className="size-4 shrink-0 text-primary" /><span>Aprenda com a Basefy</span></div>
+      <Button asChild size="sm" variant="hero" className="shrink-0"><Link to={signed ? "/conteudo" : "/auth"}>Conteúdo<ArrowUpRight className="size-4" /></Link></Button>
+    </div>
+    <div className="module-banner overflow-hidden py-3"><div className="module-banner-track flex w-max">
       {[0, 1].map(copy => <div key={copy} className="module-banner-group flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1 ? true : undefined}>
         {modules.map(({ asset, title }, index) => <Link key={title} to={signed ? "/conteudo" : "/auth"} tabIndex={copy === 1 ? -1 : 0} className="block shrink-0 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" title={title}>
           <img src={asset.url} alt={copy === 0 ? title : ""} width={1080} height={1620} loading="eager" decoding="async" fetchPriority={copy === 0 && index === 0 ? "high" : "low"} className="h-44 w-auto object-contain sm:h-52" />
         </Link>)}
       </div>)}
-    </div>
-    <Button type="button" size="icon" variant="secondary" className="absolute right-3 top-3 size-8 border border-border shadow-[var(--shadow-card)]" title={paused ? "Continuar banner" : "Pausar banner"} aria-label={paused ? "Continuar banner" : "Pausar banner"} aria-pressed={paused} onClick={() => setPaused(value => !value)}>{paused ? <Play className="size-4" /> : <Pause className="size-4" />}</Button>
+    </div></div>
   </section>;
 }
