@@ -1,5 +1,7 @@
 # Roadmap
-- [ ] Acelerar navegação e adicionar banner contínuo com as sete capas enviadas, em celular, tablet e computador.
+- [x] Acelerar navegação: reutilizar validação de identidade e quiz por 30 segundos, antecipar páginas do menu e remover espera mínima/animação da troca; 20 testes passaram.
+- [x] Banner contínuo com as sete capas enviadas, 87% mais leves: imagens, movimento, pausa e ausência de estouro verificados em 394, 820 e 1280 px.
+- [ ] Medir menus com a conta real após o quiz — a sessão disponível ainda está em /onboarding; não alterar respostas pessoais para testar.
 - [x] Trocar Google por e-mail/senha e adicionar recuperação: 19 testes passaram; senha incorreta, link expirado e sessão existente verificados no navegador.
 - [ ] Configurar Site URL e Redirect URLs no Lovable Cloud para os dois domínios — bloqueado: as ferramentas disponíveis não expõem essas configurações; confirmar cadastro e recuperação com e-mails reais depois disso.
 - [ ] Corrigir 404 do Google e preparar publicação independente no Vercel, com testes e documentação.
