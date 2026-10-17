@@ -20,7 +20,7 @@ export const Route = createFileRoute("/_authenticated/vendas")({
 });
 
 export const STATUS: Record<SaleStatus, string> = { registrada: "Registrada", concluida: "Concluída", cancelada: "Cancelada", reembolsada: "Reembolsada" };
-const sel = "h-11 w-full rounded-md border border-input bg-secondary/60 px-3";
+const sel = "h-11 w-full min-w-0 truncate rounded-md border border-input bg-secondary/60 pl-3 pr-8 text-sm";
 
 function SalesPage() {
   const { data: sales = [] } = useSales();
