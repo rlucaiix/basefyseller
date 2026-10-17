@@ -32,7 +32,7 @@ export function useSettings() {
       const { data, error } = await supabase.from("settings").select("*").eq("user_id", uid).maybeSingle();
       if (error) throw error;
       if (data) { rememberVersion(uid, data.version); return num(data as any, ["rate_standard", "rate_featured", "buyer_fee"]); }
-      const def = { user_id: uid, display_name: null, bio: null, avatar_url: null, seller_link: null, read_chapters: [] as string[], rate_standard: DEFAULT_RATES.padrao, rate_featured: DEFAULT_RATES.destaque, buyer_fee: 1, version: 1 };
+      const def: Settings = { user_id: uid, display_name: null, bio: null, avatar_url: null, seller_link: null, read_chapters: [] as string[], rate_standard: DEFAULT_RATES.padrao, rate_featured: DEFAULT_RATES.destaque, buyer_fee: 1, version: 1, nickname: null, age: null, goal: null, level: null, onboarded: false };
       enqueue({ table: "settings", kind: "insert", row: { user_id: uid }, onConflict: "user_id" });
       return def;
     },

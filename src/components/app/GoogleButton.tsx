@@ -21,6 +21,7 @@ export function GoogleButton({ label = "Entrar com Google", size = "lg" }: { lab
     setBusy(true);
     const r = await lovable.auth.signInWithOAuth("google", { redirect_uri: window.location.origin + "/auth" });
     if (r.error) { toast.error("Não foi possível entrar com o Google. Tente de novo."); setBusy(false); return; }
+    // Sessão já criada (popup): entra direto, sem recarregar a página.
     if (!r.redirected) window.location.assign("/inicio");
   }
   return (
