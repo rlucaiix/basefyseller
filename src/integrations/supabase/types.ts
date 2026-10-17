@@ -188,11 +188,16 @@ export type Database = {
       }
       settings: {
         Row: {
+          age: number | null
           avatar_url: string | null
           bio: string | null
           buyer_fee: number
           created_at: string
           display_name: string | null
+          goal: string | null
+          level: string | null
+          nickname: string | null
+          onboarded: boolean
           rate_featured: number
           rate_standard: number
           read_chapters: Json
@@ -202,11 +207,16 @@ export type Database = {
           version: number
         }
         Insert: {
+          age?: number | null
           avatar_url?: string | null
           bio?: string | null
           buyer_fee?: number
           created_at?: string
           display_name?: string | null
+          goal?: string | null
+          level?: string | null
+          nickname?: string | null
+          onboarded?: boolean
           rate_featured?: number
           rate_standard?: number
           read_chapters?: Json
@@ -216,11 +226,16 @@ export type Database = {
           version?: number
         }
         Update: {
+          age?: number | null
           avatar_url?: string | null
           bio?: string | null
           buyer_fee?: number
           created_at?: string
           display_name?: string | null
+          goal?: string | null
+          level?: string | null
+          nickname?: string | null
+          onboarded?: boolean
           rate_featured?: number
           rate_standard?: number
           read_chapters?: Json
