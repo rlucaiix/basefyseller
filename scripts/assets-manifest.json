@@ -731,5 +731,25 @@
       180
     ],
     "source": "IMG_0874.png (uploaded logo)"
+  },
+  {
+    "path": "/assets/Modulo-07-Dicas-de-produtos.webp",
+    "sha256": "f99dda4e68f23309bd3df732247f64bcea1824df7fb9569c5214f89ba12dafaf",
+    "bytes": 76260,
+    "dimensions": [
+      1080,
+      1620
+    ],
+    "source": "Modulo cover uploaded by user"
+  },
+  {
+    "path": "/assets/Modulo-08-Fornecedores.webp",
+    "sha256": "7d393abeea75aed2588569a2b9d853e931cf865f937f2975e784f586d06c652d",
+    "bytes": 51170,
+    "dimensions": [
+      1080,
+      1620
+    ],
+    "source": "Modulo cover uploaded by user"
   }
 ]
