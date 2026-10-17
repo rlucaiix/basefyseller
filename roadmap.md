@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Reauditar imagens locais para GitHub/Vercel e usar IMG_0874.png como logo da página, favicon e ícone de atalho, preservando aparência e demais páginas.
 - [ ] Implementar cadastro por chave de uso único e vínculo atômico permanente — aguarda definição das contas existentes autorizadas e do administrador.
 - [ ] Implementar autorização de login, login seguro por chave e gestão administrativa — aguarda decisões de autorização e confirmação da limitação de tentativas própria.
 - [ ] Testar concorrência, falhas parciais, preservação das contas, isolamento e implantação externa do controle por chave.
