@@ -16,6 +16,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Toaster } from "@/components/ui/sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { initSync } from "@/lib/sync";
+import { RECOVERY_STORAGE_KEY } from "@/lib/email-auth";
 
 function NotFoundComponent() {
   return (
@@ -108,6 +109,11 @@ function RootComponent() {
       },
     });
     const { data } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") {
+        sessionStorage.setItem(RECOVERY_STORAGE_KEY, String(Date.now()));
+        return;
+      }
+      if (event === "SIGNED_OUT") sessionStorage.removeItem(RECOVERY_STORAGE_KEY);
       if (event !== "SIGNED_IN" && event !== "SIGNED_OUT" && event !== "USER_UPDATED") return;
       router.invalidate();
       if (event === "SIGNED_OUT") queryClient.clear();

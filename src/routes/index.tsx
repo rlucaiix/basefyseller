@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, Receipt, Target, ClipboardCheck, Package, Table2, BookOpen, ShieldCheck, Cloud, ArrowRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { GoogleButton } from "@/components/app/GoogleButton";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
@@ -31,7 +30,7 @@ const FEATURES = [
 ];
 
 const STEPS = [
-  { n: "1", title: "Entre com o Google", text: "Um toque e sua conta está criada. Sem senha para decorar." },
+  { n: "1", title: "Crie sua conta", text: "Use seu e-mail e uma senha. Confirme o e-mail para começar com segurança." },
   { n: "2", title: "Conte quem você é", text: "Um quiz rapidinho de boas-vindas personaliza o app para o seu momento." },
   { n: "3", title: "Cadastre e venda", text: "Monte a ficha do produto, veja o lucro real e acompanhe a meta do mês." },
 ];
@@ -66,7 +65,7 @@ function Index() {
         <div className="mt-8 flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row">
           {signed
             ? <Button asChild size="lg" variant="hero" className="w-full sm:w-auto"><Link to="/inicio">Abrir meu painel<ArrowRight /></Link></Button>
-            : <GoogleButton label="Começar com Google" />}
+            : <Button asChild size="lg" variant="hero" className="w-full sm:w-auto"><Link to="/auth">Começar agora<ArrowRight /></Link></Button>}
         </div>
         <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-muted-foreground">
           {POINTS.map((p) => (
@@ -90,7 +89,7 @@ function Index() {
       </section>
 
       <section className="pb-12">
-        <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Começar leva menos de um minuto</h2>
+        <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">Seu primeiro passo começa aqui</h2>
         <div className="mt-8 grid gap-3 md:grid-cols-3">
           {STEPS.map((s) => (
             <div key={s.n} className="glass flex items-start gap-4 p-5">
@@ -107,10 +106,10 @@ function Index() {
       <section className="card-lilac mb-12 flex flex-col items-center gap-4 p-8 text-center md:p-12">
         <ShieldCheck className="size-8 text-primary" />
         <h2 className="max-w-xl text-2xl font-bold tracking-tight md:text-3xl">Seu negócio, seus números, sua conta.</h2>
-        <p className="max-w-md text-sm text-muted-foreground">Entre com o Google e comece agora. Seus dados ficam protegidos e visíveis só para você.</p>
+        <p className="max-w-md text-sm text-muted-foreground">Crie sua conta com e-mail e senha. Seus dados ficam protegidos e visíveis só para você.</p>
         {signed
           ? <Button asChild size="lg" variant="hero"><Link to="/inicio">Abrir meu painel<ArrowRight /></Link></Button>
-          : <GoogleButton label="Começar com Google" />}
+          : <Button asChild size="lg" variant="hero"><Link to="/auth">Começar agora<ArrowRight /></Link></Button>}
       </section>
 
       <footer className="text-center text-xs text-muted-foreground">
