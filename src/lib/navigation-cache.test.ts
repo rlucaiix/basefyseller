@@ -16,3 +16,15 @@ it("reuses only an Auth-server-validated identity across quick navigations", asy
   expect(mocks.getUser).toHaveBeenCalledTimes(2);
   qc.clear();
 });
+it("returns signed out for a confirmed missing session", async () => {
+  const qc = new QueryClient();
+  mocks.getUser.mockResolvedValue({ data: { user: null }, error: { name: "AuthSessionMissingError" } });
+  expect(await navigationUser(qc)).toBeNull();
+  qc.clear();
+});
+it("does not treat a connection failure as a confirmed missing identity", async () => {
+  const qc = new QueryClient();
+  mocks.getUser.mockResolvedValue({ data: { user: null }, error: new Error("Network failure") });
+  await expect(navigationUser(qc)).rejects.toThrow("Network failure");
+  qc.clear();
+});

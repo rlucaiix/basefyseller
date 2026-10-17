@@ -158,6 +158,7 @@ function SaleForm({ sale, initialProduct, products, onDone, create, update }: {
   const [cost, setCost] = useState<number>(sale?.cost ?? 0);
   const [modality, setModality] = useState<Modality>(sale?.modality ?? "padrao");
   const [status, setStatus] = useState<SaleStatus>(sale?.status ?? "concluida");
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (sale) return;
@@ -168,14 +169,20 @@ function SaleForm({ sale, initialProduct, products, onDone, create, update }: {
   const rate = sale && sale.modality === modality ? sale.rate : rateFor(settings, modality);
   const snap = price != null ? snapshotSale(price, rate, cost) : null;
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
+    if (saving) return;
     if (!name.trim()) return toast.error("Informe o produto.");
     if (price == null || price <= 0) return toast.error("Informe um valor de venda maior que zero.");
     const s = snapshotSale(price, rate, cost);
     const row = { product_id: productId || null, product_name: name.trim(), order_ref: order || null, sale_date: date, modality, status, ...s };
-    if (sale) { update(sale.id, row); onDone("Venda corrigida"); }
-    else { void create(row); onDone("Venda registrada"); }
+    setSaving(true);
+    try {
+      if (sale) { update(sale.id, row); onDone("Venda corrigida"); }
+      else { await create(row); onDone("Venda registrada"); }
+    } catch {
+      toast.error("Não foi possível registrar. Confira sua conexão e entre novamente se sua sessão expirou.");
+    } finally { setSaving(false); }
     return undefined;
   }
 
@@ -212,7 +219,7 @@ function SaleForm({ sale, initialProduct, products, onDone, create, update }: {
           <div><div className="text-[11px] text-muted-foreground">Lucro</div><span className={snap.profit < 0 ? "text-destructive" : "text-success"}>{fmtBRL(snap.profit)}</span></div>
         </div>
       )}
-      <Button type="submit" variant="hero" size="lg">{sale ? "Salvar correção" : "Registrar"}</Button>
+      <Button type="submit" variant="hero" size="lg" disabled={saving}>{saving ? "Salvando…" : sale ? "Salvar correção" : "Registrar"}</Button>
     </form>
   );
 }

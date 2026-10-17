@@ -10,7 +10,7 @@ export type Op = {
   kind: "insert" | "update" | "delete" | "upsert";
   id?: string;
   row?: Record<string, unknown>;
-  baseVersion?: number;
+  baseVersion?: number | undefined;
   onConflict?: string;
 };
 export type SyncStatus = "idle" | "saving" | "saved" | "pending" | "error" | "conflict";
@@ -40,10 +40,10 @@ export function setSyncUser(userId: string | null) {
       // legacy operations in their original storage instead of replaying them.
       const legacy = JSON.parse(localStorage.getItem(KEY) || "[]") as Op[];
       if (Array.isArray(legacy)) {
-        const owned = legacy.filter(op => op.row?.user_id === userId);
+        const owned = legacy.filter(op => op.row?.['user_id'] === userId);
         queue.push(...owned);
         save();
-        if (owned.length) localStorage.setItem(KEY, JSON.stringify(legacy.filter(op => op.row?.user_id !== userId)));
+        if (owned.length) localStorage.setItem(KEY, JSON.stringify(legacy.filter(op => op.row?.['user_id'] !== userId)));
       }
     } catch { /* Preserve the original storage on parsing/storage failures. */ }
   }
@@ -131,6 +131,10 @@ export async function flush() {
       try {
         await run(op, userId, currentVersions);
         touched.add(op.table);
+        const nextVersion = op.id ? currentVersions.get(op.id) : undefined;
+        if (nextVersion != null) items.forEach(pending => {
+          if (pending.id === op.id && pending.table === op.table) pending.baseVersion = nextVersion;
+        });
         items.shift(); save(items, userId);
         if (ownerId !== userId) return;
         if (op.id && currentVersions.has(op.id)) rememberVersion(op.id, currentVersions.get(op.id) ?? 0);
