@@ -559,13 +559,53 @@
     "source": "/__l5e/assets-v1/b9fdf128-3524-4a85-b169-8013e87d3da0/Modulo-06-Depois-da-venda.webp"
   },
   {
-    "path": "/favicon.ico",
-    "sha256": "dd821076a9b03adc2173c93956226aea3d92482d7578fc4339c5d3a2e9c24586",
-    "bytes": 20373,
+    "path": "/assets/basefy-seller-apple-touch-icon.png",
+    "sha256": "16bb0b7eb7c9e9f4689f907e04646243cd1d0e696d5164b2a95a2ec18f80631c",
+    "bytes": 5314,
     "dimensions": [
-      256,
-      256
+      180,
+      180
     ],
-    "source": "existing public/favicon.ico"
+    "source": "IMG_0874.png (uploaded logo)"
+  },
+  {
+    "path": "/assets/basefy-seller-icon-192.png",
+    "sha256": "4e3f92275d2ccd0643e1e15effbe4d08741f4a02f6ef4b9846e715dd62dd33a1",
+    "bytes": 11558,
+    "dimensions": [
+      192,
+      192
+    ],
+    "source": "IMG_0874.png (uploaded logo)"
+  },
+  {
+    "path": "/assets/basefy-seller-icon-512.png",
+    "sha256": "293018ecd7be988b0b79f3c4d538e5993929921ebafc3d33e82e3afa5a24d965",
+    "bytes": 53656,
+    "dimensions": [
+      512,
+      512
+    ],
+    "source": "IMG_0874.png (uploaded logo)"
+  },
+  {
+    "path": "/assets/basefy-seller-icon-64.png",
+    "sha256": "ad2bf0dc15c30365fe9bbfff3d124d79da7ba07cce17d7bad813c39a68acce57",
+    "bytes": 3453,
+    "dimensions": [
+      64,
+      64
+    ],
+    "source": "IMG_0874.png (uploaded logo)"
+  },
+  {
+    "path": "/assets/basefy-seller-logo.png",
+    "sha256": "c9e3661225018584076a90a93ff0b1d253cf5636e53b6f2476c502ce92e32ebd",
+    "bytes": 5085,
+    "dimensions": [
+      180,
+      180
+    ],
+    "source": "IMG_0874.png (uploaded logo)"
   }
 ]
