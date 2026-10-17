@@ -18,6 +18,7 @@ import { Route as AuthenticatedConteudoRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedFechamentoRouteImport } from './routes/_authenticated/fechamento'
 import { Route as AuthenticatedInicioRouteImport } from './routes/_authenticated/inicio'
 import { Route as AuthenticatedMetaRouteImport } from './routes/_authenticated/meta'
+import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
 import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
 import { Route as AuthenticatedTabelasRouteImport } from './routes/_authenticated/tabelas'
 import { Route as AuthenticatedVendasRouteImport } from './routes/_authenticated/vendas'
@@ -69,6 +70,11 @@ const AuthenticatedMetaRoute = AuthenticatedMetaRouteImport.update({
   path: '/meta',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
   id: '/produtos',
   path: '/produtos',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/meta': typeof AuthenticatedMetaRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/tabelas': typeof AuthenticatedTabelasRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -114,6 +121,7 @@ export interface FileRoutesByTo {
   '/fechamento': typeof AuthenticatedFechamentoRoute
   '/inicio': typeof AuthenticatedInicioRoute
   '/meta': typeof AuthenticatedMetaRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
   '/produtos': typeof AuthenticatedProdutosRoute
   '/tabelas': typeof AuthenticatedTabelasRoute
   '/vendas': typeof AuthenticatedVendasRoute
@@ -130,6 +138,7 @@ export interface FileRoutesById {
   '/_authenticated/fechamento': typeof AuthenticatedFechamentoRoute
   '/_authenticated/inicio': typeof AuthenticatedInicioRoute
   '/_authenticated/meta': typeof AuthenticatedMetaRoute
+  '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
   '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
   '/_authenticated/tabelas': typeof AuthenticatedTabelasRoute
   '/_authenticated/vendas': typeof AuthenticatedVendasRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/fechamento'
     | '/inicio'
     | '/meta'
+    | '/onboarding'
     | '/produtos'
     | '/tabelas'
     | '/vendas'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/fechamento'
     | '/inicio'
     | '/meta'
+    | '/onboarding'
     | '/produtos'
     | '/tabelas'
     | '/vendas'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/_authenticated/fechamento'
     | '/_authenticated/inicio'
     | '/_authenticated/meta'
+    | '/_authenticated/onboarding'
     | '/_authenticated/produtos'
     | '/_authenticated/tabelas'
     | '/_authenticated/vendas'
@@ -252,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedMetaRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/onboarding': {
+      id: '/_authenticated/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/produtos': {
       id: '/_authenticated/produtos'
       path: '/produtos'
@@ -303,6 +322,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedFechamentoRoute: typeof AuthenticatedFechamentoRoute
   AuthenticatedInicioRoute: typeof AuthenticatedInicioRoute
   AuthenticatedMetaRoute: typeof AuthenticatedMetaRoute
+  AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
   AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
   AuthenticatedTabelasRoute: typeof AuthenticatedTabelasRoute
   AuthenticatedVendasRoute: typeof AuthenticatedVendasRoute
@@ -315,6 +335,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedFechamentoRoute: AuthenticatedFechamentoRoute,
   AuthenticatedInicioRoute: AuthenticatedInicioRoute,
   AuthenticatedMetaRoute: AuthenticatedMetaRoute,
+  AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
   AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
   AuthenticatedTabelasRoute: AuthenticatedTabelasRoute,
   AuthenticatedVendasRoute: AuthenticatedVendasRoute,

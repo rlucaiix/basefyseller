@@ -8,9 +8,15 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated")({
   ssr: false,
-  beforeLoad: async () => {
+  beforeLoad: async ({ location }) => {
     const { data } = await supabase.auth.getUser();
     if (!data.user) throw redirect({ to: "/auth" });
+    // Cada conta (e-mail Google) tem uma ficha permanente; quem nunca fez o
+    // quiz de boas-vindas é levado a ele antes de qualquer página.
+    const { data: st } = await supabase.from("settings").select("onboarded").eq("user_id", data.user.id).maybeSingle();
+    const done = st?.onboarded === true;
+    if (!done && location.pathname !== "/onboarding") throw redirect({ to: "/onboarding" });
+    if (done && location.pathname === "/onboarding") throw redirect({ to: "/inicio" });
     return { user: data.user };
   },
   component: AppLayout,
