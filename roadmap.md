@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Melhorar resposta dos cliques e navegação sem alterar aparência ou segurança; verificar conteúdo e menus com sessão real.
 - [x] Reauditar imagens locais para GitHub/Vercel e usar IMG_0874.png como logo da página, favicon e ícone de atalho: 63 arquivos locais rastreados, HTTP 200 e SHA-256 conferidos em servidor independente, 56 imagens decodificadas e páginas públicas/conectadas verificadas; 56 testes passaram.
 - [x] Implementar cadastro por chave de uso único e vínculo atômico permanente; sete contas legadas autorizadas e administrador configurado.
 - [x] Implementar autorização de login, login seguro por chave e gestão administrativa; segurança revisada e validação limitada por chave, sem bloqueio global compartilhado, com limpeza de tickets expirados.
