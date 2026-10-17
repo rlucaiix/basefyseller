@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Implementar cadastro por chave de uso único e vínculo atômico permanente — aguarda definição das contas existentes autorizadas e do administrador.
+- [ ] Implementar autorização de login, login seguro por chave e gestão administrativa — aguarda decisões de autorização e confirmação da limitação de tentativas própria.
+- [ ] Testar concorrência, falhas parciais, preservação das contas, isolamento e implantação externa do controle por chave.
 - [x] Corrigir falta de variáveis na Vercel com fallback público compartilhado entre verificação e Vite; comando preservado, 14 testes passaram e configuração Vite recebeu os dois valores sem variáveis cadastradas; implantação real na Vercel permanece externa.
 - [x] Auditar e materializar 51 imagens WebP e 7 PDFs atuais em public/assets, preservar favicon e corrigir referências; 59 arquivos validados com SHA-256 e HTTP 200 em servidor independente; 39 testes passaram. Fotos externas individuais permanecem como dados da conta, sem exportação de dados privados.
 - [x] Reforçar lilás, gradientes e superfícies foscas; ampliar acessos rápidos e substituir pausa por Conteúdo no banner; verificado com conta conectada em 394, 820 e 1280 px, sem erros ou estouro.
