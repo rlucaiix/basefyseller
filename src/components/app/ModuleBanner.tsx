@@ -16,7 +16,7 @@ export function ModuleBanner({ signed = false }: { signed?: boolean }) {
   return <section aria-label="Módulos Basefy" className="border-b border-border bg-secondary/60">
     <div className="frosted-chrome flex items-center justify-between gap-3 px-4 py-3 md:px-8">
       <div className="flex min-w-0 items-center gap-2 text-sm font-semibold"><BookOpen className="size-4 shrink-0 text-primary" /><span>Aprenda com a Basefy</span></div>
-      <Button asChild size="sm" variant="hero" className="shrink-0"><Link to={signed ? "/conteudo" : "/auth"}>Conteúdo<ArrowUpRight className="size-4" /></Link></Button>
+      {signed && <Button asChild size="sm" variant="hero" className="shrink-0"><Link to="/conteudo">Conteúdo<ArrowUpRight className="size-4" /></Link></Button>}
     </div>
     <div className="module-banner overflow-hidden py-3"><div className="module-banner-track flex w-max">
       {[0, 1].map(copy => <div key={copy} className="module-banner-group flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1 ? true : undefined}>
