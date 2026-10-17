@@ -126,7 +126,7 @@
   }
   html { -webkit-tap-highlight-color: transparent; }
   a, button, [role="button"], label, select, summary { touch-action: manipulation; }
-  button:active:not(:disabled), a:active { transform: scale(0.97); }
+  button:active:not(:disabled), a:active { transform: scale(0.97); transition-duration: 0ms; }
   button, a { transition: transform 80ms ease, background-color 120ms ease, color 120ms ease; }
   input, select, textarea { font-size: 16px; }
   @media (min-width: 768px) { input, select, textarea { font-size: 14px; } }
@@ -160,9 +160,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ring); outline-
 @keyframes module-banner-scroll {
   to { transform: translateX(-50%); }
 }
-.module-banner-track { animation: module-banner-scroll 48s linear infinite; }
+.module-banner-track { animation: module-banner-scroll 48s linear infinite; will-change: transform; }
 .module-banner:focus-within .module-banner-track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) {
+  button, a { transition: none; }
   .module-banner { overflow-x: auto; }
   .module-banner-track { animation: none; }
   .module-banner-group[aria-hidden="true"] { display: none; }

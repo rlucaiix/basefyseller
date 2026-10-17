@@ -47,6 +47,15 @@ function Brand() {
   );
 }
 
+// Keep background query subscriptions out of the navigation and moving banner.
+function DataWarmup() {
+  useProducts();
+  useSales();
+  useGoals();
+  useSettings();
+  return null;
+}
+
 function AppLayout() {
   const { user } = Route.useRouteContext();
   const router = useRouter();
@@ -61,19 +70,24 @@ function AppLayout() {
   const isPending = useRouterState({ select: s => s.status === "pending" });
   useEffect(() => {
     let cancelled = false;
-    const timer = window.setTimeout(() => {
-      if (!cancelled) NAV.forEach(n => { void router.preloadRoute({ to: n.to }).catch(() => {}); });
-    }, 0);
+    const warmRoutes = async () => {
+      for (const n of NAV) {
+        if (cancelled) return;
+        await router.preloadRoute({ to: n.to }).catch(() => {});
+      }
+    };
+    // Let the current screen paint before downloading other screens.
+    if (typeof window.requestIdleCallback === "function") {
+      const idle = window.requestIdleCallback(() => { void warmRoutes(); }, { timeout: 1500 });
+      return () => { cancelled = true; window.cancelIdleCallback(idle); };
+    }
+    const timer = window.setTimeout(() => { void warmRoutes(); }, 200);
     return () => { cancelled = true; window.clearTimeout(timer); };
   }, [router]);
   const mobileMain = NAV.slice(0, 4);
-  // Pré-carrega os dados principais logo no login: cada página abre instantânea.
-  useProducts();
-  useSales();
-  useGoals();
-  useSettings();
   return (
     <div className="min-h-screen md:flex">
+      <DataWarmup />
       <aside className="frosted-chrome sticky top-0 hidden h-screen w-[72px] shrink-0 flex-col gap-1 border-r border-sidebar-border p-3 lg:w-60 lg:p-4 md:flex">
         <div className="mb-6 px-1 lg:px-2"><Brand /></div>
         {NAV.map((n) => (

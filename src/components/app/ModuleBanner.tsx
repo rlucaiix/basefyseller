@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { memo } from "react";
 import { ArrowUpRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -14,7 +15,7 @@ const modules = [
   { src: "/assets/Modulo-08-Fornecedores.webp", title: "Fornecedores" },
 ];
 
-export function ModuleBanner({ signed = false }: { signed?: boolean }) {
+export const ModuleBanner = memo(function ModuleBanner({ signed = false }: { signed?: boolean }) {
   return <section aria-label="Módulos Basefy" className="border-b border-border bg-secondary/60">
     <div className="frosted-chrome flex items-center justify-between gap-3 px-4 py-3 md:px-8">
       <div className="flex min-w-0 items-center gap-2 text-sm font-semibold"><BookOpen className="size-4 shrink-0 text-primary" /><span>Aprenda com a Basefy</span></div>
@@ -23,9 +24,9 @@ export function ModuleBanner({ signed = false }: { signed?: boolean }) {
     <div className="module-banner overflow-hidden py-3"><div className="module-banner-track flex w-max">
       {[0, 1].map(copy => <div key={copy} className="module-banner-group flex shrink-0 gap-3 pr-3" aria-hidden={copy === 1 ? true : undefined}>
         {modules.map(({ src, title }, index) => <Link key={title} to={signed ? "/conteudo" : "/auth"} tabIndex={copy === 1 ? -1 : 0} className="block shrink-0 overflow-hidden rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" title={title}>
-          <img src={src} alt={copy === 0 ? title : ""} width={1080} height={1620} loading="eager" decoding="async" fetchPriority={copy === 0 && index === 0 ? "high" : "low"} className={signed ? "h-24 w-auto object-contain sm:h-32 lg:h-36" : "h-44 w-auto object-contain sm:h-52"} />
+          <img src={src} alt={copy === 0 ? title : ""} width={1080} height={1620} loading={copy === 0 && index < 4 ? "eager" : "lazy"} decoding="async" fetchPriority="low" className={signed ? "h-24 w-auto object-contain sm:h-32 lg:h-36" : "h-44 w-auto object-contain sm:h-52"} />
         </Link>)}
       </div>)}
     </div></div>
   </section>;
-}
+});
