@@ -41,7 +41,7 @@ const NAV = [
 function Brand() {
   return (
     <Link to="/inicio" className="flex items-center gap-2 font-extrabold tracking-tight">
-      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-sm text-primary-foreground shadow-glow">B</span>
+      <img src="/assets/basefy-seller-logo.png" alt="" width={180} height={180} className="size-8 object-contain" />
       <span className="md:hidden lg:inline">Basefy <span className="text-primary">Seller</span></span>
     </Link>
   );
