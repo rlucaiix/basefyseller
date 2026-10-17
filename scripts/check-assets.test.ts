@@ -7,7 +7,7 @@ import { checkAssets } from "./check-assets.mjs";
 
 describe("asset portability", () => {
   it("keeps all 59 original files intact in the project", () => {
-    expect(checkAssets()).toBe(59);
+    expect(checkAssets(process.cwd())).toBe(59);
   });
   it("rejects a missing local file", () => {
     const root = mkdtempSync(join(tmpdir(), "basefy-assets-"));
