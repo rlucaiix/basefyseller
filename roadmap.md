@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Auditar e materializar as imagens e PDFs atuais em public/assets, corrigir referências e verificar portabilidade sem alterar aparência.
 - [x] Reforçar lilás, gradientes e superfícies foscas; ampliar acessos rápidos e substituir pausa por Conteúdo no banner; verificado com conta conectada em 394, 820 e 1280 px, sem erros ou estouro.
 - [x] Preparar configurações Vercel, exemplo de variáveis e guia DEPLOY_INDEPENDENTE.md; revisar sessão, menus, produto/venda e conteúdo com leitura após recarregar, sem publicar automaticamente.
 - [x] Acelerar navegação: reutilizar validação de identidade e quiz por 30 segundos, antecipar páginas do menu e remover espera mínima/animação da troca; 20 testes passaram.
