@@ -3,21 +3,22 @@
 ## Resultado
 
 - 7 capas do banner, 44 páginas ilustradas do conteúdo e 7 PDFs originais copiados para `public/assets/`.
-- Favicon original preservado em `public/favicon.ico`.
-- 59 arquivos conferidos por tamanho e SHA-256; nenhuma recompressão, substituição ou mudança de aparência.
+- Logo enviada `IMG_0874.png` preservada byte-for-byte em `public/assets/basefy-seller-logo.png`, substituindo apenas o B nos cabeçalhos público, de login e interno.
+- Ícones derivados dessa mesma logo em 64, 180, 192 e 512 pixels; favicon e apple-touch-icon locais, com `public/manifest.webmanifest` para o atalho. Favicon antigo removido.
+- 63 arquivos conferidos por tamanho e SHA-256; as 51 imagens WebP e os 7 PDFs originais permanecem sem recompressão ou mudança de aparência.
 - Referências ativas do banner e conteúdo usam `/assets/` com os nomes e maiúsculas exatos.
-- Logo B/“Basefy Seller” é texto e CSS; ícones são SVGs gerados pelas bibliotecas locais, incluídos na compilação. Fundos são gradientes CSS, sem imagens externas.
+- Logo BS é a imagem enviada; “Basefy Seller” continua como texto. Ícones de interface são SVGs gerados pelas bibliotecas locais, incluídos na compilação. Fundos são gradientes CSS, sem imagens externas.
 - Os ponteiros históricos em `src/assets/module-banners/` não são mais importados ou usados pelo site; permanecem apenas como origem dos arquivos, sem apagar mídia de versões anteriores.
 - Fotos de perfil são dados individuais (`user_metadata.avatar_url`), não imagens estáticas do projeto. A conta usada na conferência não exibia foto externa. URLs de fotos de outros usuários não foram exportadas nem substituídas; essa dependência individual permanece, preservando a funcionalidade e privacidade das contas.
 - A fonte Inter continua carregada pelo Google Fonts: não é uma imagem e foi mantida para preservar exatamente o escopo solicitado.
 
 ## Verificação
 
-- Servidor estático independente, sem infraestrutura Lovable: todos os 59 arquivos retornaram HTTP 200 com SHA-256 idêntico aos originais.
-- Chromium decodificou todas as 51 imagens WebP nesse servidor.
+- Servidor estático independente, sem infraestrutura Lovable: todos os 63 arquivos retornaram HTTP 200 com SHA-256 idêntico ao inventário.
+- Chromium decodificou todas as 56 imagens WebP/PNG nesse servidor.
 - Navegador com conta conectada: lista de conteúdo e leitor carregaram arquivos locais com as URLs antigas bloqueadas; download aponta ao PDF local; nenhum erro de execução.
 - 39 testes passaram. `bun run check:assets` verifica os arquivos automaticamente antes das compilações normal e Vercel.
-- `git ls-files public/assets` confirma 58 arquivos incluídos; nenhuma regra de exclusão afeta esses arquivos ou o favicon.
+- `git ls-files public/assets` confirma 63 arquivos incluídos; nenhuma regra de exclusão afeta a logo ou o manifesto.
 - Simulação realizada para a camada de arquivos estáticos e navegação na prévia. Não equivale a uma implantação real ou compilação executada na Vercel, que continua dependendo da conexão do repositório e das variáveis de ambiente.
 
 ## Inventário
@@ -82,4 +83,4 @@
 | `/assets/Modulo-04-Preco-e-lucro.webp` | 58110 | 1080 × 1620 | `a32eabfa74b0b8620fac753778dba95af2c2e345fc4df160581223de4779c4f5` |
 | `/assets/Modulo-05-Vender-sem-anuncio-pago.webp` | 66850 | 1080 × 1620 | `97642904d0daef1ce800f61fea028218474ebadf583dd6d0e70febb0a4c8aeef` |
 | `/assets/Modulo-06-Depois-da-venda.webp` | 75128 | 1080 × 1620 | `9f5ba24a0e45daa16e2cfeaa42bfc3db903e8b1177e2647af3c78110270651b9` |
-| `/favicon.ico` | 20373 | 256 × 256 | `dd821076a9b03adc2173c93956226aea3d92482d7578fc4339c5d3a2e9c24586` |
+Os cinco PNGs da logo e dos ícones têm nomes, dimensões e hashes exatos registrados em `scripts/assets-manifest.json`, junto das 58 mídias originais acima.

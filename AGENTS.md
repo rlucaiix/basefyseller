@@ -17,6 +17,7 @@
 - Email authentication operations and redirect paths live in `src/lib/email-auth.ts`; public auth pages reuse them to keep multi-domain confirmation and recovery consistent without editing generated clients.
 - Navigation caches only Auth-server-validated identities and per-user onboarding checks briefly in React Query; identity changes clear/invalidate that cache, and database RLS remains authoritative.
 - Static visual assets and guide PDFs are tracked byte-for-byte in `public/assets` and referenced by local paths; the asset integrity preflight prevents missing files in independent deployments. Historical CDN pointers are provenance only, never runtime dependencies.
+- Browser favicon, Apple touch icon and web manifest icons derive from the uploaded page logo and are served locally; keep the original logo bytes and include derivatives in the asset integrity inventory.
 - Shared surface and navigation effects use semantic CSS utilities; keep blur static and animate only the banner transform to preserve click responsiveness.
 - Independent deployments use `vite.vercel.config.ts` and Nitro's Vercel preset via `build:vercel`; keep the Lovable preview configuration separate to avoid editor-specific output overrides.
 - Deployment preflight and the standalone Vite config share public project fallbacks for missing browser credentials; explicit environment values take precedence and invalid URLs or private keys must stop deployment before bundling. Resolve in Vite too because preflight child-process changes cannot reach the build.
