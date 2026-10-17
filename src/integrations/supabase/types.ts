@@ -14,6 +14,134 @@ export type Database = {
   }
   public: {
     Tables: {
+      access_attempt_limits: {
+        Row: {
+          attempts: number
+          bucket: string
+          window_start: string
+        }
+        Insert: {
+          attempts?: number
+          bucket: string
+          window_start?: string
+        }
+        Update: {
+          attempts?: number
+          bucket?: string
+          window_start?: string
+        }
+        Relationships: []
+      }
+      access_authorizations: {
+        Row: {
+          active: boolean
+          created_at: string
+          source: string
+          user_id: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          source: string
+          user_id: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          source?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      access_key_audit: {
+        Row: {
+          action: string
+          actor_id: string | null
+          id: string
+          key_id: string | null
+          occurred_at: string
+        }
+        Insert: {
+          action: string
+          actor_id?: string | null
+          id?: string
+          key_id?: string | null
+          occurred_at?: string
+        }
+        Update: {
+          action?: string
+          actor_id?: string | null
+          id?: string
+          key_id?: string | null
+          occurred_at?: string
+        }
+        Relationships: []
+      }
+      access_key_tickets: {
+        Row: {
+          created_at: string
+          expires_at: string
+          key_id: string
+          ticket_hash: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at: string
+          key_id: string
+          ticket_hash: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          key_id?: string
+          ticket_hash?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "access_key_tickets_key_id_fkey"
+            columns: ["key_id"]
+            isOneToOne: false
+            referencedRelation: "access_keys"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      access_keys: {
+        Row: {
+          bound_user_id: string | null
+          generated_at: string
+          generated_by: string
+          id: string
+          key_hash: string
+          registration_email: string | null
+          revoked_at: string | null
+          status: string
+          used_at: string | null
+        }
+        Insert: {
+          bound_user_id?: string | null
+          generated_at?: string
+          generated_by: string
+          id?: string
+          key_hash: string
+          registration_email?: string | null
+          revoked_at?: string | null
+          status?: string
+          used_at?: string | null
+        }
+        Update: {
+          bound_user_id?: string | null
+          generated_at?: string
+          generated_by?: string
+          id?: string
+          key_hash?: string
+          registration_email?: string | null
+          revoked_at?: string | null
+          status?: string
+          used_at?: string | null
+        }
+        Relationships: []
+      }
       monthly_goals: {
         Row: {
           champion: string | null
@@ -246,12 +374,42 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          created_at: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          role: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
+      access_rate_allowed: {
+        Args: { p_bucket: string; p_limit: number; p_seconds: number }
+        Returns: boolean
+      }
       delete_my_account: { Args: never; Returns: undefined }
+      generate_access_keys: { Args: { p_count?: number }; Returns: Json }
+      has_app_access: { Args: never; Returns: boolean }
+      is_key_admin: { Args: never; Returns: boolean }
+      revoke_access_key: { Args: { p_id: string }; Returns: boolean }
+      validate_access_key: {
+        Args: { p_email?: string; p_intent?: string; p_key: string }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never

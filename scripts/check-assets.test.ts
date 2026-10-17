@@ -6,8 +6,8 @@ import { createHash } from "node:crypto";
 import { checkAssets } from "./check-assets.mjs";
 
 describe("asset portability", () => {
-  it("keeps all 59 original files intact in the project", () => {
-    expect(checkAssets(process.cwd())).toBe(59);
+  it("keeps original media and the uploaded logo with shortcut icons intact", () => {
+    expect(checkAssets(process.cwd())).toBe(63);
   });
   it("rejects a missing local file", () => {
     const root = mkdtempSync(join(tmpdir(), "basefy-assets-"));

@@ -1,6 +1,6 @@
 import { createFileRoute, redirect, Outlet, Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal } from "lucide-react";
+import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal, KeyRound } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { SaveIndicator } from "@/components/app/ui";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
@@ -41,7 +41,7 @@ const NAV = [
 function Brand() {
   return (
     <Link to="/inicio" className="flex items-center gap-2 font-extrabold tracking-tight">
-      <span className="grid size-8 place-items-center rounded-lg bg-gradient-primary text-sm text-primary-foreground shadow-glow">B</span>
+      <img src="/assets/basefy-seller-logo.png" alt="" width={180} height={180} className="size-8 object-contain" />
       <span className="md:hidden lg:inline">Basefy <span className="text-primary">Seller</span></span>
     </Link>
   );
@@ -52,6 +52,12 @@ function AppLayout() {
   const router = useRouter();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [more, setMore] = useState(false);
+  const [admin, setAdmin] = useState(false);
+  useEffect(() => {
+    let active = true;
+    void supabase.rpc("is_key_admin").then(({ data }) => { if (active) setAdmin(data === true); });
+    return () => { active = false; };
+  }, [user.id]);
   const isPending = useRouterState({ select: s => s.status === "pending" });
   useEffect(() => {
     let cancelled = false;
@@ -75,6 +81,7 @@ function AppLayout() {
             <n.icon className="size-5 lg:size-4" /><span className="hidden lg:inline">{n.label}</span>
           </Link>
         ))}
+        {admin && <Link to="/chaves" title="Chaves de acesso" className="flex items-center justify-center gap-3 rounded-lg px-3 py-2.5 text-sm text-muted-foreground hover:bg-sidebar-accent lg:justify-start"><KeyRound className="size-5 lg:size-4" /><span className="hidden lg:inline">Chaves de acesso</span></Link>}
         <div className="mt-auto space-y-3 px-1 lg:px-2">
           <div className="hidden lg:block"><SaveIndicator /></div>
           <div className="flex items-center gap-2">
@@ -119,6 +126,7 @@ function AppLayout() {
                 <n.icon className="size-5 text-primary" />{n.label}
               </Link>
             ))}
+            {admin && <Link to="/chaves" onClick={() => setMore(false)} className="flex items-center gap-3 rounded-lg px-3 py-3 hover:bg-accent"><KeyRound className="size-5 text-primary" />Chaves de acesso</Link>}
           </div>
         </SheetContent>
       </Sheet>
