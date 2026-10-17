@@ -49,6 +49,11 @@ function AppLayout() {
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [more, setMore] = useState(false);
   const mobileMain = NAV.slice(0, 4);
+  // Pré-carrega os dados principais logo no login: cada página abre instantânea.
+  useProducts();
+  useSales();
+  useGoals();
+  useSettings();
   return (
     <div className="min-h-screen md:flex">
       <aside className="sticky top-0 hidden h-screen w-[72px] shrink-0 flex-col gap-1 border-r border-sidebar-border bg-sidebar p-3 lg:w-60 lg:p-4 md:flex">
