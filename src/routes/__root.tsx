@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
   type ErrorComponentProps,
@@ -98,11 +99,15 @@ function RootShell({ children }: { children: ReactNode }) {
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
-  const publicPage = !router.state.location.pathname.startsWith("/api/") && ["/", "/auth", "/reset-password"].includes(router.state.location.pathname);
+  const pathname = useRouterState({ select: s => s.location.pathname });
+  const publicPage = ["/", "/auth", "/reset-password"].includes(pathname);
 
   useEffect(() => {
     initSync({
-      onFlushed: (tables) => tables.forEach((t) => queryClient.invalidateQueries({ queryKey: [t === "monthly_goals" ? "goals" : t] })),
+      onFlushed: (tables) => tables.forEach((t) => {
+        queryClient.invalidateQueries({ queryKey: [t === "monthly_goals" ? "goals" : t] });
+        if (t === "settings") queryClient.invalidateQueries({ queryKey: ["navigation-profile"] });
+      }),
       onConflict: (table) => {
         toast.warning("Este registro foi alterado em outro aparelho", {
           description: "Carregamos a versão mais recente da nuvem. Revise e edite de novo se precisar.",

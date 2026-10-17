@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, Outlet, Link, useRouterState } from "@tanstack/react-router";
+import { createFileRoute, redirect, Outlet, Link, useRouter, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { BookOpen, LogOut, Home, Package, Calculator, Table2, Receipt, Target, ClipboardCheck, Settings, MoreHorizontal } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
@@ -48,20 +48,17 @@ function Brand() {
 
 function AppLayout() {
   const { user } = Route.useRouteContext();
-  const { queryClient } = Route.useRouteContext();
+  const router = useRouter();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const [more, setMore] = useState(false);
   const pendingPath = useRouterState({ select: s => s.status === "pending" ? s.latestLocation.pathname : s.location.pathname });
   useEffect(() => {
     let cancelled = false;
     const timer = window.setTimeout(() => {
-      for (const n of NAV) {
-        if (cancelled) break;
-        void import("@/router");
-      }
+      if (!cancelled) NAV.forEach(n => { void router.preloadRoute({ to: n.to }).catch(() => {}); });
     }, 0);
     return () => { cancelled = true; window.clearTimeout(timer); };
-  }, []);
+  }, [router]);
   const mobileMain = NAV.slice(0, 4);
   // Pré-carrega os dados principais logo no login: cada página abre instantânea.
   useProducts();
