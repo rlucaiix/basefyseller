@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, ArrowRight, Package, Calculator, Receipt, Target, ClipboardCheck, Table2, Settings } from "lucide-react";
+import { BookOpen, ArrowRight, ArrowLeft, SkipForward, Package, Calculator, Receipt, Target, ClipboardCheck, Table2, Settings } from "lucide-react";
+import { useState } from "react";
 import { appHead } from "@/lib/head";
 import { useGoals, useProducts, useSales, useSettings, currentMonth, monthLabel, salesInMonth } from "@/lib/data";
+import { nextStepFlow, pickStep } from "@/lib/next-step";
 import { summarize, fmtBRL, fmtPct } from "@/lib/pricing";
 import { PageHeader, Card, Stat } from "@/components/app/ui";
 import { Button } from "@/components/ui/button";
@@ -30,6 +32,7 @@ function Home() {
   const { data: sales, isLoading: ls } = useSales();
   const { data: goals } = useGoals();
   const { data: settings } = useSettings();
+  const [skip, setSkip] = useState(0);
   if (lp || ls) return <div className="space-y-3"><Skeleton className="h-10 w-48" /><Skeleton className="h-32 rounded-2xl" /><Skeleton className="h-24 rounded-2xl" /></div>;
 
   const goal = goals?.find((g) => g.month === month);
@@ -37,15 +40,13 @@ function Home() {
   const sum = summarize(monthSales);
   const noPrice = (products ?? []).filter((p) => p.price == null);
 
-  const next = !products?.length
-    ? { title: "Cadastre seu primeiro produto", text: "Comece pela ficha de precificação: custo, preço e lucro.", to: "/produtos", cta: "Cadastrar produto" }
-    : noPrice[0]
-    ? { title: `Defina o preço de “${noPrice[0].name}”`, text: "Sem preço não dá para saber o lucro nem a meta.", to: "/produtos", cta: "Abrir ficha", search: { id: noPrice[0].id } }
-    : !goal || goal.profit_goal <= 0
-    ? { title: "Defina a meta de lucro do mês", text: "Descubra quantas vendas por dia você precisa.", to: "/meta", cta: "Definir meta" }
-    : !monthSales.length
-    ? { title: "Registre sua primeira venda do mês", text: "Cada venda alimenta a meta e o fechamento.", to: "/vendas", cta: "Registrar venda" }
-    : { title: "Acompanhe o fechamento", text: "Veja o que está funcionando e o produto campeão.", to: "/fechamento", cta: "Ver fechamento" };
+  const flow = nextStepFlow({
+    hasProducts: !!products?.length,
+    unpriced: noPrice[0] ? { id: noPrice[0].id, name: noPrice[0].name } : null,
+    hasGoal: !!goal && goal.profit_goal > 0,
+    hasMonthSales: monthSales.length > 0,
+  });
+  const { step, index, canSkip } = pickStep(flow, skip);
 
   const progress = goal && goal.profit_goal > 0 ? Math.max(0, Math.min(100, (sum.profit / goal.profit_goal) * 100)) : null;
 
@@ -53,10 +54,17 @@ function Home() {
     <>
       <PageHeader title={`Olá${settings?.display_name ? `, ${settings.display_name}` : ""}`} subtitle={`Resumo de ${monthLabel(month)}`} />
       <section className="mb-6 border-y border-border bg-secondary/50 px-2 py-6 md:px-4">
-        <div className="text-xs font-semibold uppercase text-primary">Seu próximo passo</div>
-        <h2 className="mt-2 text-xl font-bold md:text-2xl">{next.title}</h2>
-        <p className="mt-1 text-sm text-muted-foreground">{next.text}</p>
-        <Button asChild variant="hero" className="mt-4"><Link to={next.to} search={("search" in next ? next.search : {}) as never}>{next.cta}<ArrowRight /></Link></Button>
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-xs font-semibold uppercase text-primary">Seu próximo passo</div>
+          {flow.length > 1 && <span className="text-xs tabular text-muted-foreground">Passo {index + 1} de {flow.length}</span>}
+        </div>
+        <h2 className="mt-2 text-xl font-bold md:text-2xl">{step.title}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{step.text}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <Button asChild variant="hero"><Link to={step.to} search={("search" in step ? step.search : {}) as never}>{step.cta}<ArrowRight /></Link></Button>
+          {canSkip && <Button variant="ghost" aria-label="Pular para o próximo passo" onClick={() => setSkip(index + 1)}><SkipForward />Pular</Button>}
+          {index > 0 && <Button variant="ghost" onClick={() => setSkip(index - 1)}><ArrowLeft />Voltar</Button>}
+        </div>
       </section>
 
       <section aria-label="Acessos rápidos" className="mb-6">
