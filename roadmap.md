@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Botão Pular em "Seu próximo passo": passos pendentes em ordem com contador, um clique avança e trava no último, com Voltar; ordem e salto em src/lib/next-step.ts com 7 testes; verificado com sessão real (produto temporário criado e removido) sem estouro em 394 px; 68 testes passaram.
 - [ ] Atualizar a implantação Vercel para o código atual: auditoria pública em 17/10 encontrou 20 dos 78 assets em 404 e manifesto em 404, além de erros React de execução; os mesmos arquivos existem e passam a verificação local. Nenhuma conexão Vercel/GitHub disponível nesta sessão para atualizar a implantação.
 - [x] Limpeza das autorizações e papéis ao excluir conta aplicada por gatilho, sem apagar chaves consumidas; definição instalada conferida. Preservação dos erros reais de cadastro corrigida: 61 testes passaram; 78 assets e configuração pública validados; guia corrigido para os ícones PNG existentes; compilação automática OK.
 - [ ] Executar exclusão de conta temporária para validar o gatilho e concorrência no cadastro — conexão de teste não tem acesso ao esquema Auth nem execução direta do gatilho; não excluir contas reais para contornar esse limite.
