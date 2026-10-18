@@ -33,7 +33,7 @@ export function nextStepFlow(input: NextStepInput): NextStep[] {
     });
   }
 
-  if (input.unpriced) {
+  if (input.hasProducts && input.unpriced) {
     flow.push({
       key: "price",
       title: `Defina o preço de “${input.unpriced.name}”`,
