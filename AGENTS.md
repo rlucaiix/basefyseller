@@ -29,3 +29,4 @@
 - Auth account deletion cleans authorization and role rows through an app-owned lifecycle trigger, never the immutable consumed keys — prevents orphaned access permissions without allowing key reuse.
 - Signup diagnoses hidden database failures only; preserve original provider errors when the diagnostic request fails — avoids masking email limits or connection problems as key errors.
 - Key login requires the submitted current email and a provider-issued email confirmation with shouldCreateUser:false; keys never issue sessions or reset passwords. Persistent database rate buckets protect public key validation, independent of frontend controls.
+- The home's suggested next step, its pending-only order and the skip/voltar advance live in `src/lib/next-step.ts` (tested in `next-step.test.ts`); the home page only renders the picked step — keeps the suggestion order in one place.
