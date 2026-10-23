@@ -111,10 +111,11 @@ function AppLayout() {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="frosted-chrome sticky top-0 z-20 flex h-14 items-center justify-between border-b border-border px-4 md:hidden">
+        <header className="frosted-chrome fixed inset-x-0 top-0 z-30 flex h-14 items-center justify-between border-b border-border px-4 pt-[env(safe-area-inset-top)] md:hidden">
           <Brand />
           <div className="flex items-center gap-2"><SaveIndicator /><Button variant="ghost" size="icon" title="Sair da conta" aria-label="Sair da conta" onClick={() => supabase.auth.signOut()}><LogOut /></Button></div>
         </header>
+        <div aria-hidden className="h-14 shrink-0 md:hidden" />
         <ModuleBanner signed />
         <main aria-busy={isPending} className="mx-auto w-full max-w-6xl flex-1 px-4 pb-28 pt-6 md:px-8 md:pb-10 md:pt-8">
           <Outlet />
