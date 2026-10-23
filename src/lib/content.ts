@@ -125,6 +125,22 @@ export const CHAPTERS: Chapter[] = [
   ]
  },
  {
+  "slug": "lista-de-fornecedores",
+  "section": "Crescendo",
+  "kicker": "Material extra",
+  "title": "Lista de fornecedores",
+  "description": "Seis lojas para comprar e revender: jogos, contas, IAs e streaming, com o passo a passo para testar antes de anunciar.",
+  "pdf": "/assets/Lista-de-Fornecedores.pdf",
+  "pages": [
+   "/assets/Lista-de-Fornecedores-01.webp",
+   "/assets/Lista-de-Fornecedores-02.webp",
+   "/assets/Lista-de-Fornecedores-03.webp",
+   "/assets/Lista-de-Fornecedores-04.webp",
+   "/assets/Lista-de-Fornecedores-05.webp",
+   "/assets/Lista-de-Fornecedores-06.webp"
+  ]
+ },
+ {
   "slug": "resumao",
   "section": "Revisão",
   "kicker": "Resumão",

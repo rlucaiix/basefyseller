@@ -751,5 +751,40 @@
       1620
     ],
     "source": "Modulo cover uploaded by user"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-01.webp",
+    "bytes": 45666,
+    "sha256": "feca61d1284e33c14a0c15a3fa962e697269161ef582f0b4d64cb0a4f1e6cb1a"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-02.webp",
+    "bytes": 75740,
+    "sha256": "f5f45f9aa98d3a2c6476196378e2716acd72f0c3ae89923710dd17e54c079973"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-03.webp",
+    "bytes": 62522,
+    "sha256": "439ef4490ded2644c437e4543ba480a9d5861fde6aa8310ca48a66f9e658ca90"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-04.webp",
+    "bytes": 59334,
+    "sha256": "19a262df93da29606fa7fb9ba1001982e7f3eb9deceaaf881d1f847cdd33d0a3"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-05.webp",
+    "bytes": 58392,
+    "sha256": "17a76dc55b7e76a15a77c5519ea84f8f80d2d064feb9dd13d40ff4b68dc00779"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores-06.webp",
+    "bytes": 60382,
+    "sha256": "4d67294768d95b1f72fa87d72b5e0aab0ab3318a30a3a9b3165c8908e08ad9fd"
+  },
+  {
+    "path": "/assets/Lista-de-Fornecedores.pdf",
+    "bytes": 677535,
+    "sha256": "714ddfe96325957f7aac618e261b7406e83510baee4d25f9de0367998c064608"
   }
 ]
