@@ -7,7 +7,7 @@ import { checkAssets } from "./check-assets.mjs";
 
 describe("asset portability", () => {
   it("keeps original media and the uploaded logo with shortcut icons intact", () => {
-    expect(checkAssets(process.cwd())).toBe(78);
+    expect(checkAssets(process.cwd())).toBe(85);
   });
   it("rejects a missing local file", () => {
     const root = mkdtempSync(join(tmpdir(), "basefy-assets-"));
